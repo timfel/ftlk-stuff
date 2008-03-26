@@ -1,0 +1,52 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0108 
+header_name {.h} 
+code_name {.cxx}
+Function {make_window()} {open
+} {
+  Fl_Window {} {open
+    xywh {1 16 890 780} type Double visible
+  } {
+    Fl_Browser {} {
+      xywh {0 25 195 755}
+    }
+    Fl_Tabs {} {
+      label View open
+      xywh {195 25 695 755}
+    } {
+      Fl_Tile {} {
+        label {Übersicht} open
+        xywh {195 45 695 735} box EMBOSSED_FRAME
+      } {}
+      Fl_Group {} {
+        label Bearbeiten open
+        xywh {195 45 695 735} hide
+      } {}
+    }
+    Fl_Menu_Bar {} {open selected
+      xywh {0 0 890 24}
+    } {
+      Submenu {} {
+        label Album open
+        xywh {0 0 70 21}
+      } {
+        MenuItem {} {
+          label Importieren
+          xywh {5 5 34 21} shortcut 0x40061
+        }
+        MenuItem {} {
+          label Entfernen
+          xywh {10 10 34 21} shortcut 0x40064
+        }
+        MenuItem {} {
+          label Slideshow
+          xywh {35 35 34 21} shortcut 0x40073 divider
+        }
+        MenuItem {} {
+          label {Programm Verlassen}
+          xywh {25 25 34 21} shortcut 0x40071
+        }
+      }
+    }
+  }
+} 

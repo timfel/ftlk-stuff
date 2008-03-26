@@ -1,0 +1,386 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0108 
+i18n_type 1 
+i18n_include <libintl.h> 
+i18n_function gettext 
+header_name {.h} 
+code_name {.cxx}
+Function {} {open private
+} {
+  Fl_Window win {open
+    xywh {180 289 585 235} type Double hide hotspot
+  } {
+    Fl_Menu_Bar {} {open
+      xywh {0 0 600 20} box THIN_UP_BOX
+    } {
+      Submenu {} {
+        label File open
+        xywh {0 0 63 20}
+      } {
+        MenuItem {} {
+          label New
+          callback {const char* newfile;
+  newfile = Fl_file_chooser("Wähle die Datenbank", 
+  				"Image Files (*.6db)",
+  				getenv("HOME"),0);
+  if (newfile != NULL) phase = phase6_init((char*)newfile);}
+          xywh {0 0 30 20} shortcut 0x4006e
+        }
+        MenuItem {} {
+          label Open
+          callback {const char* newfile;
+  newfile = Fl_file_chooser("Wähle die Datenbank", 
+  				"Image Files (*.6db)",
+  				getenv("HOME"),0);
+  if (newfile != NULL) phase = phase6_init((char*)newfile);
+  phase6_open(phase);}
+          xywh {0 0 30 20} shortcut 0x4006f
+        }
+        MenuItem {} {
+          label Save
+          callback {phase6_save(phase);}
+          xywh {0 0 30 20} shortcut 0x40073
+        }
+        MenuItem {} {
+          label {Save as...}
+          callback {const char* newfile;
+  newfile = Fl_file_chooser("Wähle die Datenbank", 
+  				"Image Files (*.6db)",
+  				getenv("HOME"),0);
+  if (newfile != NULL) phase.filename = newfile;
+  phase6_save(phase);}
+          xywh {0 0 30 20} shortcut 0x50073
+        }
+        MenuItem {} {
+          label Quit
+          callback cb_exit
+          xywh {0 0 30 20} shortcut 0x40071
+        }
+      }
+      Submenu {} {
+        label Edit open
+        xywh {0 0 63 20}
+      } {
+        MenuItem {} {
+          label {Add to database}
+          callback cb_add
+          xywh {0 0 30 20} shortcut 0x40061
+        }
+        MenuItem {} {
+          label {Edit database}
+          callback cb_liste
+          xywh {0 0 30 20} shortcut 0x40065
+        }
+        MenuItem {} {
+          label {Search in database}
+          callback cb_search
+          xywh {0 0 30 20} shortcut 0x40066
+        }
+      }
+      MenuItem {} {
+        label {Run test}
+        xywh {0 0 30 20} shortcut 0x40072
+      }
+    }
+    Fl_Progress fortschritt {
+      label Progress
+      xywh {0 215 585 20} color 51 selection_color 187
+    }
+    Fl_Output {} {
+      label {Question:}
+      xywh {70 81 500 24} box EMBOSSED_BOX color 49
+    }
+    Fl_Input {} {
+      label {Answer?}
+      xywh {70 116 400 24}
+    }
+    Fl_Return_Button {} {
+      label Submit
+      callback {q_eingabe=true;}
+      xywh {470 115 100 24} shortcut 0xff0d
+    }
+    Fl_Group {} {open
+      xywh {130 160 325 45}
+    } {
+      Fl_Value_Output richtig {
+        label { :Right}
+        xywh {295 171 35 24} align 8
+      }
+      Fl_Value_Output fehler {
+        label {Wrong: }
+        xywh {255 171 35 24}
+      }
+    }
+    Fl_Box meldungen {
+      xywh {0 18 585 61} align 212
+    }
+  }
+  code {string file = getenv("HOME");
+  file += "/phase6-neu.6db";
+  phase = phase6_init((char*)file.c_str());
+  phase6_open(phase);} {}
+} 
+
+Function {cb_liste(Fl_Widget* w, void*)} {open
+} {
+  code {phase6_sort(phase);} {}
+  Fl_Window win_liste {open
+    xywh {135 415 650 370} type Double hide
+  } {
+    Fl_Browser fragebr {
+      callback {antwortbr->value(b->value());
+	fragebr->value(b->value());}
+      xywh {5 5 315 330} labelsize 18 textsize 18
+      code0 {for (int i = 1; i <= phase.count ; i++)}
+      code1 {Fl_Item* o = new Fl_Item((char*)phase6_get(phase, i, QUESTION));}
+    }
+    Fl_Browser antwortbr {
+      callback {antwortbr->value(b->value());
+	fragebr->value(b->value());}
+      xywh {330 5 315 330} labelsize 18 textsize 18
+      code0 {for (int i = 1; i <= phase.count ; i++)}
+      code1 {Fl_Item* o = new Fl_Item((char*)phase6_get(phase, i, ANSWER));}
+    }
+    Fl_Pack {} {open
+      xywh {0 342 649 28} box THIN_DOWN_BOX
+    } {
+      Fl_Button {} {
+        label {Add...}
+        callback cb_add
+        xywh {15 344 80 24} box ENGRAVED_BOX
+      }
+      Fl_Button {} {
+        label {Remove...}
+        callback {win_liste->hide();
+	phase6_remove(phase, (fragebr->value()+1));
+	cb_liste((fltk::Item*)0,(void*)0);
+	changed = true;}
+        xywh {284 344 80 24} box ENGRAVED_BOX
+      }
+      Fl_Button {} {
+        label {Leave...}
+        callback {win_liste->destroy();}
+        xywh {555 344 80 24} box ENGRAVED_BOX shortcut 0xff1b
+      }
+    }
+  }
+} 
+
+Function {cb_start(Fl_Widget*, void*)} {} {
+  Fl_Window win_start {open
+    xywh {317 303 415 100} type Double hide
+  } {
+    Fl_Box {} {
+      label {How many items do you want to train?}
+      xywh {42 14 330 16}
+    }
+    Fl_Value_Slider slider {
+      xywh {25 37 365 20} type {Horz Knob} labeltype NO_LABEL align 0 minimum 1 maximum 10 step 1 value 1 textsize 14 hotspot
+    }
+    Fl_Return_Button {} {
+      label Okay
+      callback {int wdh = double2integer(slider->value());
+  char q[255];
+  char a[255]; 
+  string h;
+  string h2;
+  
+  win_start->hide();
+  
+  for (int i = 1; i <= wdh; i++)
+  {
+  	antwort->text("");
+  	if (phase6_ask(phase,q,a) == false)
+  	{
+  		frage->label("Keine weiteren Fragen zu beantworten. Auch gut! :)");
+  		frage->redraw();
+  		fortschritt->position(100);
+  		q_eingabe=true;
+  		break;
+  	}
+  	else
+  	{
+  		h2 = "Frage: ";
+  		h2 += q;
+  		frage->label(h2.c_str());
+  		frage->redraw();
+  		while (q_eingabe==false) fltk::wait();
+  		q_eingabe = false;
+  		if ((phase6_answer(phase,(char*)antwort->text())) == false)
+  		{
+  			h = "Leider falsch, richtig wäre gewesen: ";
+  			phase.io == 1 ?
+  				h += (char*)phase6_get(phase, phase.current, QUESTION) :
+  				h += (char*)phase6_get(phase, phase.current, ANSWER);
+  			meldungen->label(h.c_str());
+  			falschw++;
+  		}
+  		else
+  		{
+  			meldungen->label("Richtig!!");
+  			richtigw++;
+  		}
+  		fehler->value(falschw);
+  		richtig->value(richtigw);
+  		meldungen->redraw();
+  		fortschritt->position(i * 100 / wdh);
+  	}
+  	if (i > 1)
+  	{
+  	changed = true;
+  	}
+  }  
+  
+  meldungen->label("Training beendet");
+  meldungen->redraw();}
+      xywh {105 70 80 24}
+    }
+    Fl_Button {} {
+      label Cancel
+      callback {win_start->destroy();}
+      xywh {230 70 80 24} shortcut 0xff1b
+    }
+  }
+} 
+
+Function {cb_exit(Fl_Widget*, void*)} {} {
+  codeblock {if (changed)} {open
+  } {
+    Fl_Window {} {open
+      xywh {351 318 330 80} type Double hide
+    } {
+      Fl_Box {} {
+        label {Save changes?}
+        xywh {0 9 330 16}
+      }
+      Fl_Return_Button {} {
+        label Yes
+        xywh {63 46 80 24} shortcut 0xff0d
+      }
+      Fl_Button {} {
+        label No
+        xywh {188 46 80 24} shortcut 0xff1b
+      }
+    }
+    code {w->show();
+while (w->shown()) Fl_wait();} {}
+    codeblock {if (changed == false)} {open after {win->destroy();}
+    } {}
+  }
+} 
+
+decl {int wdh;} {public global
+} 
+
+decl {bool q_eingabe;} {public global
+} 
+
+decl {vokabel vokabeldb[255];} {public global
+} 
+
+decl {bool changed = false;} {public global
+} 
+
+decl {\#include "libphase6/libphase6.h"} {public global
+} 
+
+decl {using namespace std;} {public global
+} 
+
+decl {int falschw = 0;} {public global
+} 
+
+decl {int richtigw = 0;} {public global
+} 
+
+Function {double2integer(double d)} {return_type {inline int}
+} {
+  code {return d<0?d-.5:d+.5;} {}
+} 
+
+Function {cb_add(Fl_Widget*, void*)} {return_type void
+} {
+  Fl_Window win_add {open
+    xywh {4 24 340 190} type Double hide
+  } {
+    Fl_Input antwort_angeben {
+      label {Answer: }
+      xywh {105 65 205 25}
+    }
+    Fl_Input frage_angeben {
+      label {Question: }
+      xywh {105 15 205 50} type Multiline
+    }
+    Fl_Check_Button umkehrstellen {
+      label {Question and answer may be flipped}
+      xywh {25 100 285 24} down_box DOWN_BOX
+    }
+    Fl_Return_Button {} {
+      label Okay
+      callback {win_liste->hide();
+  win_add->hide();
+  if (umkehrstellen->value() == true)
+  	phase6_add(phase,(char*)frage_angeben->value(),(char*)antwort_angeben->value(),1);
+  else
+  	phase6_add(phase,(char*)frage_angeben->value(),(char*)antwort_angeben->value(),0);
+  cb_liste((fltk::Item*)0,(void*)0);
+  changed = true;}
+      xywh {65 146 80 24}
+    }
+    Fl_Button {} {
+      label Cancel
+      callback {win_add->destroy();}
+      xywh {190 146 80 24} shortcut 0xff1b
+    }
+  }
+} 
+
+Function {cb_edit(Fl_Widget*, void*)} {return_type void
+} {
+  Fl_Window win_edit {open
+    xywh {463 413 340 190} type Double hide
+  } {
+    Fl_Input antwort_angeben {
+      label {Answer: }
+      xywh {105 65 205 25}
+    }
+    Fl_Input frage_angeben {
+      label {Question: }
+      xywh {105 15 205 50} type Multiline
+    }
+    Fl_Check_Button umkehrstellen {
+      label {Question and answer may be flipped}
+      xywh {25 100 285 24} down_box DOWN_BOX
+    }
+    Fl_Return_Button {} {
+      label Okay
+      callback {win_liste->hide();
+	win_edit->hide();
+	phase6_remove(phase, (fragebr->value()+1));
+	if (umkehrstellen->value() == true)
+  		phase6_add(phase,(char*)frage_angeben->value(),(char*)antwort_angeben->value(),1);
+   	else
+  		phase6_add(phase,(char*)frage_angeben->value(),(char*)antwort_angeben->value(),0);
+  	cb_liste((fltk::Item*)0,(void*)0);
+  	changed = true;}
+      xywh {65 146 80 24}
+    }
+    Fl_Button {} {
+      label Cancel
+      callback {win_edit->destroy();}
+      xywh {190 146 80 24} shortcut 0xff1b
+    }
+  }
+} 
+
+Function {cb_search(Fl_Widget*, void*)} {open return_type void
+} {
+  Fl_Window {} {open
+    xywh {220 168 175 45} type Double hide
+  } {
+    Fl_Input {} {
+      label {Search for: } selected
+      xywh {0 20 175 25} align 1
+    }
+  }
+} 

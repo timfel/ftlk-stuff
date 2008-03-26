@@ -1,0 +1,342 @@
+CHANGES - 2007-02-15 - flPhoto v1.3.2
+-------------------------------------
+
+v1.3.2
+
+	- The camera browser did not recognize all of the supported
+	  file formats.
+	- The orientation of the first and last bound calendar
+	  pages was wrong for landscape calendars.
+	- The custom page size spinners only supported integer
+	  page sizes.
+	- The wrong images were used for folded calendars.
+
+
+v1.3.1
+
+	- Image comments can now be shown on matted images.
+	- Selecting "any printer" automatically prints to a file.
+	- The slideshow would crash if an image didn't have a
+	  comment.
+	- Calendars used the wrong (too small) font for day-of-
+	  the-week and image comments.
+	- Multiple entries for the same day were not supported.
+	- Calendars now include the phases of the moon.
+	- Printing the front or back side of bound calendars did
+	  not work.
+
+
+v1.3
+
+	- Updated to version 8.42 of dcraw support code.
+	- Entering 0 in either of the custom aspect ratio fields
+	  caused flPhoto to crash.
+	- The default print quality is now "High".
+	- Updated Italian translation.
+	- Added file-based calendar date messages.
+	- The first line of comments is now shown under calendar
+	  images.
+	- Added multiple screen support for slideshows, along
+	  with the ability to specify the size of the slideshow
+	  window.
+	- Added support for showing the first frame of AVI files
+	  (Motion-JPEG AVI files only)
+	- Exporting an album now creates subdirectories for the
+	  image files to keep the number of files per directory
+	  down.
+	- The camera import dialog now remembers separate
+	  download directories for each camera model.
+	- The camera import dialog now automatically rotates
+	  images based on the EXIF orientation value.
+	- Updated EXIF support to handle incorrect 16-bit and
+	  8-bit value alignments.
+	- Fixed the Linux desktop integration files/installation.
+	- Multiple images can now be dragged in the image
+	  browser.
+	- Fixed some HTML export quoting problems.
+	- Negative subject distances in EXIF data are now shown
+	  as "infinity".
+	- Added watermark option for exported slideshows.
+	- Fixed slideshow with new KDE.
+	- Added new "sort" function for album (sort by name or
+	  date)
+	- Updated translations.
+
+
+v1.2
+
+	- When printing from CUPS, flPhoto passed all of the
+	  saved options even if they conflicted with the print
+	  dialog options.
+	- flPhoto crashed when printing images in portrait
+	  format.
+
+
+v1.2rc2
+
+	- The credits page in bound calendars was upside-down.
+	- Updated the print dialog to support a separate "print
+	  to file" checkbox so that you can print output that is
+	  formatted for a specific printer to a file as well.
+	- Changed the default side margins to 0.25" and the
+	  top/bottom margins to 0.5".
+	- The "normal" output quality did not use an appropriate
+	  image resolution.
+
+
+v1.2rc1
+
+	- No longer scan the .xvpics directory when reading
+	  images from a flash card.
+	- Added new bound and folded calendar printing.
+	- The current album was not added to the previously open
+	  album list when saved.
+	- CTRL-X was bound to both Export and Crop Image. 
+	  SHIFT-CTRL-X is now used for Export and CTRL-X for
+	  Crop Image.
+	- Fixed font encoding when printing accented characters.
+	- Fixed handling of non-JPEG images; previously, the EXIF
+	  support code would try to load EXIF data from a
+	  non-JPEG image, and the JPEG library would exit.
+	- Added a new --camera command-line option to display
+	  the camera import dialog.
+	- The crop dialog now displays the current crop
+	  dimensions.
+	- The crop dialog now provides some standard aspect
+	  ratios as well as the current image aspect,
+	  user-defined custom ratios, and no ratio.
+	- flPhoto would crash if you purged the last image in an
+	  album.
+	- The camera import dialog now supports downloading
+	  images from flash cards and other USB storage devices.
+	- The camera import dialog now purges its cached
+	  thumbnails when the dialog is closed or when the
+	  camera is changed. This prevents the wrong thumbnail
+	  images from showing up.
+	- Added a new mode toolbar for panning, zooming, and
+	  removing red-eye.  Red-eye removal is now performed by
+	  clicking on the specific areas that need to be
+	  changed.
+	- Added separate options dialog for slideshow and image
+	  options.
+	- Added album history.
+	- Added support for an external image editor.
+	- The HTML export dialog now supports stylesheets.
+
+
+v1.1
+
+	- Added Dutch translation.
+	- More updates to the French translation.
+	- More fixes for Cygwin.
+	- Cancelling a download of images left an empty image
+	  file.
+	- flPhoto didn't protect against loading of empty image
+	  files.
+	- The message catalogs are now installed as non-country
+	  specific locales whenever possible.
+
+
+v1.1rc3
+
+	- The camera import dialog now allows you to cancel the
+	  download or deletion of files from the camera.
+	- flPhoto no longer displays each image when starting it
+	  with multiple image files on the command-line.
+	- flPhoto didn't recognize both .JPG and .jpg filename
+	  extensions for JPEG files in all cases.
+	- The gamma lookup table was not generated properly,
+	  resulting in output that was too dark.
+	- Updated the French and German localizations and added
+	  Italian, Portugese, and Spanish.
+	- The exported HTML did not offer a translation of the
+	  "Back to Thumbnails" string.
+	- The camera import dialog didn't check for an existing
+	  directory and make it if necessary.
+	- The audio/video file warning appears multiple times.
+	- Dragging didn't work in the crop dialog preview image.
+	- The slideshow would crash if no image was selected in
+	  the current album.
+	- Fixed some more Cygwin compile problems.
+
+
+v1.1rc2
+
+	- The batch image "purge" operation deleted the current
+	  image and not the selected images (which were just
+	  removed from the album...)
+	- The batch image operation menu is now labeled
+	  "Selected Images" instead of just "Images" to avoid
+	  confusion.
+	- All batch image operations ask the user for
+	  confirmation before continuing.
+	- Non-image files are downloaded from digital cameras
+	  but are no longer added to the album (with a warning
+	  message to the user...)
+	- JPEG images can now be re-saved in progressive or
+	  non-progressive mode without loss of quality.
+	- Makefile fixes (install and message catalogs) plus a
+	  new RPM spec file.
+	- Compile fixes for Cygwin.
+
+
+v1.1rc1
+
+	- The auto-adjust touch-up item no longer does red-eye
+	  reduction, since the red-eye reduction does not work
+	  well yet.
+	- The main window now shows the number of images and the
+	  total size of the album in megabytes.
+	- The export functionality now supports inclusion of the
+	  original image files.
+	- The .album extension is now added when saving to a new
+	  file.
+	- Image comments now default to the date/time
+	  information from the image (EXIF data from digital
+	  cameras only...)
+	- The slideshow now shows the image comments at the
+	  bottom of the screen.
+	- The GUI is now localized using gettext-compatible
+	  message catalogs.
+	- Printed calendars are now localized and support a
+	  start day of Saturday, Sunday, or Monday.
+	- The slideshow link wasn't shown if all of the
+	  thumbnails fit on one page.
+	- Added a display calibration dialog and now color
+	  correct images to the sRGB colorspace (used by most
+	  digital cameras and scanners...)
+	- ALT text and comments were not always quoted when
+	  exporting to HTML files.
+	- flPhoto would crash if you exported to a non-existent
+	  directory.
+	- Fixed the JavaScript TYPE attribute to use
+	  "text/javascript" to conform to the HTML spec when
+	  exporting albums.
+	- The exported slideshow delay is now controlled by the
+	  slideshow dialog delay.
+	- The raw image header (Fl_CRW_Image.H) was not
+	  portable.
+
+
+v1.0
+
+	- Matted images can now be printed with a blank matting
+	  gap.
+	- Exported albums are now fully conformant to the HTML
+	  4.01 specification.
+	- Exported albums now include a Javascript-based
+	  slideshow page which can be displayed to loop through
+	  the images.
+	- Album files now save images using filenames relative
+	  to the album file directory.
+
+
+v0.9
+
+	- Now support matting widths of 0 to allow for printing
+	  images at arbitrary sizes, and solid white matting to
+	  space multiple images for later framing with the real
+	  matting board.
+	- Fixed a JPEG save bug when saving images without EXIF
+	  or comment information.
+	- The mat color field could not be edited manually.
+	- The "import directory" function now only imports
+	  images that are not already in the browser.
+	- Added DESTDIR support to make RPM building easier from
+	  RPM.
+	- The configure script now adds the compiler options
+	  (include directories, etc.) for FLTK, so that the C
+	  files can find the JPEG library as needed.
+	- Added support for saving images in PNG format.
+	- The print dialog crashed flPhoto if no printers were
+	  available.
+	- The print dialog now remembers the print format for
+	  images and albums.
+	- Now support printing via lpr.
+	- Portability fixes.
+
+
+v0.8
+
+	- Added calendar and matted image printing modes.
+	- Added "Yes to All" as an image save option when
+	  closing an album with changed images.
+	- Added Alt key shortcuts for image operations.
+	- Custom page size selection fix for CUPS printing.
+	- Added pulldown menu to image browser to do batch
+	  operations on selected images in the browser.
+	- Slideshow now supports space/leftmouse and
+	  backspace/rightmouse to advance or rewind the show.
+	- 4-up and index page print fixes for some printers.
+	- Portability fixes.
+
+
+v0.7
+
+	- You couldn't delete a modified image.
+	- The print dialog media chooser wasn't always
+	  initialized.
+	- The print dialog paper_dimension and imageable_area
+	  methods didn't fallback to non-PPD operation.
+	- The "delete" function in the camera dialog removed the
+	  images from the main window.
+	- Implemented slideshow options dialog.
+	- Implemented export functions.
+	- Implemented album and image properties, including EXIF
+	  information.
+	- The file chooser now allows multiple file or directory
+	  selections when opening albums or importing images or
+	  directories.
+	- The Import->Directory function now imports raw (CRW)
+	  files.
+	- The left and right arrow keys now selects the previous
+	  or next image in the album, and shift-left/right
+	  extends the selection left/right.
+	- Added "Auto Open Images" and "Keep Image Zoom" options.
+	- The slideshow would still be running in the background
+	  (but invisible) after you pressed Escape...
+
+
+v0.6
+
+	- Fixed thumbnail generation - the 0.5 code would
+	  overwrite the original image!
+	- The camera import directory is now saved so that the
+	  camera window can show "new" images that haven't been
+	  downloaded yet.
+	- The camera import dialog no longer keeps the camera
+	  connection open when not accessing the images.
+	- When downloading pictures from a camera, flPhoto now
+	  converts the filename to lowercase.
+	- Implemented crop, rotate, and scale transforms.
+	- Implemented raw image support.
+	- Implemented image saving, including lossless JPEG
+	  rotation.
+	- Enabled "delete image" command in camera browser.
+
+
+v0.5
+
+	- Implemented digital camera interface.
+	- Implemented CUPS printing interface and
+	  printer-specific options.
+	- Implemented reading of PhotoCD images.
+	- Implemented the red-eye removal filter.
+	- The image browser would crash if the image directory
+	  was read-only.
+
+
+v0.4
+
+	- The printer list contained duplicate printer entires
+	  when CUPS instances were present.
+	- Implemented the auto adjust, brightness/contrast,
+	  sharpen, and blur touch-up operations.
+	- Implemented the revert operation.
+	- The images that got rotated when printed were mirrored
+	  on the X axis.
+
+
+v0.3
+
+	- Initial public release.

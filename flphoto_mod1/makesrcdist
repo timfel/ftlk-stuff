@@ -1,0 +1,52 @@
+#!/bin/sh
+#
+# "$Id: makesrcdist 421 2006-11-19 15:44:46Z mike $"
+#
+# makedist - make a source distribution of flphoto.
+#
+
+
+echo "Getting distribution..."
+
+if test $# = 0; then
+	echo -n "Version number for distribution? "
+	read version
+else
+	version=$1
+fi
+
+cd /tmp
+
+if test $version = snapshot; then
+	url="https://svn.easysw.com/public/fltk/applications/trunk/flphoto"
+else
+	url="https://svn.easysw.com/public/fltk/applications/tags/flphoto-$version"
+
+	svn copy https://svn.easysw.com/public/fltk/applications/trunk/flphoto/ "$url" \
+		-m "Tag flPhoto $version" || exit 1
+fi
+
+rm -rf flphoto-$version
+svn export $url flphoto-$version
+cd flphoto-$version
+
+echo "Removing Subversion files and directories..."
+
+rm -f makesrcdist
+autoconf
+
+cd ..
+
+echo "Making .tar.gz distribution..."
+
+gtar czf flphoto-$version-source.tar.gz flphoto-$version
+
+echo "Removing distribution directory..."
+
+rm -rf flphoto-$version
+
+echo "Done!"
+
+#
+# End of "$Id: makesrcdist 421 2006-11-19 15:44:46Z mike $".
+#

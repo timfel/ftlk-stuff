@@ -1,0 +1,69 @@
+.\"
+.\" "$Id: album.man 322 2005-01-23 03:55:19Z easysw $"
+.\"
+.\"   Manual page for flphoto album file format.
+.\"
+.\"   Copyright 2002-2005 by Michael Sweet
+.\"
+.\"   This program is free software; you can redistribute it and/or modify
+.\"   it under the terms of the GNU General Public License as published by
+.\"   the Free Software Foundation; either version 2, or (at your option)
+.\"   any later version.
+.\"
+.\"   This program is distributed in the hope that it will be useful,
+.\"   but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\"   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\"   GNU General Public License for more details.
+.\"
+
+.TH album 5 "flphoto" "2 September 2003" "Michael Sweet"
+
+.SH NAME
+album(5) - flphoto album file format
+
+.SH DESCRIPTION
+The \fBflphoto\fR album file format is a simple text format that
+lists the image files in the album and any comment information
+for the album and images themselves.
+
+.LP
+An initial line starting with "#flphoto" is mandatory and
+identifies the file as a \fBflphoto\fR album. Each line that
+follows can begin with one of the following prefixes:
+
+.TP 5
+#
+.br
+Indicates that the remainder of the line should be ignored.
+
+.TP 5
+COMMENT:
+.br
+Indicates that the remainder of the line contains comment text for
+the album, such as "pictures from my cousin's wedding".
+
+.TP 5
+IMAGE:
+.br
+Indicates that the remainder of the line contains the name of a
+single image file in the album.
+
+.SH SEE ALSO
+flphoto(1) - manage, view, and print images
+
+.SH COPYRIGHT
+Copyright 2002-2005 by Michael Sweet
+.LP
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2, or (at your option)
+any later version.
+.LP
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+.\"
+.\" End of "$Id: album.man 322 2005-01-23 03:55:19Z easysw $".
+.\"

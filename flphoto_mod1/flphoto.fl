@@ -1,0 +1,1716 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0108 
+i18n_type 1 
+i18n_include "i18n.h" 
+i18n_function _ 
+header_name {.h} 
+code_name {.cxx}
+comment {//
+// "$Id: flphoto.fl 412 2006-11-15 04:20:01Z mike $"
+//
+// flPhoto application window class.
+//
+// Copyright 2002-2006 by Michael Sweet.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2, or (at your option)
+// any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+} {in_source in_header
+} 
+
+decl {\#include <FL/x.H>} {} 
+
+class flphoto {open selected
+} {
+  decl {static Fl_Preferences prefs;} {public
+  }
+  decl {static int album_count_;} {}
+  decl {static flphoto *album_first_;} {}
+  decl {static Fl_File_Chooser *file_chooser_;} {}
+  decl {static char history_[10][1024];} {}
+  decl {flphoto *album_next_;} {}
+  decl {int album_changed_;} {}
+  decl {char album_comment_[1024];} {}
+  decl {char album_filename_[1024];} {}
+  decl {char album_printname_[1024];} {}
+  decl {void *camera_;} {}
+  decl {void *context_;} {}
+  decl {uchar *crop_data_;} {}
+  decl {char crop_dimensions_label_[256];} {}
+  decl {Fl_Shared_Image *crop_image_;} {}
+  decl {uchar gamma_data_[100*100];} {}
+  decl {Fl_RGB_Image *gamma_image_;} {}
+  decl {Fl_Image_Browser::ITEM *image_item_;} {}
+  decl {char stats_label_[256];} {}
+  decl {char title_[1024];} {}
+  decl {static int do_file_chooser(const char *title, const char *pattern, int type, const char *value);} {}
+  decl {void new_album_cb();} {}
+  decl {void open_album_cb();} {}
+  decl {void open_prev_cb(int f);} {}
+  decl {void add_file_cb();} {}
+  decl {void add_dir_cb();} {}
+  decl {void save_album_cb();} {}
+  decl {void save_album_as_cb();} {}
+  decl {void close_album_cb();} {}
+  decl {void export_dir_cb();} {}
+  decl {void export_dir_ok_cb();} {}
+  decl {void export_html_cb();} {}
+  decl {void export_html_ok_cb();} {}
+  decl {void print_album_cb();} {}
+  decl {void slideshow_cb();} {}
+  decl {void sort_album_cb(int type = 0);} {}
+  decl {static void slidenext_cb();} {}
+  decl {void props_album_cb();} {}
+  decl {void props_ok_cb();} {}
+  decl {void quit_cb();} {}
+  decl {void update_history(const char *f = 0);} {}
+  decl {void update_stats();} {}
+  decl {void camera_cb();} {}
+  Function {camera_browser_cb()} {private return_type void
+  } {
+    code {if (Fl::event_clicks())
+  camera_download_cb();} {}
+  }
+  decl {void camera_chooser_cb();} {}
+  decl {void camera_close_cb();} {}
+  decl {void camera_delete_cb();} {}
+  decl {void camera_directory_cb(int choose = 0);} {}
+  decl {void camera_download_cb();} {}
+  Function {camera_select_cb()} {private return_type void
+  } {
+    code {int i;
+int m = !camera_select_menu_->value();
+
+for (i = 0; i < camera_browser_->count(); i ++)
+  camera_browser_->value(i)->selected = m;
+camera_browser_->redraw();} {}
+  }
+  decl {void camera_select_new();} {}
+  decl {void open_image_cb(int number=-1);} {}
+  decl {void edit_image_cb();} {}
+  decl {void save_image_cb();} {}
+  decl {void save_image_as_cb();} {}
+  decl {void save_image(const char *filename, int batch=0);} {}
+  decl {int save_jpeg(const char *filename, int batch);} {}
+  decl {int save_png(const char *filename, int batch);} {}
+  decl {void print_image_cb();} {}
+  decl {void select_image_cb(int v);} {}
+  decl {void remove_image_cb();} {}
+  decl {void purge_image_cb();} {}
+  decl {void image_progress(const char *label, int percent);} {}
+  decl {void revert_image_cb();} {}
+  decl {void auto_adjust_cb();} {}
+  decl {void adjust_levels_cb();} {}
+  decl {void redeye_cb();} {}
+  decl {void blur_cb();} {}
+  decl {void sharpen_cb();} {}
+  decl {void crop_cb();} {}
+  decl {void crop_ok_cb();} {}
+  decl {void crop_update_cb(Fl_Widget *w);} {}
+  decl {Fl_Shared_Image *rotate_image(Fl_Shared_Image *img, int angle);} {}
+  decl {void rotate_cb(int angle);} {}
+  decl {void scale_cb();} {}
+  decl {void scale_ok_cb();} {}
+  decl {void scale_update_cb(Fl_Widget *w);} {}
+  decl {void blur_image(uchar *data, int w, int h, int d, int r, float a);} {}
+  decl {uchar *copy_image(Fl_Shared_Image *img);} {}
+  decl {void props_image_cb();} {}
+  decl {static void help_cb(const char *);} {public
+  }
+  decl {void browser_cb();} {}
+  decl {void edit_selected_image_cb();} {}
+  decl {void save_changed_image_cb();} {}
+  decl {void save_selected_image_cb();} {}
+  decl {void revert_selected_image_cb();} {}
+  decl {void purge_selected_image_cb();} {}
+  decl {void remove_selected_image_cb();} {}
+  decl {void auto_adjust_selected_cb();} {}
+  decl {void adjust_levels_selected_cb();} {}
+  decl {void blur_selected_cb();} {}
+  decl {void sharpen_selected_cb();} {}
+  decl {void crop_selected_cb();} {}
+  decl {void rotate_selected_cb(int angle);} {}
+  decl {void scale_selected_cb();} {}
+  decl {static const char *print_cb(Fl_Print_Dialog *pd, void *d);} {}
+  decl {void update_title();} {}
+  decl {void options_cb(Fl_Group *tab);} {}
+  decl {void options_ok_cb();} {}
+  decl {void gamma_slider_cb();} {}
+  Function {flphoto(const char *filename = 0)} {open
+  } {
+    Fl_Window window_ {
+      callback {close_album_cb();} open
+      private xywh {342 21 620 625} type Double resizable
+      code0 {\#include "Fl_Print_Dialog.H"}
+      code1 {\#include <FL/Fl_Preferences.H>}
+      code2 {\#include <FL/Fl_File_Chooser.H>} visible
+    } {
+      Fl_Menu_Bar menubar_ {open
+        private xywh {0 0 620 25} box THIN_UP_BOX
+      } {
+        Submenu {} {
+          label {&Album} open
+          private xywh {0 0 100 20}
+        } {
+          MenuItem {} {
+            label {&New}
+            callback {new_album_cb();}
+            private xywh {0 0 100 20} shortcut 0x4006e
+          }
+          MenuItem {} {
+            label {&Open...}
+            callback {open_album_cb();}
+            private xywh {10 10 100 20} shortcut 0x4006f
+          }
+          Submenu {} {
+            label {Open Pre&vious}
+            private xywh {0 0 100 20}
+          } {
+            MenuItem {} {
+              label {File 0}
+              callback {open_prev_cb(0);}
+              private xywh {0 0 100 20}
+            }
+            MenuItem {} {
+              label {File 1}
+              callback {open_prev_cb(1);}
+              private xywh {10 10 100 20}
+            }
+            MenuItem {} {
+              label {File 2}
+              callback {open_prev_cb(2);}
+              private xywh {20 20 100 20}
+            }
+            MenuItem {} {
+              label {File 3}
+              callback {open_prev_cb(3);}
+              private xywh {30 30 100 20}
+            }
+            MenuItem {} {
+              label {File 4}
+              callback {open_prev_cb(4);}
+              private xywh {40 40 100 20}
+            }
+            MenuItem {} {
+              label {File 5}
+              callback {open_prev_cb(5);}
+              private xywh {50 50 100 20}
+            }
+            MenuItem {} {
+              label {File 6}
+              callback {open_prev_cb(6);}
+              private xywh {60 60 100 20}
+            }
+            MenuItem {} {
+              label {File 7}
+              callback {open_prev_cb(7);}
+              private xywh {70 70 100 20}
+            }
+            MenuItem {} {
+              label {File 8}
+              callback {open_prev_cb(8);}
+              private xywh {80 80 100 20}
+            }
+            MenuItem {} {
+              label {File 9}
+              callback {open_prev_cb(9);}
+              private xywh {90 90 100 20}
+            }
+          }
+          MenuItem {} {
+            label {&Save}
+            callback {save_album_cb();}
+            private xywh {10 10 100 20} shortcut 0x40073
+          }
+          MenuItem {} {
+            label {Save &As...}
+            callback {save_album_as_cb();}
+            private xywh {20 20 100 20} shortcut 0x50073
+          }
+          MenuItem {} {
+            label {&Close}
+            callback {close_album_cb();}
+            private xywh {30 30 100 20} shortcut 0x40077 divider
+          }
+          Submenu {} {
+            label Import open
+            private xywh {0 0 100 20}
+          } {
+            MenuItem {} {
+              label {&Camera...}
+              callback {camera_cb();}
+              private xywh {25 25 100 20} shortcut 0x40063
+            }
+            MenuItem {} {
+              label {&Directory...}
+              callback {add_dir_cb();}
+              private xywh {15 15 100 20} shortcut 0x40064
+            }
+            MenuItem {} {
+              label {&Image(s)...}
+              callback {add_file_cb();}
+              private xywh {5 5 100 20} shortcut 0x40069
+            }
+          }
+          Submenu {} {
+            label Export open
+            private xywh {15 15 100 20}
+          } {
+            MenuItem {} {
+              label {&Directory...}
+              callback {export_dir_cb();}
+              private xywh {30 30 100 20} shortcut 0x50064
+            }
+            MenuItem {} {
+              label {&HTML...}
+              callback {export_html_cb();}
+              private xywh {65 65 100 20} shortcut 0x50078
+            }
+          }
+          MenuItem {} {
+            label {&Print...}
+            callback {print_album_cb();}
+            private xywh {40 40 100 20} shortcut 0x40070
+          }
+          MenuItem {} {
+            label {Slidesho&w...}
+            callback {slideshow_cb();}
+            private xywh {60 60 100 20} shortcut 0x40020
+          }
+          Submenu {} {
+            label {Sort Images} open
+            private xywh {15 15 100 20}
+          } {
+            MenuItem {} {
+              label {By &Date}
+              callback {sort_album_cb(0);}
+              private xywh {40 40 100 20}
+            }
+            MenuItem {} {
+              label {Reverse &By Date}
+              callback {sort_album_cb(2);}
+              private xywh {50 50 100 20}
+            }
+            MenuItem {} {
+              label {By &Name}
+              callback {sort_album_cb(1);}
+              private xywh {50 50 100 20}
+            }
+            MenuItem {} {
+              label {&Reverse By Name}
+              callback {sort_album_cb(3);}
+              private xywh {60 60 100 20}
+            }
+          }
+          MenuItem {} {
+            label {P&roperties...}
+            callback {props_album_cb();}
+            private xywh {70 70 100 20} shortcut 0x4ff0d divider
+          }
+          MenuItem {} {
+            label {&Quit}
+            callback {quit_cb();}
+            private xywh {50 50 100 20} shortcut 0x40071
+          }
+        }
+        Submenu {} {
+          label {&Image} open
+          private xywh {10 10 100 20}
+        } {
+          MenuItem {} {
+            label {&Open}
+            callback {open_image_cb();}
+            private xywh {10 10 100 20} shortcut 0xff0d
+          }
+          MenuItem {} {
+            label {&Edit...}
+            callback {edit_image_cb();}
+            private xywh {20 20 100 20} shortcut 0x40065
+          }
+          MenuItem {} {
+            label {&Save}
+            callback {save_image_cb();}
+            private xywh {20 20 100 20} shortcut 0x80073
+          }
+          MenuItem {} {
+            label {Save &As...}
+            callback {save_image_as_cb();}
+            private xywh {30 30 100 20} shortcut 0x80053 divider
+          }
+          MenuItem {} {
+            label {&Print...}
+            callback {print_image_cb();}
+            private xywh {50 50 100 20} shortcut 0x80070
+          }
+          MenuItem {} {
+            label {&Remove}
+            callback {remove_image_cb();}
+            private xywh {40 40 100 20} shortcut 0xffff
+          }
+          MenuItem {} {
+            label {Pur&ge}
+            callback {purge_image_cb();}
+            private xywh {50 50 100 20}
+          }
+          MenuItem {} {
+            label {P&roperties...}
+            callback {props_image_cb();}
+            private xywh {85 85 100 20} shortcut 0x8ff0d divider
+          }
+          MenuItem {} {
+            label {Re&vert}
+            callback {revert_image_cb();}
+            private xywh {60 60 100 20} shortcut 0x4007a
+          }
+          Submenu {} {
+            label {&Touch-Up}
+            private xywh {5 5 100 20}
+          } {
+            MenuItem {} {
+              label {&Auto Adjust}
+              callback {auto_adjust_cb();}
+              private xywh {70 70 100 20} shortcut 0xffbf divider
+            }
+            MenuItem {} {
+              label {Brightness + &Contrast...}
+              callback {adjust_levels_cb();}
+              private xywh {50 50 100 20} shortcut 0xffc0
+            }
+            MenuItem {} {
+              label {&Blur...}
+              callback {blur_cb();}
+              private xywh {30 30 100 20} shortcut 0xffc2
+            }
+            MenuItem {} {
+              label {Sharp&en...}
+              callback {sharpen_cb();}
+              private xywh {40 40 100 20} shortcut 0xffc3
+            }
+          }
+          Submenu {} {
+            label {Tra&nsform}
+            private xywh {15 15 100 20}
+          } {
+            MenuItem {} {
+              label {&Crop}
+              callback {crop_cb();}
+              private xywh {80 80 100 20} shortcut 0x40078 divider
+            }
+            MenuItem {} {
+              label {Rotate Counter-Clockwise}
+              callback {rotate_cb(90);}
+              private xywh {70 70 100 20} shortcut 0x4002c
+            }
+            MenuItem {} {
+              label {&Rotate Clockwise}
+              callback {rotate_cb(270);}
+              private xywh {60 60 100 20} shortcut 0x4002e divider
+            }
+            MenuItem {} {
+              label {&Scale...}
+              callback {scale_cb();}
+              private xywh {40 40 100 20}
+            }
+          }
+        }
+        Submenu {} {
+          label {&View}
+          private xywh {0 0 100 20}
+        } {
+          MenuItem {} {
+            label {&Auto Zoom}
+            callback {display_->scale(0.0f);}
+            private xywh {0 0 100 20} shortcut 0x40030
+          }
+          MenuItem {} {
+            label {25%}
+            callback {display_->scale(0.25f);}
+            private xywh {0 0 100 20} shortcut 0x40034
+          }
+          MenuItem {} {
+            label {50%}
+            callback {display_->scale(0.5f);}
+            private xywh {10 10 100 20} shortcut 0x40032
+          }
+          MenuItem {} {
+            label {100%}
+            callback {display_->scale(1.0f);}
+            private xywh {20 20 100 20} shortcut 0x40031
+          }
+        }
+        Submenu {} {
+          label {&Options} open
+          private xywh {0 0 100 20}
+        } {
+          MenuItem {} {
+            label {&Image...}
+            callback {options_cb(image_tab_);}
+            private xywh {0 0 100 20}
+          }
+          MenuItem {} {
+            label {&Slideshow...}
+            callback {options_cb(slideshow_tab_);}
+            private xywh {10 10 100 20}
+          }
+          MenuItem {} {
+            label {&Memory Card...}
+            callback {options_cb(flash_tab_);}
+            private xywh {20 20 100 20}
+          }
+        }
+        Submenu {} {
+          label {&Help}
+          private xywh {0 0 100 20}
+        } {
+          MenuItem {} {
+            label {About flPhoto...}
+            callback {help_cb("about.html");}
+            private xywh {0 0 100 20} divider
+          }
+          MenuItem {} {
+            label {Contents...}
+            callback {help_cb("contents.html");}
+            private xywh {40 40 100 20} shortcut 0xffbe
+          }
+          MenuItem {} {
+            label {Albums...}
+            callback {help_cb("albums.html");}
+            private xywh {10 10 100 20}
+          }
+          MenuItem {} {
+            label {Images...}
+            callback {help_cb("images.html");}
+            private xywh {20 20 100 20}
+          }
+          MenuItem {} {
+            label {Download...}
+            callback {help_cb("download.html");}
+            private xywh {30 30 100 20}
+          }
+          MenuItem {} {
+            label {Release Notes...}
+            callback {help_cb("relnotes.html");}
+            private xywh {40 40 100 20}
+          }
+        }
+      }
+      Fl_Group {} {
+        xywh {0 25 620 25}
+      } {
+        Fl_Button {mode_button_[0]} {
+          callback {display_->mode(FL_IMAGE_PAN);}
+          private tooltip {Pan Image (P)} image {icons/pan.xpm} xywh {0 25 25 25} type Radio box THIN_UP_BOX down_box THIN_DOWN_BOX shortcut 0x70 value 1 selection_color 15
+        }
+        Fl_Button {mode_button_[1]} {
+          callback {display_->mode(FL_IMAGE_ZOOM_IN);}
+          private tooltip {Zoom In (Z)} image {icons/zoom_in.xpm} xywh {25 25 25 25} type Radio box THIN_UP_BOX down_box THIN_DOWN_BOX shortcut 0x7a selection_color 15
+        }
+        Fl_Button {mode_button_[2]} {
+          callback {display_->mode(FL_IMAGE_ZOOM_OUT);}
+          private tooltip {Zoom Out (Shift+Z)} image {icons/zoom_out.xpm} xywh {50 25 25 25} type Radio box THIN_UP_BOX down_box THIN_DOWN_BOX shortcut 0x1007a selection_color 15
+        }
+        Fl_Button {mode_button_[3]} {
+          callback {display_->mode(FL_IMAGE_CLICK);}
+          private tooltip {Remove Red-Eye (R)} image {icons/redeye.xpm} xywh {75 25 25 25} type Radio box THIN_UP_BOX down_box THIN_DOWN_BOX shortcut 0x72 selection_color 15
+        }
+        Fl_Box {} {
+          private xywh {595 25 25 25} resizable
+        }
+      }
+      Fl_Group display_ {
+        callback {redeye_cb();}
+        private xywh {0 50 620 420} box DOWN_BOX color 54 resizable
+        code0 {\#include "Fl_Image_Display.H"}
+        class Fl_Image_Display
+      } {}
+      Fl_Group {} {
+        xywh {0 470 620 25}
+      } {
+        Fl_Menu_Button context_menu_ {
+          label { Selected Images} open
+          private xywh {0 470 185 25} align 20
+        } {
+          MenuItem {} {
+            label {&Edit Selected...}
+            callback {edit_selected_image_cb();}
+            private xywh {30 30 100 20} shortcut 0x80065
+          }
+          MenuItem {} {
+            label {&Save Selected}
+            callback {save_selected_image_cb();}
+            private xywh {30 30 100 20} shortcut 0xc0073
+          }
+          MenuItem {} {
+            label {&Print Selected...}
+            callback {print_image_cb();}
+            private xywh {60 60 100 20} shortcut 0xc0070 divider
+          }
+          MenuItem {} {
+            label {Select &All}
+            callback {select_image_cb(1);}
+            private xywh {60 60 100 20} shortcut 0xc0061
+          }
+          MenuItem {} {
+            label {Select &None}
+            callback {select_image_cb(0);}
+            private xywh {70 70 100 20} shortcut 0xd0061
+          }
+          MenuItem {} {
+            label {&Remove Selected}
+            callback {remove_selected_image_cb();}
+            private xywh {50 50 100 20} shortcut 0x8ffff divider
+          }
+          MenuItem {} {
+            label {Pur&ge Selected}
+            callback {purge_selected_image_cb();}
+            private xywh {60 60 100 20}
+          }
+          MenuItem {} {
+            label {Re&vert Selected}
+            callback {revert_selected_image_cb();}
+            private xywh {70 70 100 20} shortcut 0x8007a
+          }
+          Submenu {} {
+            label {&Touch-Up Selected}
+            private xywh {15 15 100 20}
+          } {
+            MenuItem {} {
+              label {&Auto Adjust}
+              callback {auto_adjust_selected_cb();}
+              private xywh {80 80 100 20} divider
+            }
+            MenuItem {} {
+              label {Brightness + &Contrast...}
+              callback {adjust_levels_selected_cb();}
+              private xywh {60 60 100 20}
+            }
+            MenuItem {} {
+              label {&Blur...}
+              callback {blur_selected_cb();}
+              private xywh {40 40 100 20}
+            }
+            MenuItem {} {
+              label {Sharp&en...}
+              callback {sharpen_selected_cb();}
+              private xywh {50 50 100 20}
+            }
+          }
+          Submenu {} {
+            label {Tra&nsform Selected}
+            private xywh {25 25 100 20}
+          } {
+            MenuItem {} {
+              label {&Crop}
+              callback {crop_selected_cb();}
+              private xywh {90 90 100 20} divider
+            }
+            MenuItem {} {
+              label {Rotate Counter-Clockwise}
+              callback {rotate_selected_cb(90);}
+              private xywh {80 80 100 20} shortcut 0x8002c
+            }
+            MenuItem {} {
+              label {&Rotate Clockwise}
+              callback {rotate_selected_cb(270);}
+              private xywh {70 70 100 20} shortcut 0x8002e divider
+            }
+            MenuItem {} {
+              label {&Scale...}
+              callback {scale_selected_cb();}
+              private xywh {50 50 100 20}
+            }
+          }
+        }
+        Fl_Box stats_box_ {
+          label {0 image(s), 0.0MB}
+          private xywh {185 470 435 25} align 24 resizable
+        }
+      }
+      Fl_Group browser_ {
+        callback {browser_cb();}
+        private xywh {0 495 620 130} box DOWN_BOX color 54 selection_color 15 labelfont 1 align 5
+        code0 {\#include "Fl_Image_Browser.H"}
+        class Fl_Image_Browser
+      } {}
+    }
+    Fl_Window camera_window_ {
+      label {Import from Camera}
+      callback {camera_close_cb();}
+      private xywh {826 21 660 305} type Double hide resizable
+    } {
+      Fl_Group camera_group_ {
+        private xywh {0 0 650 310}
+      } {
+        Fl_Choice camera_chooser_ {
+          label {Camera:}
+          callback {camera_chooser_cb();} open
+          private xywh {230 10 225 25} down_box BORDER_BOX labelfont 1
+        } {}
+        Fl_Group {} {open
+          xywh {10 45 640 215} box THIN_DOWN_BOX color 48
+        } {
+          Fl_Group camera_browser_ {
+            label {Images:}
+            callback {camera_browser_cb();} open
+            private xywh {20 70 620 130} box DOWN_BOX color 7 selection_color 15 labelfont 1 align 5
+            class Fl_Image_Browser
+          } {}
+          Fl_Group {} {open
+            private xywh {20 225 620 25}
+          } {
+            Fl_Input camera_download_field_ {
+              label {Download Directory:}
+              callback {camera_directory_cb();}
+              private xywh {20 225 595 25} labelfont 1 align 5 when 1 textfont 4 resizable
+            }
+            Fl_Button {} {
+              label {...}
+              callback {camera_directory_cb(1);}
+              private xywh {615 225 25 25}
+            }
+          }
+        }
+        Fl_Group {} {open
+          private xywh {10 270 555 25}
+        } {
+          Fl_Box {} {
+            private xywh {10 270 200 25} resizable
+          }
+          Fl_Menu_Button camera_select_menu_ {
+            label {Select    }
+            callback {camera_select_cb();}
+            private xywh {245 270 120 25}
+          } {
+            MenuItem {} {
+              label {&All}
+              private xywh {0 0 100 20} shortcut 0x40061
+            }
+            MenuItem {} {
+              label {&None}
+              private xywh {10 10 100 20} shortcut 0x50061
+            }
+            MenuItem {} {
+              label {New &Images}
+              callback {camera_select_new();}
+              private xywh {20 20 100 20} shortcut 0x4006e
+            }
+          }
+          Fl_Button {} {
+            label Download
+            callback {camera_download_cb();}
+            private xywh {375 270 100 25}
+          }
+          Fl_Button {} {
+            label Delete
+            callback {camera_delete_cb();}
+            private xywh {485 270 80 25}
+          }
+        }
+      }
+      Fl_Group {} {open
+        xywh {10 270 640 25}
+      } {
+        Fl_Progress camera_progress_ {
+          private xywh {10 270 225 25} selection_color 4 hide
+        }
+        Fl_Button camera_close_button_ {
+          label Close
+          callback {camera_close_cb();}
+          private xywh {575 270 75 25}
+        }
+      }
+    }
+    Fl_Window crop_window_ {
+      label Crop
+      private xywh {611 275 335 440} type Double hide modal
+    } {
+      Fl_Group {} {open
+        xywh {10 10 315 385} box THIN_DOWN_BOX color 48
+      } {
+        Fl_Box crop_dimensions_box_ {
+          label {%d x %d pixels}
+          private xywh {80 20 175 25}
+        }
+        Fl_Spinner crop_top_value_ {
+          label Top
+          callback {crop_update_cb(crop_top_value_);}
+          private xywh {140 65 55 25} labelfont 1 align 1 minimum 0 maximum 99999 value 1
+        }
+        Fl_Box crop_preview_box_ {
+          callback {crop_update_cb(crop_preview_box_);}
+          private xywh {80 95 175 175} box DOWN_BOX color 7 when 3
+          code0 {\#include <FL/Fl_Positioner.H>}
+          code1 {crop_preview_box_->align(FL_ALIGN_INSIDE);}
+          class Fl_Positioner
+        }
+        Fl_Spinner crop_left_value_ {
+          label Left
+          callback {crop_update_cb(crop_left_value_);}
+          private xywh {20 170 55 25} labelfont 1 align 1 minimum 0 maximum 99999 value 1
+        }
+        Fl_Spinner crop_right_value_ {
+          label Right
+          callback {crop_update_cb(crop_right_value_);}
+          private xywh {260 170 55 25} labelfont 1 align 1 minimum 0 maximum 99999 value 1
+        }
+        Fl_Spinner crop_bottom_value_ {
+          label Bottom
+          callback {crop_update_cb(crop_bottom_value_);}
+          private xywh {135 275 55 25} labelfont 1 align 2 minimum 0 maximum 99999 value 1
+        }
+        Fl_Choice crop_aspect_chooser_ {
+          label {Constrain: }
+          callback {crop_update_cb(crop_aspect_chooser_);}
+          private xywh {140 325 175 25} down_box BORDER_BOX labelfont 1
+        } {
+          MenuItem {} {
+            label None
+            private xywh {0 0 100 20}
+          }
+          MenuItem {} {
+            label {Current Image}
+            private xywh {10 10 100 20}
+          }
+          MenuItem {} {
+            label Custom
+            private xywh {20 20 100 20}
+          }
+          MenuItem {} {
+            label {3:4}
+            private xywh {40 40 100 20}
+          }
+          MenuItem {} {
+            label {3:5}
+            private xywh {20 20 100 20}
+          }
+          MenuItem {} {
+            label {4:3}
+            private xywh {30 30 100 20}
+          }
+          MenuItem {} {
+            label {4:6}
+            private xywh {30 30 100 20}
+          }
+          MenuItem {} {
+            label {5:7}
+            private xywh {40 40 100 20}
+          }
+          MenuItem {} {
+            label {6:4}
+            private xywh {50 50 100 20}
+          }
+          MenuItem {} {
+            label {7:5}
+            private xywh {60 60 100 20}
+          }
+          MenuItem {} {
+            label {8:10}
+            private xywh {70 70 100 20}
+          }
+          MenuItem {} {
+            label {9:12}
+            private xywh {80 80 100 20}
+          }
+          MenuItem {} {
+            label {9:16}
+            private xywh {90 90 100 20}
+          }
+          MenuItem {} {
+            label {10:8}
+            private xywh {90 90 100 20}
+          }
+          MenuItem {} {
+            label {10:16}
+            private xywh {100 100 100 20}
+          }
+          MenuItem {} {
+            label {11:14}
+            private xywh {110 110 100 20}
+          }
+          MenuItem {} {
+            label {12:9}
+            private xywh {140 140 100 20}
+          }
+          MenuItem {} {
+            label {12:18}
+            private xywh {120 120 100 20}
+          }
+          MenuItem {} {
+            label {14:11}
+            private xywh {130 130 100 20}
+          }
+          MenuItem {} {
+            label {16:9}
+            private xywh {150 150 100 20}
+          }
+          MenuItem {} {
+            label {16:10}
+            private xywh {160 160 100 20}
+          }
+        }
+        Fl_Group crop_aspect_custom_ {
+          private xywh {205 360 110 25} deactivate
+        } {
+          Fl_Spinner crop_aspect_x_ {
+            label {Custom: }
+            callback {crop_update_cb(crop_aspect_x_);}
+            private xywh {215 360 45 25} maximum 1000 value 1
+          }
+          Fl_Spinner crop_aspect_y_ {
+            label {:}
+            callback {crop_update_cb(crop_aspect_y_);}
+            private xywh {270 360 45 25} maximum 1000 value 1
+          }
+        }
+      }
+      Fl_Group {} {open
+        xywh {10 405 315 25}
+        code0 {o->do_layout(FL_ALIGN_RIGHT, 0);}
+        class SmartGroup
+      } {
+        Fl_Return_Button {} {
+          label Crop
+          callback {crop_ok_cb();}
+          private xywh {135 405 90 25} shortcut 0xff0d
+          class Fl_Button
+        }
+        Fl_Button {} {
+          label Cancel
+          callback {crop_window_->hide();
+if (crop_image_)
+{
+  crop_image_->release();
+  crop_image_ = 0;
+}
+if (crop_data_)
+{
+  delete[] crop_data_;
+  crop_data_ = 0;
+}}
+          private xywh {235 405 90 25}
+        }
+      }
+    }
+    Fl_Window scale_window_ {
+      label Scale
+      private xywh {722 132 305 165} type Double hide modal
+    } {
+      Fl_Group {} {open
+        xywh {10 10 285 110} box THIN_DOWN_BOX color 48
+      } {
+        Fl_Spinner scale_xsize_value_ {
+          label {Width: }
+          callback {scale_update_cb(scale_xsize_value_);}
+          private xywh {90 20 55 25} labelfont 1 value 1
+        }
+        Fl_Spinner scale_ysize_value_ {
+          label {Height: }
+          callback {scale_update_cb(scale_ysize_value_);}
+          private xywh {230 20 55 25} labelfont 1 value 1
+        }
+        Fl_Spinner scale_xratio_value_ {
+          label {Scale: }
+          callback {scale_update_cb(scale_xratio_value_);}
+          private xywh {90 50 55 25} labelfont 1 minimum 0.01 maximum 10 step 0.01 value 1
+        }
+        Fl_Spinner scale_yratio_value_ {
+          label {Scale: }
+          callback {scale_update_cb(scale_yratio_value_);}
+          private xywh {230 50 55 25} labelfont 1 minimum 0.01 maximum 10 step 0.01 value 1
+        }
+        Fl_Check_Button scale_aspect_button_ {
+          label {Keep Original Aspect}
+          callback {scale_update_cb(scale_aspect_button_);}
+          private xywh {20 85 265 25} down_box DOWN_BOX value 1
+        }
+      }
+      Fl_Group {} {
+        xywh {10 130 285 25}
+        code0 {o->do_layout(FL_ALIGN_RIGHT, 0);}
+        class SmartGroup
+      } {
+        Fl_Return_Button {} {
+          label Scale
+          callback {scale_ok_cb();}
+          private xywh {110 130 85 25} shortcut 0xff0d
+          class Fl_Button
+        }
+        Fl_Button {} {
+          label Cancel
+          callback {scale_window_->hide();}
+          private xywh {205 130 90 25}
+        }
+      }
+    }
+    Fl_Window jpeg_window_ {
+      label {JPEG Parameters}
+      private xywh {337 336 310 270} type Double hide modal
+    } {
+      Fl_Group {} {open
+        xywh {10 10 290 215} box THIN_DOWN_BOX color 48
+      } {
+        Fl_Box jpeg_transform_box_ {
+          label {This JPEG image will be saved using the original compressed image data, so no image degradation will occur.}
+          private xywh {20 20 270 90} box DOWN_BOX align 144 hide
+        }
+        Fl_Group jpeg_quality_group_ {
+          private xywh {20 25 270 65}
+        } {
+          Fl_Group {} {
+            label {Quality:}
+            xywh {95 25 195 65} labelfont 1 align 4
+          } {
+            Fl_Box {} {
+              label low
+              private xywh {130 25 75 20} align 20
+            }
+            Fl_Box {} {
+              label high
+              private xywh {205 25 85 20} align 24
+            }
+            Fl_Value_Slider jpeg_quality_value_ {
+              private xywh {95 45 195 25} type {Horz Knob} labelfont 1 align 4 minimum 1 maximum 100 step 1 value 75
+            }
+            Fl_Box {} {
+              label small
+              private xywh {130 70 75 20} align 20
+            }
+            Fl_Box {} {
+              label large
+              private xywh {205 70 85 20} align 24
+            }
+          }
+        }
+        Fl_Group {} {
+          label {Options:}
+          xywh {95 115 195 100} labelfont 1 align 4
+        } {
+          Fl_Check_Button jpeg_progressive_button_ {
+            label {Progressive Display}
+            private xywh {95 115 195 25} down_box DOWN_BOX value 1
+          }
+          Fl_Check_Button jpeg_optimize_button_ {
+            label {Optimize for Size}
+            private xywh {95 140 195 25} down_box DOWN_BOX value 1
+          }
+          Fl_Check_Button jpeg_comments_button_ {
+            label {Include Comments}
+            private xywh {95 165 195 25} down_box DOWN_BOX value 1
+          }
+          Fl_Check_Button jpeg_exif_button_ {
+            label {Include EXIF Data}
+            private xywh {95 190 195 25} down_box DOWN_BOX value 1
+          }
+        }
+      }
+      Fl_Group {} {open
+        xywh {10 235 290 25}
+        code0 {o->do_layout(FL_ALIGN_RIGHT, 0);}
+        class SmartGroup
+      } {
+        Fl_Return_Button {} {
+          label Save
+          callback {jpeg_window_->hide();}
+          private xywh {210 235 90 25} shortcut 0xff0d
+          class Fl_Button
+        }
+      }
+    }
+    Fl_Window props_window_ {
+      label Properties
+      private xywh {435 422 305 330} type Double hide modal
+    } {
+      Fl_Input props_comments_field_ {
+        label {Comments:}
+        private xywh {10 25 285 110} type Multiline labelfont 1 align 5
+        code0 {props_comments_field_->wrap(1);}
+        code1 {props_comments_field_->maximum_size(1023);}
+      }
+      Fl_Group {} {open
+        xywh {10 295 285 25}
+        code0 {o->do_layout(FL_ALIGN_RIGHT, 0);}
+        class SmartGroup
+      } {
+        Fl_Button {} {
+          label Save
+          callback {props_ok_cb();}
+          private xywh {95 295 75 25}
+        }
+        Fl_Button {} {
+          label Cancel
+          callback {props_window_->hide();}
+          private xywh {180 295 115 25}
+        }
+      }
+      Fl_Output props_exif_field_ {
+        label {EXIF Information:}
+        private xywh {10 165 285 120} type Multiline color 49 labelfont 1 align 5
+        code0 {props_exif_field_->wrap(1);}
+      }
+    }
+    Fl_Window export_html_window_ {
+      label {Export HTML}
+      private xywh {1121 21 555 285} type Double hide resizable
+      code0 {\#include "SpringWindow.h"}
+      class SpringWindow modal
+    } {
+      Fl_Group export_group_ {open
+        private xywh {0 0 555 285} box FLAT_BOX resizable
+      } {
+        Fl_Tabs export_tabs_ {open
+          private xywh {10 10 535 230} box THIN_DOWN_BOX color 48 resizable
+          code0 {\#include "MenuTabs.h"}
+          code1 {export_tabs_->auto_resize(true);}
+          class MenuTabs
+        } {
+          Fl_Group export_general_tab_ {
+            label General open
+            private xywh {10 35 485 185}
+            code0 {export_general_tab_->do_layout();}
+            class SmartGroup
+          } {
+            Fl_Group {} {
+              label {Export To:} open
+              xywh {160 45 325 25} labelfont 1 align 4
+            } {
+              Fl_Input export_path_field_ {
+                private xywh {160 45 300 25} textfont 4
+              }
+              Fl_Button {} {
+                label {...}
+                callback {const char *f = fl_dir_chooser(_("Export Directory?"), export_path_field_->value());
+if (f)
+  export_path_field_->value(f);}
+                private xywh {460 45 25 25}
+              }
+            }
+            Fl_Input export_header_field_ {
+              label {Header Text:}
+              private xywh {160 80 325 25} labelfont 1
+            }
+            Fl_Input export_footer_field_ {
+              label {Footer Text:}
+              private xywh {160 115 325 25} labelfont 1
+            }
+            Fl_Group {} {
+              label {Stylesheet:} open
+              xywh {160 150 325 25} labelfont 1 align 4
+            } {
+              Fl_Input export_style_field_ {
+                private xywh {160 150 300 25} textfont 4
+              }
+              Fl_Button {} {
+                label {...}
+                callback {const char *f = fl_file_chooser(_("Stylesheet File?"), _("CSS Files (*.css)"), export_style_field_->value());
+if (f)
+  export_style_field_->value(f);}
+                private xywh {460 150 25 25}
+              }
+            }
+            Fl_Group {} {
+              label {Options:} open
+              private xywh {160 185 325 25} labelfont 1 align 4
+              code0 {o->do_layout(FL_ALIGN_LEFT, 0);}
+              class SmartGroup
+            } {
+              Fl_Check_Button export_original_button_ {
+                label {Include Original Images}
+                private xywh {160 185 174 25} down_box DOWN_BOX
+              }
+            }
+          }
+          Fl_Group export_image_tab_ {
+            label Images open
+            private xywh {10 35 535 150} hide
+            code0 {export_image_tab_->do_layout();}
+            class SmartGroup
+          } {
+            Fl_Spinner export_imagesize_value_ {
+              label {Image Size:}
+              private xywh {160 45 60 25} labelfont 1 minimum 320 maximum 1280 step 10 value 800
+            }
+            Fl_Spinner export_imagecols_value_ {
+              label {Columns:}
+              private xywh {160 80 40 25} labelfont 1 maximum 12 value 1
+            }
+            Fl_Spinner export_imagerows_value_ {
+              label {Rows:}
+              private xywh {160 115 40 25} labelfont 1 maximum 12 value 1
+            }
+            Fl_Value_Slider export_imagequal_value_ {
+              label {Quality:}
+              private xywh {160 150 125 25} type {Horz Knob} labelfont 1 align 4 maximum 100 step 1 value 75
+            }
+          }
+          Fl_Group export_thumbnail_tab_ {
+            label Thumbnails open
+            private xywh {10 35 535 150} hide
+            code0 {export_thumbnail_tab_->do_layout();}
+            class SmartGroup
+          } {
+            Fl_Spinner export_thumbsize_value_ {
+              label {Thumbnail Size:}
+              private xywh {160 45 60 25} labelfont 1 minimum 40 maximum 320 step 5 value 80
+            }
+            Fl_Spinner export_thumbcols_value_ {
+              label {Columns:}
+              private xywh {160 80 40 25} labelfont 1 maximum 12 value 5
+            }
+            Fl_Spinner export_thumbrows_value_ {
+              label {Rows:}
+              private xywh {160 115 40 25} labelfont 1 maximum 12 value 5
+            }
+            Fl_Value_Slider export_thumbqual_value_ {
+              label {Quality:}
+              private xywh {160 150 125 25} type {Horz Knob} labelfont 1 align 4 maximum 100 step 1 value 50
+            }
+          }
+          Fl_Group export_watermark_tab_ {
+            label Watermark open
+            private xywh {10 35 535 205} hide
+            code0 {export_watermark_tab_->do_layout();}
+            class SmartGroup
+          } {
+            Fl_Input export_watermark_field_ {
+              label {Watermark Text:}
+              private xywh {160 45 375 75} type Multiline labelfont 1
+            }
+            Fl_Group {} {
+              label {Font:} open
+              xywh {160 130 375 25} labelfont 1 align 4
+            } {
+              Fl_Choice export_typeface_chooser_ {open
+                private xywh {160 130 95 25} down_box BORDER_BOX
+              } {
+                MenuItem {} {
+                  label Helvetica
+                  xywh {0 0 100 20}
+                }
+                MenuItem {} {
+                  label Times
+                  xywh {110 110 100 20} labelfont 8
+                }
+                MenuItem {} {
+                  label Courier
+                  xywh {10 10 100 20} labelfont 4
+                }
+              }
+              Fl_Choice export_fontstyle_chooser_ {open
+                private xywh {265 130 105 25} down_box BORDER_BOX labelfont 1
+              } {
+                MenuItem {} {
+                  label Normal
+                  xywh {10 10 100 20}
+                }
+                MenuItem {} {
+                  label Bold
+                  xywh {20 20 100 20} labelfont 1
+                }
+                MenuItem {} {
+                  label Italic
+                  xywh {30 30 100 20} labelfont 2
+                }
+                MenuItem {} {
+                  label {Bold-Italic}
+                  xywh {40 40 100 20} labelfont 3
+                }
+              }
+              Fl_Value_Slider export_fontsize_slider_ {
+                private xywh {380 130 155 25} type {Horz Knob} labelfont 1 align 4 minimum 1 maximum 100 step 1 value 10
+              }
+            }
+            Fl_Value_Slider export_opacity_slider_ {
+              label {Opacity:}
+              private xywh {160 165 155 25} type {Horz Knob} labelfont 1 align 4 maximum 100 step 1 value 30
+            }
+            Fl_Choice export_position_chooser_ {
+              label {Position:}
+              private xywh {160 200 175 25} down_box BORDER_BOX labelfont 1
+            } {
+              MenuItem {} {
+                label Center
+                xywh {0 0 100 20}
+              }
+              MenuItem {} {
+                label Top
+                xywh {10 10 100 20}
+              }
+              MenuItem {} {
+                label Bottom
+                xywh {20 20 100 20}
+              }
+              MenuItem {} {
+                label {Top + Bottom}
+                xywh {50 50 100 20}
+              }
+              MenuItem {} {
+                label Left
+                xywh {30 30 100 20}
+              }
+              MenuItem {} {
+                label Right
+                xywh {40 40 100 20}
+              }
+              MenuItem {} {
+                label {Left + Right}
+                xywh {60 60 100 20}
+              }
+              MenuItem {} {
+                label All
+                xywh {70 70 100 20}
+              }
+            }
+          }
+        }
+        Fl_Group {} {open
+          xywh {10 250 535 25}
+          code0 {o->child_align(FL_ALIGN_RIGHT);}
+          code1 {o->do_layout(FL_ALIGN_RIGHT, 0);}
+          code2 {\#include "SmartGroup.h"}
+          class SmartGroup
+        } {
+          Fl_Return_Button {} {
+            label Export
+            callback {export_html_ok_cb();}
+            private xywh {355 250 90 25} shortcut 0xff0d
+            class Fl_Button
+          }
+          Fl_Button {} {
+            label Cancel
+            callback {export_html_window_->hide();}
+            private xywh {455 250 90 25}
+          }
+        }
+      }
+      Fl_Progress export_progress_ {
+        private xywh {10 250 310 25} selection_color 4 align 80 hide
+      }
+    }
+    Fl_Window auth_window_ {
+      label {Password Required}
+      callback {auth_user_field_->value("");
+auth_pass_field_->value("");}
+      private xywh {142 587 275 135} type Double hide modal
+    } {
+      Fl_Group {} {open
+        xywh {10 10 255 80} box THIN_DOWN_BOX color 48
+        code0 {o->do_layout(FL_ALIGN_TOP, 10, 10, 10, true);}
+        class SmartGroup
+      } {
+        Fl_Input auth_user_field_ {
+          label {Username:}
+          callback {auth_pass_field_->take_focus();}
+          private xywh {120 20 135 25} labelfont 1 when 8
+        }
+        Fl_Input auth_pass_field_ {
+          label {Password:}
+          callback {auth_window_->hide();}
+          private xywh {120 55 135 25} type Secret labelfont 1 when 8
+        }
+      }
+      Fl_Group {} {open
+        xywh {10 100 255 25}
+        code0 {o->do_layout(FL_ALIGN_RIGHT, 0);}
+        class SmartGroup
+      } {
+        Fl_Return_Button {} {
+          label Login
+          callback {auth_window_->hide();}
+          private xywh {80 100 85 25} shortcut 0xff0d
+          class Fl_Button
+        }
+        Fl_Button {} {
+          label Cancel
+          callback {auth_user_field_->value("");
+auth_pass_field_->value("");
+auth_window_->hide();}
+          private xywh {175 100 90 25}
+        }
+      }
+    }
+    Fl_Window options_window_ {
+      label Options
+      private xywh {549 21 530 305} type Double resizable
+      class SpringWindow visible
+    } {
+      Fl_Tabs options_tabs_ {open
+        private xywh {10 10 510 250} box THIN_DOWN_BOX color 48 resizable
+        code0 {options_tabs_->auto_resize(true);}
+        class MenuTabs
+      } {
+        Fl_Group image_tab_ {
+          label Image
+          private xywh {10 35 510 225} hide
+          code0 {image_tab_->do_layout();}
+          class SmartGroup
+        } {
+          Fl_Group {} {
+            label {Options:} open
+            private xywh {150 45 360 25} labelfont 1 align 4
+            code0 {o->do_layout(FL_ALIGN_LEFT, 0);}
+            class SmartGroup
+          } {
+            Fl_Check_Button auto_open_button_ {
+              label {Auto Open Images}
+              private xywh {150 45 180 25} down_box DOWN_BOX
+            }
+            Fl_Check_Button keep_zoom_button_ {
+              label {Keep Image Zoom}
+              private xywh {330 45 180 25} down_box DOWN_BOX
+            }
+          }
+          Fl_Group {} {
+            label {Editor:} open
+            xywh {150 80 360 25} labelfont 1 align 4
+          } {
+            Fl_Input image_editor_field_ {
+              private xywh {150 80 335 25}
+            }
+            Fl_Button {} {
+              label {...}
+              callback {const char *f = fl_file_chooser(_("Stylesheet File?"), _("CSS Files (*.css)"), image_editor_field_->value());
+if (f)
+  image_editor_field_->value(f);}
+              private xywh {485 80 25 25}
+            }
+          }
+          Fl_Group {} {
+            label {Gamma:
+
+
+
+
+
+
+} open
+            xywh {150 115 360 135} labelfont 1 align 4
+          } {
+            Fl_Value_Slider gamma_slider_ {
+              callback {gamma_slider_cb();}
+              private xywh {150 115 360 25} type {Horz Knob} labelfont 1 align 4 minimum 0.1 maximum 10 step 0.1 value 1.7
+            }
+            Fl_Box {} {
+              label {Move the gamma slider until the inside box disappears inside the outer box.}
+              private xywh {150 150 250 100} color 7 labelfont 2 align 149
+            }
+            Fl_Box gamma_box_ {
+              private xywh {410 150 100 100} box FLAT_BOX color 7
+            }
+          }
+        }
+        Fl_Group slideshow_tab_ {
+          label Slideshow open
+          private xywh {10 35 445 225}
+          code0 {slideshow_tab_->do_layout();}
+          class SmartGroup
+        } {
+          Fl_Value_Slider ssoptions_delay_value_ {
+            label {Slide Delay:}
+            private xywh {160 45 285 25} type {Horz Knob} labelfont 1 align 4 maximum 600 step 1 value 5
+          }
+          Fl_Group {} {
+            label {Options:}
+            xywh {160 80 200 100} labelfont 1 align 4
+            code0 {o->do_layout(FL_ALIGN_LEFT, 0, 0, 0);}
+            class SmartGroup
+          } {
+            Fl_Check_Button ssoptions_first_button_ {
+              label {Start with First Slide}
+              private xywh {160 80 200 25} down_box DOWN_BOX value 1
+            }
+            Fl_Check_Button ssoptions_random_button_ {
+              label {Random Order}
+              private xywh {160 105 200 25} down_box DOWN_BOX value 1
+            }
+            Fl_Check_Button ssoptions_repeat_button_ {
+              label {Repeat Slides}
+              private xywh {160 130 200 25} down_box DOWN_BOX value 1
+            }
+            Fl_Check_Button ssoptions_comments_button_ {
+              label {Show Comments}
+              private xywh {160 155 200 25} down_box DOWN_BOX value 1
+            }
+          }
+          Fl_Choice ssoptions_screen_chooser_ {
+            label {Screen:}
+            private xywh {160 190 95 25} down_box BORDER_BOX labelfont 1
+          } {
+            MenuItem {} {
+              label Current
+              xywh {0 0 31 21}
+            }
+            MenuItem {} {
+              label 1
+              xywh {10 10 31 21}
+            }
+            MenuItem {} {
+              label 2
+              xywh {20 20 31 21}
+            }
+            MenuItem {} {
+              label 3
+              xywh {30 30 31 21}
+            }
+            MenuItem {} {
+              label 4
+              xywh {40 40 31 21}
+            }
+          }
+          Fl_Group {} {
+            label {Size:}
+            xywh {160 225 285 25} labelfont 1 align 4
+          } {
+            Fl_Choice ssoptions_size_chooser_ {
+              callback {if (ssoptions_size_chooser_->value())
+  ssoptions_custom_group_->activate();
+else
+  ssoptions_custom_group_->deactivate();} open
+              private xywh {160 225 145 25} down_box BORDER_BOX labelfont 1
+            } {
+              MenuItem {} {
+                label {Use Screen Size}
+                xywh {0 0 100 20}
+              }
+              MenuItem {} {
+                label {Use Custom Size}
+                xywh {10 10 100 20}
+              }
+            }
+            Fl_Group ssoptions_custom_group_ {open
+              private xywh {315 225 130 25} deactivate
+            } {
+              Fl_Spinner ssoptions_width_value_ {
+                private xywh {315 225 55 25} maximum 3072 value 1
+              }
+              Fl_Spinner ssoptions_height_value_ {
+                label {x }
+                private xywh {390 225 55 25} maximum 3072 value 1
+              }
+            }
+          }
+        }
+        Fl_Group flash_tab_ {
+          label {Memory Card}
+          private xywh {10 35 510 225} hide
+          code0 {flash_tab_->do_layout();}
+          class SmartGroup
+        } {
+          Fl_Group {} {
+            label {Directory:} open
+            xywh {150 45 360 25} labelfont 1 align 4
+          } {
+            Fl_Input flash_dir_field_ {
+              private xywh {150 45 335 25}
+            }
+            Fl_Button {} {
+              label {...}
+              callback {const char *d = fl_dir_chooser(_("Memory Card Directory?"), flash_dir_field_->value());
+if (d)
+  flash_dir_field_->value(d);}
+              private xywh {485 45 25 25}
+            }
+          }
+          Fl_Group {} {
+            label {Options:} open
+            private xywh {150 80 360 25} labelfont 1 align 4
+            code0 {o->do_layout(FL_ALIGN_LEFT, 0);}
+            class SmartGroup
+          } {
+            Fl_Check_Button flash_mount_button_ {
+              label {Mount card on use}
+              private xywh {150 80 360 25} down_box DOWN_BOX value 1
+            }
+          }
+        }
+      }
+      Fl_Group {} {open
+        xywh {10 270 510 25}
+        code0 {o->do_layout(FL_ALIGN_RIGHT, 0);}
+        code1 {o->child_align(FL_ALIGN_RIGHT);}
+        class SmartGroup
+      } {
+        Fl_Return_Button {} {
+          label Save
+          callback {options_ok_cb();}
+          private xywh {340 270 80 25} shortcut 0xff0d
+          class Fl_Button
+        }
+        Fl_Button {} {
+          label Cancel
+          callback {options_window_->hide();}
+          private xywh {430 270 90 25}
+        }
+      }
+    }
+    Fl_Window directory_window_ {
+      label {Export Directory} open
+      private xywh {293 126 445 135} type Double resizable modal visible
+    } {
+      Fl_Group directory_form_group_ {
+        private xywh {10 10 425 80} box THIN_DOWN_BOX color 48 resizable
+        class SmartGroup
+      } {
+        Fl_Group {} {
+          label {Export To:} open
+          xywh {100 20 325 25} labelfont 1 align 4
+        } {
+          Fl_Input directory_field_ {
+            private xywh {100 20 300 25} textfont 4
+          }
+          Fl_Button {} {
+            label {...}
+            callback {const char *dir = fl_dir_chooser("Export To?", directory_field_->value());
+
+if (dir)
+  directory_field_->value(dir);}
+            xywh {400 20 25 25}
+          }
+        }
+        Fl_Group {} {
+          label {Options:} open
+          xywh {100 55 325 25} labelfont 1 align 4
+          code0 {o->do_layout(FL_ALIGN_LEFT, 0);}
+          class SmartGroup
+        } {
+          Fl_Check_Button directory_renumber_button_ {
+            label {Renumber Images}
+            private xywh {100 55 142 25} down_box DOWN_BOX
+          }
+        }
+      }
+      Fl_Group directory_button_group_ {open
+        private xywh {10 100 425 25}
+        code0 {directory_button_group_->do_layout(FL_ALIGN_RIGHT, 0);}
+        code1 {directory_button_group_->child_align(FL_ALIGN_RIGHT);}
+        class SmartGroup
+      } {
+        Fl_Button {} {
+          label Export
+          callback {export_dir_ok_cb();}
+          xywh {297 100 64 25} shortcut 0xff0d
+        }
+        Fl_Button {} {
+          label Cancel
+          callback {directory_window_->hide();}
+          xywh {371 100 64 25}
+        }
+      }
+      Fl_Progress directory_progress_ {
+        private xywh {10 100 200 25} selection_color 4 align 80 hide
+      }
+    }
+    code {directory_form_group_->do_layout(FL_ALIGN_TOP, 10, 10, 10, true);} {}
+    code {if (!album_first_)
+  update_history();
+
+album_count_ ++;
+album_next_ = album_first_;
+album_first_ = this;
+
+album_comment_[0]  = '\\0';
+album_filename_[0] = '\\0';
+album_changed_     = 0;
+camera_            = 0;
+context_           = 0;
+crop_data_         = 0;
+crop_image_        = 0;
+image_item_        = 0;
+
+if (filename)
+  open_album(filename);
+else
+  update_title();
+
+gamma_image_ = 0;} {}
+  }
+  Function {~flphoto()} {open
+  } {
+    code {delete window_;
+delete camera_window_;
+delete crop_window_;
+delete scale_window_;
+delete jpeg_window_;
+delete props_window_;
+delete export_html_window_;
+delete auth_window_;
+delete options_window_;
+
+flphoto *prev, *current;
+
+for (prev = 0, current = album_first_;
+     current && current != this;
+     prev = current, current = current->album_next_);
+
+if (current == this)
+{
+  if (prev)
+    prev->album_next_ = current->album_next_;
+  else
+    album_first_ = current->album_next_;
+}
+if (gamma_image_)
+  delete gamma_image_;} {}
+  }
+  Function {hide()} {} {
+    code {window_->hide();} {}
+  }
+  decl {void open_album(const char *filename);} {public
+  }
+  decl {void open_dir(const char *dirname);} {public
+  }
+  decl {void open_file(const char *filename, int openit=1);} {public
+  }
+  decl {void save_album(const char *filename);} {public
+  }
+  Function {show()} {open
+  } {
+    code {char *app = (char *)"flphoto";
+
+\#ifdef WIN32
+  // Load the flPhoto icon image...
+  window_->icon((char *)LoadImage(fl_display,
+                                  MAKEINTRESOURCE(101),
+                                  IMAGE_ICON, 16, 16,
+                                  LR_DEFAULTCOLOR));
+\#endif // WIN32
+
+window_->show(1, &app);} {}
+  }
+  Function {show_camera()} {return_type void
+  } {
+    code {camera_cb();} {}
+  }
+  Function {show_last_image()} {} {
+    code {if (browser_->count())
+{
+  display_->value(browser_->load_item(browser_->count() - 1));
+  image_item_ = browser_->value(browser_->count() - 1);
+  browser_->select(browser_->count() - 1);
+}
+else
+{
+  display_->value(0);
+}} {}
+  }
+  Function {shown()} {return_type int
+  } {
+    code {return window_->shown();} {}
+  }
+  Function {visible()} {return_type int
+  } {
+    code {return window_->visible();} {}
+  }
+} 
+
+comment {
+//
+// End of "$Id: flphoto.fl 412 2006-11-15 04:20:01Z mike $".
+//} {in_source in_header
+} 

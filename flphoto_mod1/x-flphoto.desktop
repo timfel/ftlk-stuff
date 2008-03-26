@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=MimeType
+MimeType=application/x-flphoto
+Icon=flphoto.png
+Patterns=*.album
+Name=Album
+Comment=FLTK Photo Album
+Encoding=UTF-8

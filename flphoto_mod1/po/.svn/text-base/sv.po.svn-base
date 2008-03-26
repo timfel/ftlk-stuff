@@ -1,0 +1,1161 @@
+msgid ""
+msgstr "Project-Id-Version: flphoto 1.2\nPOT-Creation-Date: 2003-01-15 07:14-0500\nPO-Revision-Date: 2005-12-29 05:14+0100\nLast-Translator: Daniel Nylander <po@danielnylander.se>\nLanguage-Team: Swedish <tp-sv@listor.tp-sv.se>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=iso-8859-1\nContent-Transfer-Encoding: 8bit\nAre you sure you want to adjust the brightness and contrast\nand save all of the selected images?Är du säker att du vill justera ljusstyrka och kontrast för\nalla valda bilder och spara alla?Directory %s does not exist.\n\nCreate directory?Katalogen %s existerar inte.\n\nSkapa katalog?Image file %s already exists!\n\nOK to overwrite?Bildfilen %s existerar redan!\n\nOK att skriva över?Print file %s already exists.\nOK to overwrite?Utskriftsfilen %s existerar redan.\nOK att skriva över?Purging %s will delete the file from disk.\n\nReally delete?Rensning av %s kommer att ta bort filen från disk.\n\nVerkligen ta bort?Sorry, no cameras were found.\nIs your camera connected to a USB port and turned on?Tyvärr, inga kameror hittades.\nÄr din kamera ansluten till en USB-port och påslagen?The image %s has not been saved?\n\nSave it now?Bilden %s har inte blivit sparad?\n\nSpara den nu?Unable to create %s:\n\n%sKunde inte skapa %s:\n\n%sUnable to create JPEG image:\n\n%sKunde inte skapa JPEG-bild:\n\n%sUnable to create PNG data:\n\n%sKunde inte skapa PNG-data:\n\n%sUnable to create PNG image information:\n\n%sKunde inte skapa PNG-bildinformation:\n\n%sUnable to create PNG image:\n\n%sKunde inte skapa PNG-bild:\n\n%sUnable to create destination URL:\n\n%d - %sKunde inte skapa destinations-URL:\n\n%d - %sUnable to create directory %s:\n\n%sKunde inte skapa katalog %s:\n\n%sUnable to create image %s:\n\n%sKunde inte skapa bild %s:\n\n%sUnable to create temporary thumbnail image %s:\n\n%sKunde inte skapa temporär miniatyrbild %s:\n\n%sUnable to open album file \"%s\":\n\n%sKunde inte öppna albumfil \"%s\":\n\n%sUnable to open original JPEG image:\n\n%sKunde inte öppna original JPEG-bild:\n\n%sUnable to rename %s:\n\n%sKunde inte byta namn på %s:\n\n%sUnable to save album file \"%s\":\n\n%sKunde inte spara albumfil \"%s\":\n\n%sUnable to write PNG image:\n\n%sKunde inte skriva PNG-bild:\n\n%sWarning: Re-saving %s will cause a loss of quality!\nDo you wish to overwrite the original JPEG file?Varning: Spara %s igen kommer att sänka kvaliteten!\nVill du skriva över original JPEG-filen?"
+
+msgid " Selected Images"
+msgstr " Valda bilder"
+
+msgid "%d image(s), %.1fMB"
+msgstr "%d bild(er), %.1fMB"
+
+msgid "%d x %d pixels"
+msgstr "%d x %d pixlar"
+
+msgid "%s has been modified, really delete?"
+msgstr "%s har modifierats, verkligen ta bort?"
+
+msgid "&Album"
+msgstr "&Album"
+
+msgid "&All"
+msgstr "&Alla"
+
+msgid "&Auto Adjust"
+msgstr "&Autojustera"
+
+msgid "&Auto Zoom"
+msgstr "&Auto-zoom"
+
+msgid "&Blur..."
+msgstr "&Gör suddig..."
+
+msgid "&Camera..."
+msgstr "&Kamera..."
+
+msgid "&Close"
+msgstr "&Stäng"
+
+msgid "&Crop"
+msgstr "&Beskär"
+
+msgid "&Directory..."
+msgstr "&Katalog..."
+
+msgid "&Edit Selected..."
+msgstr "&Redigera valda..."
+
+msgid "&Edit..."
+msgstr "&Redigera..."
+
+msgid "&HTML..."
+msgstr ""
+
+msgid "&Help"
+msgstr "&Hjälp"
+
+msgid "&Image"
+msgstr "&Bild"
+
+msgid "&Image(s)..."
+msgstr "&Bild(er)..."
+
+msgid "&Image..."
+msgstr "&Bild..."
+
+msgid "&Memory Card..."
+msgstr "&Minneskort..."
+
+msgid "&New"
+msgstr "&Ny"
+
+msgid "&None"
+msgstr "&Ingen"
+
+msgid "&Open"
+msgstr "&Öppna"
+
+msgid "&Open..."
+msgstr "&Öppna..."
+
+msgid "&Options"
+msgstr "&Alternativ"
+
+msgid "&Print Selected..."
+msgstr "Skriv ut &valda..."
+
+msgid "&Print..."
+msgstr "&Skriv ut..."
+
+msgid "&Quit"
+msgstr "&Avsluta"
+
+msgid "&Remove"
+msgstr "&Ta bort"
+
+msgid "&Remove Selected"
+msgstr "&Ta bort valda"
+
+msgid "&Reverse By Name"
+msgstr ""
+
+msgid "&Rotate Clockwise"
+msgstr "&Rotera medurs"
+
+msgid "&Save"
+msgstr "&Spara"
+
+msgid "&Save Selected"
+msgstr "&Spara valda"
+
+msgid "&Scale..."
+msgstr "&Skala..."
+
+msgid "&Slideshow..."
+msgstr "&Bildspel..."
+
+msgid "&Touch-Up"
+msgstr "&Snygga till"
+
+msgid "&Touch-Up Selected"
+msgstr "&Snygga upp valda"
+
+msgid "&View"
+msgstr "&Visa"
+
+msgid "(Created using flPhoto) %d %d L\n"
+msgstr "(Skapad med flPhoto) %d %d L\n"
+
+msgid "(flPhoto Copyright 2002-2006 by Michael Sweet) %d %d L\n"
+msgstr ""
+
+msgid "0 image(s), 0.0MB"
+msgstr "0 bild(er), 0.0MB"
+
+msgid "1-Up Pages"
+msgstr ""
+
+msgid "2-Up Pages"
+msgstr ""
+
+msgid "4-Up Pages"
+msgstr ""
+
+msgid "About flPhoto..."
+msgstr "Om flPhoto..."
+
+msgid "Add to Favorites"
+msgstr "Lägg till i favoriter"
+
+msgid "Adjust Images and Save"
+msgstr ""
+
+msgid "Adjusting Image..."
+msgstr "Justerar bild..."
+
+msgid "Album Files (*.album)"
+msgstr "Albumfiler (*.album)"
+
+msgid "Album exported successfully!"
+msgstr "Album exporterat!"
+
+msgid "Album has changed, do you wish to save it before closing?"
+msgstr "Albumet har ändrats, vill du spara det före du stänger det?"
+
+msgid "Album to Open?"
+msgstr "Vilket album ska öppnas?"
+
+msgid "Album to Save?"
+msgstr "Vilket album ska sparas?"
+
+msgid "Albums..."
+msgstr "Album..."
+
+msgid "All"
+msgstr ""
+
+msgid "All Files (*)"
+msgstr "Alla filer (*)"
+
+msgid "All Images"
+msgstr "Alla bilder"
+
+msgid "April"
+msgstr "April"
+
+msgid "Are you sure you want to adjust the brightness and contrast\nand save all of the selected images?"
+msgstr ""
+
+msgid "Are you sure you want to auto-adjust and save all of the selected images?"
+msgstr "Är du säker att du vill auto-justera och spara alla valda bilder?"
+
+msgid "Are you sure you want to blur and save all of the selected images?"
+msgstr "Är du säker att du vill göra alla valda bilder suddigare och spara alla?"
+
+msgid "Are you sure you want to crop and save all of the selected images?"
+msgstr "Är du säker att du vill beskära och spara alla valda bilder?"
+
+msgid "Are you sure you want to edit all of the selected images?"
+msgstr "Är du säker att du vill redigera alla valda bilder?"
+
+msgid "Are you sure you want to remove all of the selected images?"
+msgstr "Är du säker att du vill ta bort alla valda bilder?"
+
+msgid "Are you sure you want to revert all of the selected images?"
+msgstr "Är du säker att du vill återställa alla valda bilder?"
+
+msgid "Are you sure you want to rotate and save all of the selected images?"
+msgstr "Är du säker att du vill rotera alla valda bilder och spara alla?"
+
+msgid "Are you sure you want to save all of the selected images?"
+msgstr "Är du säker att du vill spara alla valda bilder?"
+
+msgid "Are you sure you want to scale and save all of the selected images?"
+msgstr "Är du säker att du vill skala och spara alla valda bilder?"
+
+msgid "Are you sure you want to sharpen and save all of the selected images?"
+msgstr "Är du säker att du vill göra alla valda bilder skarpare och spara alla?"
+
+msgid "August"
+msgstr "Augusti"
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "Auto Open Images"
+msgstr "Auto-öppna bilder"
+
+msgid "Back to Thumbnails"
+msgstr "Tillbaka till miniatyrer"
+
+msgid "Best"
+msgstr "Bäst"
+
+msgid "Blank"
+msgstr "Blank"
+
+msgid "Blur Images and Save"
+msgstr ""
+
+msgid "Blurring Image..."
+msgstr "Gör bild suddigare..."
+
+msgid "Bold"
+msgstr ""
+
+msgid "Bold-Italic"
+msgstr ""
+
+msgid "Bottom"
+msgstr "Botten"
+
+msgid "Bound, All Pages"
+msgstr "Inbundna, Alla sidor"
+
+msgid "Bound, Back Pages"
+msgstr "Inbundna, Baksidor"
+
+msgid "Bound, Front Pages"
+msgstr "Inbundna, Framsidor"
+
+msgid "Brightness + &Contrast..."
+msgstr "Ljusstyrka + &kontrast..."
+
+msgid "By &Date"
+msgstr ""
+
+msgid "By &Name"
+msgstr ""
+
+msgid "CSS Files (*.css)"
+msgstr "CSS-filer (*.css)"
+
+msgid "Calendar"
+msgstr "Kalender"
+
+msgid "Calendar Dates"
+msgstr ""
+
+msgid "Calendars"
+msgstr ""
+
+msgid "Camera:"
+msgstr "Kamera:"
+
+msgid "Cancel"
+msgstr "Avbryt"
+
+msgid "Center"
+msgstr ""
+
+msgid "Close"
+msgstr "Stäng"
+
+msgid "Color"
+msgstr "Färg"
+
+msgid "Columns:"
+msgstr ""
+
+msgid "Comment:"
+msgstr ""
+
+msgid "Comments:"
+msgstr "Kommentarer:"
+
+msgid "Connecting to remote server..."
+msgstr "Ansluter till fjärrserver..."
+
+msgid "Constrain: "
+msgstr "Begränsa: "
+
+msgid "Contents..."
+msgstr "Innehåll..."
+
+msgid "Copies:"
+msgstr ""
+
+msgid "Courier"
+msgstr ""
+
+msgid "Create Directory"
+msgstr ""
+
+msgid "Creating destination folder..."
+msgstr "Skapar destinationsmapp..."
+
+msgid "Crop"
+msgstr "Beskär"
+
+msgid "Crop Images and Save"
+msgstr ""
+
+msgid "Current"
+msgstr ""
+
+msgid "Current Image"
+msgstr "Nuvarande bild"
+
+msgid "Custom"
+msgstr "Anpassa"
+
+msgid "Custom Filter"
+msgstr "Anpassat filter"
+
+msgid "Custom: "
+msgstr "Anpassa: "
+
+msgid "Date File:"
+msgstr ""
+
+msgid "Date file format error on line %d!"
+msgstr ""
+
+msgid "Dates:"
+msgstr ""
+
+msgid "Day"
+msgstr ""
+
+msgid "December"
+msgstr "December"
+
+msgid "Delete"
+msgstr "Ta bort"
+
+msgid "Delete All Selected Files"
+msgstr ""
+
+msgid "Delete Image"
+msgstr ""
+
+msgid "Delete Image File"
+msgstr ""
+
+msgid "Directory %s does not exist."
+msgstr ""
+
+msgid "Directory %s does not exist.\n\nCreate directory?"
+msgstr ""
+
+msgid "Directory:"
+msgstr "Katalog:"
+
+msgid "Discard Album"
+msgstr ""
+
+msgid "Discard Albums"
+msgstr ""
+
+msgid "Discard Image"
+msgstr ""
+
+msgid "Download"
+msgstr "Ladda ner"
+
+msgid "Download Directory:"
+msgstr "Katalog för nedladdning:"
+
+msgid "Download Directory?"
+msgstr "Katalog för nedladdning?"
+
+msgid "Download..."
+msgstr "Ladda ner..."
+
+msgid "Draft"
+msgstr "Utdrag"
+
+msgid "EXIF Information:"
+msgstr "EXIF-information:"
+
+msgid "Edit"
+msgstr ""
+
+msgid "Editor:"
+msgstr ""
+
+msgid "Export"
+msgstr "Exportera"
+
+msgid "Export Directory"
+msgstr ""
+
+msgid "Export Directory?"
+msgstr "Katalog för exportering?"
+
+msgid "Export HTML"
+msgstr ""
+
+msgid "Export To:"
+msgstr ""
+
+msgid "FTP upload currently not supported, sorry!"
+msgstr ""
+
+msgid "Favorites"
+msgstr "Favoriter"
+
+msgid "February"
+msgstr "Februari"
+
+msgid "File 0"
+msgstr "Fil 0"
+
+msgid "File 1"
+msgstr "Fil 1"
+
+msgid "File 2"
+msgstr "Fil 2"
+
+msgid "File 3"
+msgstr "Fil 3"
+
+msgid "File 4"
+msgstr "Fil 4"
+
+msgid "File 5"
+msgstr "Fil 5"
+
+msgid "File 6"
+msgstr "Fil 6"
+
+msgid "File 7"
+msgstr "Fil 7"
+
+msgid "File 8"
+msgstr "Fil 8"
+
+msgid "File 9"
+msgstr "Fil 9"
+
+msgid "File Systems"
+msgstr "Filsystem"
+
+msgid "Filename:"
+msgstr "Filnamn:"
+
+msgid "Folded, All Pages"
+msgstr "Infällda, Alla sidor"
+
+msgid "Folded, Back Pages"
+msgstr "Infällda, Baksidor"
+
+msgid "Folded, Front Pages"
+msgstr "Infällda, Framsidor"
+
+msgid "Font:"
+msgstr ""
+
+msgid "Footer Text:"
+msgstr ""
+
+msgid "Format:"
+msgstr ""
+
+msgid "Friday"
+msgstr "Fredag"
+
+msgid "Gamma:\n\n\n\n\n\n\n"
+msgstr ""
+
+msgid "General"
+msgstr "Allmänt"
+
+msgid "Generating %s..."
+msgstr "Genererar %s..."
+
+msgid "Getting Image List..."
+msgstr "Hämtar bildlista..."
+
+msgid "Grayscale"
+msgstr "Gråskala"
+
+msgid "Header Text:"
+msgstr ""
+
+msgid "Height: "
+msgstr "Höjd: "
+
+msgid "Helvetica"
+msgstr ""
+
+msgid "Histogramming Image..."
+msgstr "Beräknar histogram för bild..."
+
+msgid "Image"
+msgstr "Bild"
+
+msgid "Image Columns:"
+msgstr ""
+
+msgid "Image Directory to Import?"
+msgstr "Vilken bildkatalog ska importeras?"
+
+msgid "Image File(s) to Import?"
+msgstr "Vilka bildfiler ska importeras?"
+
+msgid "Image Files (*.{arw,avi,bay,bmp,bmq,cr2,crw,cs1,dc2,dcr,dng,erf,fff,hdr,jpg,k25,kdc,mdc,mos,nef,orf,pcd,pef,png,ppm,pxn,raf,raw,rdc,sr2,srf,sti,tif,x3f})"
+msgstr ""
+
+msgid "Image Files (*.{jpg,png})"
+msgstr "Bildfiler (*.{jpg,png})"
+
+msgid "Image Position:"
+msgstr ""
+
+msgid "Image Size:"
+msgstr ""
+
+msgid "Image file %s already exists!\n\nOK to replace?"
+msgstr ""
+
+msgid "Images"
+msgstr ""
+
+msgid "Images..."
+msgstr "Bilder..."
+
+msgid "Images:"
+msgstr "Bilder:"
+
+msgid "Import"
+msgstr "Importera"
+
+msgid "Import from Camera"
+msgstr "Importera från kamera"
+
+msgid "Include Comments"
+msgstr "Inkludera kommentarer"
+
+msgid "Include EXIF Data"
+msgstr "Inkludera EXIF-data"
+
+msgid "Include Original Images"
+msgstr "Inkludera originalbilder"
+
+msgid "Italic"
+msgstr ""
+
+msgid "JPEG Parameters"
+msgstr "JPEG-parametrar"
+
+msgid "January"
+msgstr "Januari"
+
+msgid "July"
+msgstr "Juli"
+
+msgid "June"
+msgstr "Juni"
+
+msgid "Keep Image File"
+msgstr ""
+
+msgid "Keep Image Zoom"
+msgstr "Behåll bildzoom"
+
+msgid "Keep Original Aspect"
+msgstr "Behåll originalformat"
+
+msgid "Left"
+msgstr "Vänster"
+
+msgid "Left + Right"
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "Manage Favorites"
+msgstr "Hantera favoriter"
+
+msgid "March"
+msgstr "Mars"
+
+msgid "Mat Color:"
+msgstr ""
+
+msgid "Mat Type:"
+msgstr ""
+
+msgid "Mat Width:"
+msgstr ""
+
+msgid "Matted Images"
+msgstr ""
+
+msgid "May"
+msgstr "Maj"
+
+msgid "Media Size:"
+msgstr ""
+
+msgid "Memory Card"
+msgstr "Minneskort"
+
+msgid "Memory Card Directory?"
+msgstr "Katalog för minneskort?"
+
+msgid "Mode:"
+msgstr ""
+
+msgid "Mon"
+msgstr ""
+
+msgid "Monday"
+msgstr "Måndag"
+
+msgid "Mount card on use"
+msgstr "Montera kort vid användning"
+
+msgid "Move the gamma slider until the inside box disappears inside the outer box."
+msgstr "Flytta gamma-markören tills den inre lådan försvinner i den yttre lådan."
+
+msgid "New &Images"
+msgstr "Nya &bilder"
+
+msgid "New Directory?"
+msgstr "Ny katalog?"
+
+msgid "No"
+msgstr "Nej"
+
+msgid "No Camera Selected"
+msgstr "Ingen kamera vald"
+
+msgid "No EXIF information available."
+msgstr "Ingen EXIF-information tillgänglig."
+
+msgid "No images to show in a slideshow!"
+msgstr "Inga bilder att visa i ett bildspel!"
+
+msgid "None"
+msgstr "Ingen"
+
+msgid "Normal"
+msgstr "Normal"
+
+msgid "November"
+msgstr "November"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "October"
+msgstr "Oktober"
+
+msgid "Opacity:"
+msgstr ""
+
+msgid "Open Pre&vious"
+msgstr "Öppna &tidigare"
+
+msgid "Optimize for Size"
+msgstr "Optimera efter storlek"
+
+msgid "Options"
+msgstr "Alternativ"
+
+msgid "Options:"
+msgstr ""
+
+msgid "P&roperties..."
+msgstr "Egenskape&r..."
+
+msgid "Page"
+msgstr "Sida"
+
+msgid "Pan Image (P)"
+msgstr ""
+
+msgid "Password Required"
+msgstr "Lösenord krävs"
+
+msgid "Password:"
+msgstr "Lösenord:"
+
+msgid "Plain"
+msgstr "Enkel"
+
+msgid "Please choose a directory!"
+msgstr ""
+
+msgid "Please choose an existing file!"
+msgstr "Vänligen välj en existerande fil!"
+
+msgid "Please choose an export directory or URL."
+msgstr "Vänligen välj en exportkatalog eller URL."
+
+msgid "Please open an image first."
+msgstr "Vänligen öppna en bild först."
+
+msgid "Please select one or more images to edit."
+msgstr "Vänligen välj en eller flera bilder att redigera."
+
+msgid "Position:"
+msgstr ""
+
+msgid "PostScript Files (*.ps)"
+msgstr "PostScript-filer (*.ps)"
+
+msgid "Preview"
+msgstr "Förhandsgranska"
+
+msgid "Print"
+msgstr "Skriv ut"
+
+msgid "Print To File?"
+msgstr "Skriv ut till fil?"
+
+msgid "Print file %s already exists.\nOK to replace?"
+msgstr ""
+
+msgid "Print to File"
+msgstr "Skriv ut till fil"
+
+msgid "Printer"
+msgstr "Skrivare"
+
+msgid "Printer: "
+msgstr "Skrivare: "
+
+msgid "Printing page %d..."
+msgstr "Skriver ut sida %d..."
+
+msgid "Progress"
+msgstr "Förlopp"
+
+msgid "Progressive Display"
+msgstr "Progressiv visning"
+
+msgid "Properties"
+msgstr "Egenskaper"
+
+msgid "Pur&ge"
+msgstr "Ren&sa"
+
+msgid "Pur&ge Selected"
+msgstr "Ren&sa valda"
+
+msgid "Purging %s will delete the file from disk.\n\nReally delete?"
+msgstr ""
+
+msgid "Quality:"
+msgstr ""
+
+msgid "Random Order"
+msgstr "Slumpad ordning"
+
+msgid "Re&vert"
+msgstr "Återstä&ll"
+
+msgid "Re&vert Selected"
+msgstr "Återstä&ll valda"
+
+msgid "Really delete the selected images?"
+msgstr "Verkligen ta bort de valda bilderna?"
+
+msgid "Release Notes..."
+msgstr "Noteringar om utgåvan..."
+
+msgid "Remove Image"
+msgstr ""
+
+msgid "Remove Red-Eye (R)"
+msgstr ""
+
+msgid "Renumber Images"
+msgstr ""
+
+msgid "Repeat Every Year"
+msgstr ""
+
+msgid "Repeat Slides"
+msgstr "Repetera bilder"
+
+msgid "Replace"
+msgstr ""
+
+msgid "Reverse &By Date"
+msgstr ""
+
+msgid "Revert"
+msgstr ""
+
+msgid "Right"
+msgstr "Höger"
+
+msgid "Rotate Counter-Clockwise"
+msgstr "Rotera moturs"
+
+msgid "Rotate Images and Save"
+msgstr ""
+
+msgid "Rotating image..."
+msgstr "Roterar bild..."
+
+msgid "Rows:"
+msgstr ""
+
+msgid "Saturday"
+msgstr "Lördag"
+
+msgid "Save"
+msgstr ""
+
+msgid "Save &As..."
+msgstr "Spara s&om..."
+
+msgid "Save Album"
+msgstr ""
+
+msgid "Save Albums"
+msgstr ""
+
+msgid "Save All"
+msgstr ""
+
+msgid "Save All Images"
+msgstr ""
+
+msgid "Save Dates"
+msgstr ""
+
+msgid "Save Image"
+msgstr ""
+
+msgid "Save Image As?"
+msgstr "Spara bild som?"
+
+msgid "Saving image..."
+msgstr "Sparar bild..."
+
+msgid "Scale"
+msgstr "Skala"
+
+msgid "Scale Images and Save"
+msgstr ""
+
+msgid "Scale: "
+msgstr "Skala: "
+
+msgid "Screen:"
+msgstr ""
+
+msgid "Select    "
+msgstr "Välj      "
+
+msgid "Select &All"
+msgstr "Välj &alla"
+
+msgid "Select &None"
+msgstr "Välj &ingen"
+
+msgid "Selected Images"
+msgstr "Valda bilder"
+
+msgid "September"
+msgstr "September"
+
+msgid "Sharp&en..."
+msgstr "Gör skarp&are..."
+
+msgid "Sharpen Images and Save"
+msgstr ""
+
+msgid "Sharpening Image..."
+msgstr "Gör bild skarpare..."
+
+msgid "Show Comments"
+msgstr ""
+
+msgid "Show Slideshow"
+msgstr "Visa bildspel"
+
+msgid "Show:"
+msgstr "Visa:"
+
+msgid "Size:"
+msgstr ""
+
+msgid "Slide Delay:"
+msgstr ""
+
+msgid "Slidesho&w..."
+msgstr "Bilds&pel..."
+
+msgid "Slideshow"
+msgstr "Bildspel"
+
+msgid "Small and Medium Portrait + Wallet Prints"
+msgstr ""
+
+msgid "Some albums have been changed, do you wish to save them before closing?"
+msgstr "Vissa album har ändrats, vill du spara dem före stängning?"
+
+msgid "Sorry, FTP export not currently supported."
+msgstr "Tyvärr, FTP-export stöds inte för närvarande."
+
+msgid "Sorry, no camera support available."
+msgstr "Tyvärr, inget stöd för kameror tillgängligt."
+
+msgid "Sorry, no cameras were found.\nIs your camera connected to a USB port and turned on?"
+msgstr ""
+
+msgid "Sorry, this is not yet implemented!"
+msgstr ""
+
+msgid "Sort Images"
+msgstr ""
+
+msgid "Standard"
+msgstr "Standard"
+
+msgid "Start Day:"
+msgstr ""
+
+msgid "Start Month:"
+msgstr ""
+
+msgid "Start Year:"
+msgstr ""
+
+msgid "Start with First Slide"
+msgstr "Starta med första bilden"
+
+msgid "Stylesheet File?"
+msgstr "Stilmallsfil?"
+
+msgid "Stylesheet:"
+msgstr ""
+
+msgid "Sunday"
+msgstr "Söndag"
+
+msgid "The image %s has not been saved?\n\nSave it now?"
+msgstr ""
+
+msgid "This JPEG image will be saved using the original compressed image data, so no image degradation will occur."
+msgstr "Denna JPEG-bild kommer att sparas med originalets packade bilddata så att ingen bildförsämring kommer att ske."
+
+msgid "Thumbnail Pages"
+msgstr ""
+
+msgid "Thumbnail Size:"
+msgstr ""
+
+msgid "Thumbnails"
+msgstr ""
+
+msgid "Thursday"
+msgstr "Torsdag"
+
+msgid "Times"
+msgstr ""
+
+msgid "Top"
+msgstr "Topp"
+
+msgid "Top + Bottom"
+msgstr ""
+
+msgid "Tra&nsform"
+msgstr "Tra&nsformera"
+
+msgid "Tra&nsform Selected"
+msgstr "Tra&nsformera vald"
+
+msgid "Transforming image on disk..."
+msgstr "Transformerar bild på disk..."
+
+msgid "Tuesday"
+msgstr "Tisdag"
+
+msgid "Type:"
+msgstr ""
+
+msgid "Unable to copy \"%s\" to \"%s\":\n%s"
+msgstr ""
+
+msgid "Unable to create %s:\n\n%s"
+msgstr ""
+
+msgid "Unable to create JPEG image:\n\n%s"
+msgstr ""
+
+msgid "Unable to create PNG data:\n\n%s"
+msgstr ""
+
+msgid "Unable to create PNG image information:\n\n%s"
+msgstr ""
+
+msgid "Unable to create PNG image:\n\n%s"
+msgstr ""
+
+msgid "Unable to create \"%s\":\n%s"
+msgstr ""
+
+msgid "Unable to create destination URL:\n\n%d - %s"
+msgstr ""
+
+msgid "Unable to create directory %s:\n\n%s"
+msgstr ""
+
+msgid "Unable to create image %s:\n\n%s"
+msgstr ""
+
+msgid "Unable to create temporary thumbnail image %s:\n\n%s"
+msgstr ""
+
+msgid "Unable to open album file \"%s\":\n\n%s"
+msgstr ""
+
+msgid "Unable to open original JPEG image:\n\n%s"
+msgstr ""
+
+msgid "Unable to rename %s:\n\n%s"
+msgstr ""
+
+msgid "Unable to save album file \"%s\":\n\n%s"
+msgstr ""
+
+msgid "Unable to write PNG image:\n\n%s"
+msgstr ""
+
+msgid "Unknown extension \"%s\"; unable to save!"
+msgstr "Okänd ändelse \"%s\"; kunde inte spara!"
+
+msgid "Uploading %s..."
+msgstr "Laddar upp %s..."
+
+msgid "Uploading images/img%05d.jpg..."
+msgstr ""
+
+msgid "Uploading original/img%05d%s..."
+msgstr ""
+
+msgid "Uploading slideshow.html..."
+msgstr "Laddar upp slideshow.html..."
+
+msgid "Uploading style.css..."
+msgstr "Laddar upp style.css..."
+
+msgid "Uploading thumbs/img%05d.jpg..."
+msgstr ""
+
+msgid "Use Custom Size"
+msgstr ""
+
+msgid "Use Screen Size"
+msgstr ""
+
+msgid "Username:"
+msgstr "Användarnamn:"
+
+msgid "Velvet"
+msgstr "Sammet"
+
+msgid "Warning: Re-saving %s will cause a loss of quality!\nDo you wish to replace the original JPEG file?"
+msgstr ""
+
+msgid "Watermark"
+msgstr ""
+
+msgid "Watermark Text:"
+msgstr ""
+
+msgid "Wednesday"
+msgstr "Onsdag"
+
+msgid "Which:\n\n\n\n"
+msgstr ""
+
+msgid "Width: "
+msgstr "Bredd: "
+
+msgid "Year"
+msgstr ""
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "Zoom In (Z)"
+msgstr ""
+
+msgid "Zoom Out (Shift+Z)"
+msgstr ""
+
+msgid "\"%s\" is an unsupported movie or sound file and will not be added to the current album."
+msgstr ""
+
+msgid "\nDate:"
+msgstr ""
+
+msgid "cm"
+msgstr "cm"
+
+msgid "high"
+msgstr "hög"
+
+msgid "in"
+msgstr "in"
+
+msgid "large"
+msgstr "stor"
+
+msgid "low"
+msgstr "låg"
+
+msgid "mm"
+msgstr "mm"
+
+msgid "pt"
+msgstr "pt"
+
+msgid "small"
+msgstr "liten"
+
+msgid "x"
+msgstr "x"
+
+msgid "x "
+msgstr ""
+

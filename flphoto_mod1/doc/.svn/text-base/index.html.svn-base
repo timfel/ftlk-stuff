@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+	<TITLE>flPhoto</TITLE>
+</HEAD>
+<BODY BGCOLOR="#F0F0FF" TEXT="#000000' LINK="#FF0000" ALINK="#FF00FF" VLINK="#0000FF">
+
+<TABLE WIDTH="100%">
+<TR>
+	<TD WIDTH="100%" BGCOLOR="#cccccc">
+	<IMG SRC="flphoto.png" WIDTH="59" HEIGHT="41" ALIGN="LEFT" HSPACE="10" VSPACE="5">
+	<A HREF="about.html">About</A> |
+	<A HREF="contents.html">Contents</A> |
+	<A HREF="download.html">Download</A> |
+	<A HREF="albums.html">Albums</A> |
+	<A HREF="images.html">Images</A> |
+	<A HREF="import.html">Importing</A> |
+	<A HREF="export.html">Exporting</A> |
+	<A HREF="options.html">Options</A> |
+	<A HREF="print.html">Printing</A> |
+	<A HREF="slideshow.html">Slideshows</A> |
+	<A HREF="license.html">License</A> |
+	<A HREF="relnotes.html">Release Notes</A>
+	</TD>
+</TR>
+<TR>
+	<TH>flPhoto Copyright 2002-2006 by Michael Sweet</TH>
+</TR>
+</TABLE>
+
+<CENTER><A HREF="about.html"><IMG SRC="flphoto.jpg" WIDTH="656"
+HEIGHT="683" BORDER="0" ALT="The flPhoto Main Window"></A></CENTER>
+
+</BODY>
+</HTML>

@@ -1,0 +1,66 @@
+INSTALL - 2006-11-11 - flPhoto v1.3
+-----------------------------------
+
+         flPhoto Copyright 2002-2006 by Michael Sweet
+
+
+REQUIREMENTS
+
+flPhoto is written in C++ and requires version 1.1.8 or higher of
+the FLTK <http://www.fltk.org> toolkit.  In addition, the
+following libraries, if available, allow flPhoto to support
+additional capabilities:
+
+	- CUPS <http://www.cups.org>
+	- gPhoto <http://www.gphoto.org>
+	- JPEG <http://www.ijg.org>
+	- PNG <http://www.libpng.org>
+	- ZLIB <http://www.zlib.org>
+
+In order to compile flPhoto, you'll need an ANSI C++ compliant
+compiler (GCC works fine, as do most vendor C++ compilers).
+Currently flPhoto is only being developed under UNIX/Linux,
+however since flPhoto is based on FLTK it should also compile
+under MacOS X and Windows.
+
+
+CONFIGURING
+
+flPhoto includes a typical GNU autoconf-based configure script.
+Just run:
+
+	./configure
+
+to configure the source for your system.
+
+
+COMPILING
+
+Run the make program to compile the software on your system:
+
+	make
+
+If you are building on FreeBSD, NetBSD, or OpenBSD, you'll
+probably need to use the "gmake" program instead.
+
+
+INSTALLING
+
+Run the make program with the "install" target to install the
+software on your system:
+
+	make install
+
+If you are building on FreeBSD, NetBSD, or OpenBSD, you'll
+probably need to use the "gmake" program instead.
+
+
+REPORTING PROBLEMS
+
+Please report all problems to "flphoto@easysw.com" or to the
+FLTK mailing lists or newsgroups at:
+
+    http://www.fltk.org/newsgroups.php
+    
+I'm typically swamped with email, so I ask for your patience in
+advance.

@@ -1,0 +1,26 @@
+CAUTION:
+
+An incompatible binary API change has been introduced in this version
+of fltk118-utf8.
+
+This version, fltk118-utf8-2007-07-14, has a major change "under the hood"
+in that fonts indices are no longer stored in an unsigned char, as they
+were in previous versions of fltk-1.x.
+
+The use of a uchar index limited the number of fonts that could be easily
+referenced to just 256 - a limit that many modern systems easily exceed,
+having many more fonts installed.
+
+In this version, a new type "fntidx" has been used to define all the 
+font indices.
+In this version, fntidx it is an int, but as the implementation
+develops it may be replaced by a different underlying type.
+
+NOTE: This "fntidx" type is TEMPORARY - it will not remain in the code.
+It is in as a "marker" to allow me to quickly and easily find all the 
+relevant code sections, and to switch the type about for experiments.
+
+DO NOT assume that the "fntidx" is available for use, - as it may not be tomorrow...
+
+-- 
+IMM: 14th July 2007

@@ -1,0 +1,1161 @@
+msgid ""
+msgstr "Project-Id-Version: PACKAGE VERSION\nPOT-Creation-Date: 2003-01-15 07:14-0500\nPO-Revision-Date: 2006-03-21 16:28+0100\nLast-Translator: Giacomo Margarito <giacomomargarito@libero.it>\nLanguage-Team: LANGUAGE <LL@li.org>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\nAre you sure you want to adjust the brightness and contrast\nand save all of the selected images?Siete sicuri di voler regolare la luminosità ed il contrasto di tutte le immagini selezionate\ne di volerlesalvare?Directory %s does not exist.\n\nCreate directory?La cartella %s non esiste.\n\nVolete crearla?Image file %s already exists!\n\nOK to overwrite?Il file di immagine %s esiste già!\n\nOK per sovrascrivere?Print file %s already exists.\nOK to overwrite?La stampa del file %s esiste già.\nOK per sovrascrivere?Purging %s will delete the file from disk.\n\nReally delete?L'eliminazione del file %s lo cancellerà dal disco.\n\nVolete eliminarlo per davvero?Sorry, no cameras were found.\nIs your camera connected to a USB port and turned on?Nessuna fotocamera trovata.\nla fotocamera è connessa ad una porta USB ed accesa?The image %s has not been saved?\n\nSave it now?L'immagine %s non è stata salvata?\n\nSalvarla ora?Unable to create %s:\n\n%sImpossibile creare %s:\n\n%sUnable to create JPEG image:\n\n%sImpossibile creare l'immagine JPEG:\n\n%sUnable to create PNG data:\n\n%sImpossibile creare i dati PNG:\n\n%sUnable to create PNG image information:\n\n%sImpossibile creare le informazioni PNG:\n\n%sUnable to create PNG image:\n\n%sImpossibile creare l'immagine PNG:\n\n%sUnable to create destination URL:\n\n%d - %sImpossibile creare l'URL di destinazione:\n\n%d - %sUnable to create directory %s:\n\n%sImpossibile creare la cartella %s:\n\n%sUnable to create image %s:\n\n%sImpossibile creare l'immagine %s:\n\n%sUnable to create temporary thumbnail image %s:\n\n%sImpossibile creare l'anteprima temporanea dell'immagine %s:\n\n%sUnable to open album file \"%s\":\n\n%sImpossibile aprire il file dell'album \"%s\":\n\n%sUnable to open original JPEG image:\n\n%sImpossibile aprire il file JPEG originale:\n\n%sUnable to rename %s:\n\n%sImpossibile rinominare %s:\n\n%sUnable to save album file \"%s\":\n\n%sImpossibile salvare il file dell'album \"%s\":\n\n%sUnable to write PNG image:\n\n%sImpossibile salvare l'immagine PNG:\n\n%sWarning: Re-saving %s will cause a loss of quality!\nDo you wish to overwrite the original JPEG file?Attenzione: il nuovo salvataggio %s causerà una perdita di qualità!\nVolete sovrascrivere il file JPEG originale?"
+
+msgid " Selected Images"
+msgstr "Immagini selezionate"
+
+msgid "%d image(s), %.1fMB"
+msgstr "immagine(i) di %d, %.1fMB"
+
+msgid "%d x %d pixels"
+msgstr "%d x  %d pixel"
+
+msgid "%s has been modified, really delete?"
+msgstr "%s è stato modificato, volete eliminarlo?"
+
+msgid "&Album"
+msgstr "&Album"
+
+msgid "&All"
+msgstr "%Tutto"
+
+msgid "&Auto Adjust"
+msgstr "Regolazione Automatica"
+
+msgid "&Auto Zoom"
+msgstr "Ingrandimento Automatico"
+
+msgid "&Blur..."
+msgstr "Sfocatura..."
+
+msgid "&Camera..."
+msgstr "Fotocamera..."
+
+msgid "&Close"
+msgstr "&Chiudi"
+
+msgid "&Crop"
+msgstr "&Taglia"
+
+msgid "&Directory..."
+msgstr "&Cartella..."
+
+msgid "&Edit Selected..."
+msgstr "&Modifica il file selezionato..."
+
+msgid "&Edit..."
+msgstr "Modifica..."
+
+msgid "&HTML..."
+msgstr ""
+
+msgid "&Help"
+msgstr "&Guida"
+
+msgid "&Image"
+msgstr "&Immagine"
+
+msgid "&Image(s)..."
+msgstr "&Immagine(i)..."
+
+msgid "&Image..."
+msgstr "&Immagine..."
+
+msgid "&Memory Card..."
+msgstr "&Scheda Di Memoria..."
+
+msgid "&New"
+msgstr "&Nuovo"
+
+msgid "&None"
+msgstr "&Nessuno"
+
+msgid "&Open"
+msgstr "&Apri"
+
+msgid "&Open..."
+msgstr "&Apri..."
+
+msgid "&Options"
+msgstr "&Opzioni"
+
+msgid "&Print Selected..."
+msgstr "&Stampa il file selezionato..."
+
+msgid "&Print..."
+msgstr "&Stampa..."
+
+msgid "&Quit"
+msgstr "&Esci dal programma"
+
+msgid "&Remove"
+msgstr "&Rimuovi"
+
+msgid "&Remove Selected"
+msgstr "&Rimuovi il file selezionato"
+
+msgid "&Reverse By Name"
+msgstr ""
+
+msgid "&Rotate Clockwise"
+msgstr "&Rotazione oraria"
+
+msgid "&Save"
+msgstr "&Salva"
+
+msgid "&Save Selected"
+msgstr "&Salva il file selezionato"
+
+msgid "&Scale..."
+msgstr "&Ridimensione..."
+
+msgid "&Slideshow..."
+msgstr "&Presentazione..."
+
+msgid "&Touch-Up"
+msgstr "&Touch-Up"
+
+msgid "&Touch-Up Selected"
+msgstr "&Touch-Up selezionato"
+
+msgid "&View"
+msgstr "&Visualizza"
+
+msgid "(Created using flPhoto) %d %d L\n"
+msgstr "(Generato usando flPhoto) %d %d L\n"
+
+msgid "(flPhoto Copyright 2002-2006 by Michael Sweet) %d %d L\n"
+msgstr ""
+
+msgid "0 image(s), 0.0MB"
+msgstr "0 immagine(i), 0.0mb"
+
+msgid "1-Up Pages"
+msgstr ""
+
+msgid "2-Up Pages"
+msgstr ""
+
+msgid "4-Up Pages"
+msgstr ""
+
+msgid "About flPhoto..."
+msgstr "Informazioni su flPhoto..."
+
+msgid "Add to Favorites"
+msgstr "Aggiungi ai Preferiti"
+
+msgid "Adjust Images and Save"
+msgstr ""
+
+msgid "Adjusting Image..."
+msgstr "Regolazione dell'immagine in corso..."
+
+msgid "Album Files (*.album)"
+msgstr "File dell'album (*.album)"
+
+msgid "Album exported successfully!"
+msgstr "L'album è stato esportato con successo!"
+
+msgid "Album has changed, do you wish to save it before closing?"
+msgstr "L'album è stato modificato, desiderate salvarlo prima di uscire dal programma?"
+
+msgid "Album to Open?"
+msgstr "Qual è l'album da aprire?"
+
+msgid "Album to Save?"
+msgstr "Qual è l'album da salvare?"
+
+msgid "Albums..."
+msgstr "Albums..."
+
+msgid "All"
+msgstr ""
+
+msgid "All Files (*)"
+msgstr "Tutti i file (*)"
+
+msgid "All Images"
+msgstr "Tutte le immagini"
+
+msgid "April"
+msgstr "Aprile"
+
+msgid "Are you sure you want to adjust the brightness and contrast\nand save all of the selected images?"
+msgstr ""
+
+msgid "Are you sure you want to auto-adjust and save all of the selected images?"
+msgstr "Siete sicuri di voler regolare in automatico tutte le immagini selezionate e di volerle salvare?"
+
+msgid "Are you sure you want to blur and save all of the selected images?"
+msgstr "Siete sicuri di voler conservare il tipo di sfocatura delle immagini selezionate e di volerle salvare?"
+
+msgid "Are you sure you want to crop and save all of the selected images?"
+msgstr "Siete sicuri di voler ritagliare e salvare tutte le immagini selezionate?"
+
+msgid "Are you sure you want to edit all of the selected images?"
+msgstr "Siete sicuri di voler modificare tutte le immagini selezionate?"
+
+msgid "Are you sure you want to remove all of the selected images?"
+msgstr "Siete sicuri di voler rimuovere tutte le immagini selezionate?"
+
+msgid "Are you sure you want to revert all of the selected images?"
+msgstr "Siete sicuri di voler invertire tutte le immagini selezionate?"
+
+msgid "Are you sure you want to rotate and save all of the selected images?"
+msgstr "Siete sicuri di voler ruotare e salvare tutte le immagini selezionate?"
+
+msgid "Are you sure you want to save all of the selected images?"
+msgstr "Siete sicuri di voler salvare tutte le immagini selezionate?"
+
+msgid "Are you sure you want to scale and save all of the selected images?"
+msgstr "Siete sicuri di voler ridimensionare e salvare tutte le immagini selezionate?"
+
+msgid "Are you sure you want to sharpen and save all of the selected images?"
+msgstr "Siete sicuri di voler ritagliare e salvare tutte le immagini selezionate?"
+
+msgid "August"
+msgstr "Agosto"
+
+msgid "Auto"
+msgstr "Automatico"
+
+msgid "Auto Open Images"
+msgstr "Apertura automatica delle immagini"
+
+msgid "Back to Thumbnails"
+msgstr "Ritorna alle anteprime"
+
+msgid "Best"
+msgstr "Migliore"
+
+msgid "Blank"
+msgstr "Vuoto"
+
+msgid "Blur Images and Save"
+msgstr ""
+
+msgid "Blurring Image..."
+msgstr "Offuscatura dell'immagine in corso..."
+
+msgid "Bold"
+msgstr ""
+
+msgid "Bold-Italic"
+msgstr ""
+
+msgid "Bottom"
+msgstr "In basso"
+
+msgid "Bound, All Pages"
+msgstr "Limite, Tutte le Pagine"
+
+msgid "Bound, Back Pages"
+msgstr "Limite, Pagine Precedenti"
+
+msgid "Bound, Front Pages"
+msgstr "Limite, Pagine Successive"
+
+msgid "Brightness + &Contrast..."
+msgstr "Luminosità + &Contrasto..."
+
+msgid "By &Date"
+msgstr ""
+
+msgid "By &Name"
+msgstr ""
+
+msgid "CSS Files (*.css)"
+msgstr "File CSS (*.css)"
+
+msgid "Calendar"
+msgstr "Calendario"
+
+msgid "Calendar Dates"
+msgstr ""
+
+msgid "Calendars"
+msgstr ""
+
+msgid "Camera:"
+msgstr "Fotocamera:"
+
+msgid "Cancel"
+msgstr "Annulla"
+
+msgid "Center"
+msgstr ""
+
+msgid "Close"
+msgstr "Chiudi"
+
+msgid "Color"
+msgstr "Colore"
+
+msgid "Columns:"
+msgstr ""
+
+msgid "Comment:"
+msgstr ""
+
+msgid "Comments:"
+msgstr "Commenti:"
+
+msgid "Connecting to remote server..."
+msgstr "Connessione al server remoto..."
+
+msgid "Constrain: "
+msgstr "Costrizione:"
+
+msgid "Contents..."
+msgstr "Contenuti..."
+
+msgid "Copies:"
+msgstr ""
+
+msgid "Courier"
+msgstr ""
+
+msgid "Create Directory"
+msgstr ""
+
+msgid "Creating destination folder..."
+msgstr "Creazione della cartella di arrivo..."
+
+msgid "Crop"
+msgstr "Taglia"
+
+msgid "Crop Images and Save"
+msgstr ""
+
+msgid "Current"
+msgstr ""
+
+msgid "Current Image"
+msgstr "Immagine attuale"
+
+msgid "Custom"
+msgstr "Personale"
+
+msgid "Custom Filter"
+msgstr "Filtro personalizzato"
+
+msgid "Custom: "
+msgstr "Personale:"
+
+msgid "Date File:"
+msgstr ""
+
+msgid "Date file format error on line %d!"
+msgstr ""
+
+msgid "Dates:"
+msgstr ""
+
+msgid "Day"
+msgstr ""
+
+msgid "December"
+msgstr "Dicembre"
+
+msgid "Delete"
+msgstr "Elimina"
+
+msgid "Delete All Selected Files"
+msgstr ""
+
+msgid "Delete Image"
+msgstr ""
+
+msgid "Delete Image File"
+msgstr ""
+
+msgid "Directory %s does not exist."
+msgstr ""
+
+msgid "Directory %s does not exist.\n\nCreate directory?"
+msgstr ""
+
+msgid "Directory:"
+msgstr "Cartella:"
+
+msgid "Discard Album"
+msgstr ""
+
+msgid "Discard Albums"
+msgstr ""
+
+msgid "Discard Image"
+msgstr ""
+
+msgid "Download"
+msgstr "Scarica"
+
+msgid "Download Directory:"
+msgstr "Cartella degli scaricamenti: "
+
+msgid "Download Directory?"
+msgstr "Cartella degli scaricamenti?"
+
+msgid "Download..."
+msgstr "Scarica..."
+
+msgid "Draft"
+msgstr "Bozza"
+
+msgid "EXIF Information:"
+msgstr "Informazioni EXIF:"
+
+msgid "Edit"
+msgstr ""
+
+msgid "Editor:"
+msgstr ""
+
+msgid "Export"
+msgstr "Esporta"
+
+msgid "Export Directory"
+msgstr ""
+
+msgid "Export Directory?"
+msgstr "Cartella di esportazione?"
+
+msgid "Export HTML"
+msgstr ""
+
+msgid "Export To:"
+msgstr ""
+
+msgid "FTP upload currently not supported, sorry!"
+msgstr ""
+
+msgid "Favorites"
+msgstr "Preferiti"
+
+msgid "February"
+msgstr "Febbraio"
+
+msgid "File 0"
+msgstr "File 0"
+
+msgid "File 1"
+msgstr "File 1"
+
+msgid "File 2"
+msgstr "File 2"
+
+msgid "File 3"
+msgstr "File 3"
+
+msgid "File 4"
+msgstr "File 4"
+
+msgid "File 5"
+msgstr "File 5"
+
+msgid "File 6"
+msgstr "File 6"
+
+msgid "File 7"
+msgstr "File 7"
+
+msgid "File 8"
+msgstr "File 8"
+
+msgid "File 9"
+msgstr "File 9"
+
+msgid "File Systems"
+msgstr "File di sistema"
+
+msgid "Filename:"
+msgstr "Nome del file:"
+
+msgid "Folded, All Pages"
+msgstr "Ripiegato, Tutte le Pagine"
+
+msgid "Folded, Back Pages"
+msgstr "Ripiegato, Pagine precedenti"
+
+msgid "Folded, Front Pages"
+msgstr "Ripiegato, Pagine successive"
+
+msgid "Font:"
+msgstr ""
+
+msgid "Footer Text:"
+msgstr ""
+
+msgid "Format:"
+msgstr ""
+
+msgid "Friday"
+msgstr "Venerdì"
+
+msgid "Gamma:\n\n\n\n\n\n\n"
+msgstr ""
+
+msgid "General"
+msgstr "Generale"
+
+msgid "Generating %s..."
+msgstr "Generazione in corso di %s..."
+
+msgid "Getting Image List..."
+msgstr "Ricezione della lista immagini..."
+
+msgid "Grayscale"
+msgstr "Scala di grigi"
+
+msgid "Header Text:"
+msgstr ""
+
+msgid "Height: "
+msgstr "Altezza:"
+
+msgid "Helvetica"
+msgstr ""
+
+msgid "Histogramming Image..."
+msgstr "Istogramma dell'immagine..."
+
+msgid "Image"
+msgstr "Immagine"
+
+msgid "Image Columns:"
+msgstr ""
+
+msgid "Image Directory to Import?"
+msgstr "Qual è la cartella delle immagini da importare?"
+
+msgid "Image File(s) to Import?"
+msgstr "Quali sono i file di immagine da importare?"
+
+msgid "Image Files (*.{arw,avi,bay,bmp,bmq,cr2,crw,cs1,dc2,dcr,dng,erf,fff,hdr,jpg,k25,kdc,mdc,mos,nef,orf,pcd,pef,png,ppm,pxn,raf,raw,rdc,sr2,srf,sti,tif,x3f})"
+msgstr ""
+
+msgid "Image Files (*.{jpg,png})"
+msgstr "File immagine (*.{jpg,png})"
+
+msgid "Image Position:"
+msgstr ""
+
+msgid "Image Size:"
+msgstr ""
+
+msgid "Image file %s already exists!\n\nOK to replace?"
+msgstr ""
+
+msgid "Images"
+msgstr ""
+
+msgid "Images..."
+msgstr "Immagini..."
+
+msgid "Images:"
+msgstr "Immagini:"
+
+msgid "Import"
+msgstr "Importa"
+
+msgid "Import from Camera"
+msgstr "Importa dalla fotocamera"
+
+msgid "Include Comments"
+msgstr "Includi i commenti"
+
+msgid "Include EXIF Data"
+msgstr "Includi i dati EXIF"
+
+msgid "Include Original Images"
+msgstr "Includi le immagini originali"
+
+msgid "Italic"
+msgstr ""
+
+msgid "JPEG Parameters"
+msgstr "Parametri JPEG"
+
+msgid "January"
+msgstr "Gennaio"
+
+msgid "July"
+msgstr "Luglio"
+
+msgid "June"
+msgstr "Giugno"
+
+msgid "Keep Image File"
+msgstr ""
+
+msgid "Keep Image Zoom"
+msgstr "Conserva l'ingrandimento dell'immagine"
+
+msgid "Keep Original Aspect"
+msgstr "Conserva l'aspetto originale"
+
+msgid "Left"
+msgstr "Sinistra"
+
+msgid "Left + Right"
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "Manage Favorites"
+msgstr "Gestione dei Preferiti"
+
+msgid "March"
+msgstr "Marzo"
+
+msgid "Mat Color:"
+msgstr ""
+
+msgid "Mat Type:"
+msgstr ""
+
+msgid "Mat Width:"
+msgstr ""
+
+msgid "Matted Images"
+msgstr "Immagini opacizzate"
+
+msgid "May"
+msgstr "Maggio"
+
+msgid "Media Size:"
+msgstr ""
+
+msgid "Memory Card"
+msgstr "Scheda Di Memoria"
+
+msgid "Memory Card Directory?"
+msgstr "Cartella Della Scheda Di Memoria?"
+
+msgid "Mode:"
+msgstr ""
+
+msgid "Mon"
+msgstr ""
+
+msgid "Monday"
+msgstr "Lunedì"
+
+msgid "Mount card on use"
+msgstr "Monta la scheda all'uso"
+
+msgid "Move the gamma slider until the inside box disappears inside the outer box."
+msgstr "Spostate il cursore gamma fino a che la selezione interna non sparisce all'interno della selezione esterna."
+
+msgid "New &Images"
+msgstr "Nuove &Immagini"
+
+msgid "New Directory?"
+msgstr "Nuova cartella?"
+
+msgid "No"
+msgstr "No"
+
+msgid "No Camera Selected"
+msgstr "Nessuna Fotocamera Selezionata"
+
+msgid "No EXIF information available."
+msgstr "Nessuna informazione EXIF disponibile."
+
+msgid "No images to show in a slideshow!"
+msgstr "Nessuna immagine da visualizzare in una presentazione!"
+
+msgid "None"
+msgstr "Nessuno"
+
+msgid "Normal"
+msgstr "Normale"
+
+msgid "November"
+msgstr "Novembre"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "October"
+msgstr "Ottobre"
+
+msgid "Opacity:"
+msgstr ""
+
+msgid "Open Pre&vious"
+msgstr "Apri il  Pre&cedente"
+
+msgid "Optimize for Size"
+msgstr "Ottimizza per il formato"
+
+msgid "Options"
+msgstr "Opzioni"
+
+msgid "Options:"
+msgstr ""
+
+msgid "P&roperties..."
+msgstr "P&roprietà..."
+
+msgid "Page"
+msgstr "Pagina"
+
+msgid "Pan Image (P)"
+msgstr ""
+
+msgid "Password Required"
+msgstr "È richiesta la password"
+
+msgid "Password:"
+msgstr "Password:"
+
+msgid "Plain"
+msgstr "Semplice"
+
+msgid "Please choose a directory!"
+msgstr ""
+
+msgid "Please choose an existing file!"
+msgstr "Selezionate un file esistente!"
+
+msgid "Please choose an export directory or URL."
+msgstr "Selezionate una cartella di esportazione oppure un URL."
+
+msgid "Please open an image first."
+msgstr "Aprite prima un'immagine."
+
+msgid "Please select one or more images to edit."
+msgstr "Selezionate una o più immagini da modificare."
+
+msgid "Position:"
+msgstr ""
+
+msgid "PostScript Files (*.ps)"
+msgstr "File PostScript (*.ps)"
+
+msgid "Preview"
+msgstr "Anteprima"
+
+msgid "Print"
+msgstr "Stampa"
+
+msgid "Print To File?"
+msgstr "Stampare su un file?"
+
+msgid "Print file %s already exists.\nOK to replace?"
+msgstr ""
+
+msgid "Print to File"
+msgstr "Stampa su file"
+
+msgid "Printer"
+msgstr "Stampante"
+
+msgid "Printer: "
+msgstr "Stampante:"
+
+msgid "Printing page %d..."
+msgstr "Stampa di pagina %d..."
+
+msgid "Progress"
+msgstr "Avanzamento"
+
+msgid "Progressive Display"
+msgstr "Esposizione Progressiva"
+
+msgid "Properties"
+msgstr "Proprietà"
+
+msgid "Pur&ge"
+msgstr "Eli&mina"
+
+msgid "Pur&ge Selected"
+msgstr "Eli&mina i selezionati"
+
+msgid "Purging %s will delete the file from disk.\n\nReally delete?"
+msgstr ""
+
+msgid "Quality:"
+msgstr ""
+
+msgid "Random Order"
+msgstr "Ordine Casuale"
+
+msgid "Re&vert"
+msgstr "Ri&volta"
+
+msgid "Re&vert Selected"
+msgstr "Ri&volta il file selezionato"
+
+msgid "Really delete the selected images?"
+msgstr "Volete eliminare realmente le immagini selezionate?"
+
+msgid "Release Notes..."
+msgstr "Note di rilascio..."
+
+msgid "Remove Image"
+msgstr ""
+
+msgid "Remove Red-Eye (R)"
+msgstr ""
+
+msgid "Renumber Images"
+msgstr ""
+
+msgid "Repeat Every Year"
+msgstr ""
+
+msgid "Repeat Slides"
+msgstr "Ripeti la presentazione"
+
+msgid "Replace"
+msgstr ""
+
+msgid "Reverse &By Date"
+msgstr ""
+
+msgid "Revert"
+msgstr ""
+
+msgid "Right"
+msgstr "Destra"
+
+msgid "Rotate Counter-Clockwise"
+msgstr "Ruota in senso antiorario"
+
+msgid "Rotate Images and Save"
+msgstr ""
+
+msgid "Rotating image..."
+msgstr "Rotazione dell'immagine in corso..."
+
+msgid "Rows:"
+msgstr ""
+
+msgid "Saturday"
+msgstr "Sabato"
+
+msgid "Save"
+msgstr ""
+
+msgid "Save &As..."
+msgstr "Salva &con nome..."
+
+msgid "Save Album"
+msgstr ""
+
+msgid "Save Albums"
+msgstr ""
+
+msgid "Save All"
+msgstr ""
+
+msgid "Save All Images"
+msgstr ""
+
+msgid "Save Dates"
+msgstr ""
+
+msgid "Save Image"
+msgstr ""
+
+msgid "Save Image As?"
+msgstr "Salvare l'immagine con il nome di?"
+
+msgid "Saving image..."
+msgstr "Salvataggio dell'immagine in corso..."
+
+msgid "Scale"
+msgstr "Scala"
+
+msgid "Scale Images and Save"
+msgstr ""
+
+msgid "Scale: "
+msgstr "Scala:"
+
+msgid "Screen:"
+msgstr ""
+
+msgid "Select    "
+msgstr "Seleziona"
+
+msgid "Select &All"
+msgstr "Seleziona &Tutto"
+
+msgid "Select &None"
+msgstr "Deseleziona &Tutto"
+
+msgid "Selected Images"
+msgstr "Immagini Selezionate"
+
+msgid "September"
+msgstr "Settembre"
+
+msgid "Sharp&en..."
+msgstr "Sat&urazione..."
+
+msgid "Sharpen Images and Save"
+msgstr ""
+
+msgid "Sharpening Image..."
+msgstr "Saturazione dell'immagine in corso..."
+
+msgid "Show Comments"
+msgstr ""
+
+msgid "Show Slideshow"
+msgstr "Visualizza la presentazione"
+
+msgid "Show:"
+msgstr "Visualizza:"
+
+msgid "Size:"
+msgstr ""
+
+msgid "Slide Delay:"
+msgstr ""
+
+msgid "Slidesho&w..."
+msgstr "Presentazion&e"
+
+msgid "Slideshow"
+msgstr "Presentazione"
+
+msgid "Small and Medium Portrait + Wallet Prints"
+msgstr ""
+
+msgid "Some albums have been changed, do you wish to save them before closing?"
+msgstr "Alcuni album sono stati modificati, desiderate salvarli prima della chiusura?"
+
+msgid "Sorry, FTP export not currently supported."
+msgstr "L'esportazione via FTP non è al momento supportata."
+
+msgid "Sorry, no camera support available."
+msgstr "Non è disponibile il supporto alla fotocamera."
+
+msgid "Sorry, no cameras were found.\nIs your camera connected to a USB port and turned on?"
+msgstr ""
+
+msgid "Sorry, this is not yet implemented!"
+msgstr ""
+
+msgid "Sort Images"
+msgstr ""
+
+msgid "Standard"
+msgstr "Standard"
+
+msgid "Start Day:"
+msgstr ""
+
+msgid "Start Month:"
+msgstr ""
+
+msgid "Start Year:"
+msgstr ""
+
+msgid "Start with First Slide"
+msgstr "Inizia con la prima immagine"
+
+msgid "Stylesheet File?"
+msgstr "File del foglio di stile?"
+
+msgid "Stylesheet:"
+msgstr ""
+
+msgid "Sunday"
+msgstr "Domenica"
+
+msgid "The image %s has not been saved?\n\nSave it now?"
+msgstr ""
+
+msgid "This JPEG image will be saved using the original compressed image data, so no image degradation will occur."
+msgstr "Questa immagine  JPEG sarà salvata usando i dati di compressione originali. In questo modo l'immagine non verrà degradata."
+
+msgid "Thumbnail Pages"
+msgstr ""
+
+msgid "Thumbnail Size:"
+msgstr ""
+
+msgid "Thumbnails"
+msgstr ""
+
+msgid "Thursday"
+msgstr "Giovedì"
+
+msgid "Times"
+msgstr ""
+
+msgid "Top"
+msgstr "In alto"
+
+msgid "Top + Bottom"
+msgstr ""
+
+msgid "Tra&nsform"
+msgstr "Tr&asforma"
+
+msgid "Tra&nsform Selected"
+msgstr "Tra&sforma il file selezionato"
+
+msgid "Transforming image on disk..."
+msgstr "Trasformazione dell'immagine sul disco..."
+
+msgid "Tuesday"
+msgstr "Martedì"
+
+msgid "Type:"
+msgstr ""
+
+msgid "Unable to copy \"%s\" to \"%s\":\n%s"
+msgstr ""
+
+msgid "Unable to create %s:\n\n%s"
+msgstr ""
+
+msgid "Unable to create JPEG image:\n\n%s"
+msgstr ""
+
+msgid "Unable to create PNG data:\n\n%s"
+msgstr ""
+
+msgid "Unable to create PNG image information:\n\n%s"
+msgstr ""
+
+msgid "Unable to create PNG image:\n\n%s"
+msgstr ""
+
+msgid "Unable to create \"%s\":\n%s"
+msgstr ""
+
+msgid "Unable to create destination URL:\n\n%d - %s"
+msgstr ""
+
+msgid "Unable to create directory %s:\n\n%s"
+msgstr ""
+
+msgid "Unable to create image %s:\n\n%s"
+msgstr ""
+
+msgid "Unable to create temporary thumbnail image %s:\n\n%s"
+msgstr ""
+
+msgid "Unable to open album file \"%s\":\n\n%s"
+msgstr ""
+
+msgid "Unable to open original JPEG image:\n\n%s"
+msgstr ""
+
+msgid "Unable to rename %s:\n\n%s"
+msgstr ""
+
+msgid "Unable to save album file \"%s\":\n\n%s"
+msgstr ""
+
+msgid "Unable to write PNG image:\n\n%s"
+msgstr ""
+
+msgid "Unknown extension \"%s\"; unable to save!"
+msgstr "Estensione sconosciuta \"%s \"; il salvataggio non è possibile!"
+
+msgid "Uploading %s..."
+msgstr "Caricamentoo in corso si %s..."
+
+msgid "Uploading images/img%05d.jpg..."
+msgstr ""
+
+msgid "Uploading original/img%05d%s..."
+msgstr ""
+
+msgid "Uploading slideshow.html..."
+msgstr "Caricamento in corso del file Slideshow.html..."
+
+msgid "Uploading style.css..."
+msgstr "Caricamento in corso del file Style.css..."
+
+msgid "Uploading thumbs/img%05d.jpg..."
+msgstr ""
+
+msgid "Use Custom Size"
+msgstr ""
+
+msgid "Use Screen Size"
+msgstr ""
+
+msgid "Username:"
+msgstr "Nome utente:"
+
+msgid "Velvet"
+msgstr "Velluto"
+
+msgid "Warning: Re-saving %s will cause a loss of quality!\nDo you wish to replace the original JPEG file?"
+msgstr ""
+
+msgid "Watermark"
+msgstr ""
+
+msgid "Watermark Text:"
+msgstr ""
+
+msgid "Wednesday"
+msgstr "Mercoledì"
+
+msgid "Which:\n\n\n\n"
+msgstr ""
+
+msgid "Width: "
+msgstr "Larghezza:"
+
+msgid "Year"
+msgstr ""
+
+msgid "Yes"
+msgstr "Sì"
+
+msgid "Zoom In (Z)"
+msgstr ""
+
+msgid "Zoom Out (Shift+Z)"
+msgstr ""
+
+msgid "\"%s\" is an unsupported movie or sound file and will not be added to the current album."
+msgstr ""
+
+msgid "\nDate:"
+msgstr ""
+
+msgid "cm"
+msgstr "cm"
+
+msgid "high"
+msgstr "alto"
+
+msgid "in"
+msgstr "in"
+
+msgid "large"
+msgstr "grande"
+
+msgid "low"
+msgstr "basso"
+
+msgid "mm"
+msgstr "mm"
+
+msgid "pt"
+msgstr "pt"
+
+msgid "small"
+msgstr "piccolo"
+
+msgid "x"
+msgstr "x"
+
+msgid "x "
+msgstr ""
+

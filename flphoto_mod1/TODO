@@ -1,0 +1,27 @@
+TODO - 11/29/2004
+-----------------
+
+This file lists some of the things that I plan to add to flPhoto
+in the future.  If you have suggestions for new features or want
+to contribute something to flPhoto, please email me at
+"flphoto@easysw.com".  Feature requests or improvements that are
+accompanied by code or patches ("diff -uw" please) will be
+*greatly* appreciated.
+
+	- Batch crop not working...
+
+	- Support JPEG-loseless crop option...
+
+	- Add support for TIFF images.
+
+	- Add support for multi-media files (AVI, WAV, etc.)?
+
+	- Add pan/drag of crop area to crop dialog.
+
+	- Add new standard dialog that offers a scrollable text
+	  display for long error/warning messages and a "show
+	  this again" check box.
+
+	- Add font options for slideshow and printing.
+
+	- Add VCD export option.

@@ -1,0 +1,377 @@
+#
+# "$Id: Makefile.in 441 2006-12-21 16:46:09Z mike $"
+#
+#   Makefile for flphoto.
+#
+#   Copyright 2002-2006 by Michael Sweet
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2, or (at your option)
+#   any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+
+#
+# Programs...
+#
+
+CC		=	@CC@
+CP		=	@CP@
+CXX		=	@CXX@
+FLTKCONFIG	=	@FLTKCONFIG@
+MKDIR		=	@MKDIR@ -p
+MSGFMT		=	@MSGFMT@
+NROFF		=	@NROFF@
+RANLIB		=	@RANLIB@
+RM		=	@RM@ -f
+SHELL		=	/bin/sh
+
+
+#
+# Windows crapola...
+#
+# Note: I do not test flPhoto on Windows and offer no assistance in
+#       getting it to work on that platform.
+#
+
+EXEEXT		=	@EXEEXT@
+
+
+#
+# Program options...
+#
+# OPTIM   defines the common compiler optimization/debugging options.
+#
+
+CFLAGS		=	@CFLAGS@ @CPPFLAGS@ $(OPTIM)
+CXXFLAGS	=	@CXXFLAGS@ @CPPFLAGS@ $(OPTIM)
+LDFLAGS		=	@LDFLAGS@ $(OPTIM)
+LIBS		=	@LIBS@
+OPTIM		=	@OPTIM@ @DEFS@
+
+
+#
+# Manpage extensions...
+#
+
+MAN1EXT		=	@MAN1EXT@
+MAN5EXT		=	@MAN5EXT@
+
+
+#
+# Directories...
+#
+
+bindir		=	@bindir@
+datadir		=	@datadir@
+docdir		=	@docdir@
+exec_prefix	=	@exec_prefix@
+mandir		=	@mandir@
+prefix		=	@prefix@
+libdir		=	@libdir@
+srcdir		=	@srcdir@
+FLPHOTO_LOCALE	=	@FLPHOTO_LOCALE@
+
+DESTDIR		=
+VPATH		=	$(srcdir)
+
+
+#
+# Rules...
+#
+
+.SILENT:
+
+.SUFFIXES:	.c .cxx .h .mo .o .po
+.c.o:
+	echo Compiling $<...
+	$(CC) $(CFLAGS) -I. -I$(srcdir) -c $<
+.cxx.o:
+	echo Compiling $<...
+	$(CXX) $(CXXFLAGS) -I. -I$(srcdir) -c $<
+.po:	espmsg$(EXEEXT)
+	echo Generating $@...
+	./espmsg $< compile
+
+
+#
+# Targets...
+#
+
+TRANSLATIONS =	po/de po/en_CA po/en_GB po/es po/fr po/it po/nl po/pt po/sv
+TARGETS	=	\
+		fldcraw$(EXEEXT) \
+		flphoto$(EXEEXT) \
+		espmsg$(EXEEXT) \
+		testexif$(EXEEXT) \
+		$(TRANSLATIONS)
+CFILES	=	\
+		espmsglib.c \
+		i18n.c \
+		pcd-file.c \
+		pcd-huff.c \
+		pcd-inter.c \
+		pcd-yuv2rgb.c \
+		transupp.c
+CXXFILES =	\
+		Fl_AVI_Image.o \
+		Fl_CRW_Image.cxx \
+		Fl_EXIF_Data.cxx \
+		Fl_Image_Browser.cxx \
+		Fl_Image_Display.cxx \
+		Fl_PCD_Image.cxx \
+		Fl_Print_Dialog.cxx \
+		Fl_Print_Dialog2.cxx \
+		MenuTabs.cxx \
+		SmartGroup.cxx \
+		SpringWindow.cxx \
+		album.cxx \
+		camera.cxx \
+		directory.cxx \
+		export.cxx \
+		flphoto.cxx \
+		gamma.cxx \
+		help.cxx \
+		http.cxx \
+		http-md5.cxx \
+		image.cxx \
+		main.cxx \
+		md5.cxx \
+		print.cxx \
+		slideshow.cxx
+
+OBJS	=	$(CFILES:.c=.o) $(CXXFILES:.cxx=.o)
+
+
+#
+# Make all targets...
+#
+
+all:	Makefile config.h $(TARGETS) testslideshow
+
+
+#
+# Clean all object files...
+#
+
+clean:
+	echo Cleaning out object files...
+	$(RM) $(OBJS) espmsg.o testexif.o
+	$(RM) $(TARGETS)
+
+
+#
+# Clean all object files and generated files...
+#
+
+distclean:
+	$(MAKE) clean
+	echo Cleaning out non-distribution files...
+	$(RM) *.bck
+	$(RM) -r autom4te*.cache
+	$(RM) config.cache config.h config.log config.status
+	$(RM) Makefile
+
+
+#
+# Install all targets...
+#
+
+install: $(TARGETS) @INSTALLDESKTOP@
+	echo Installing flPhoto programs in $(DESTDIR)$(bindir)
+	-$(MKDIR) $(DESTDIR)$(bindir)
+	$(RM) $(DESTDIR)$(bindir)/flphoto$(EXEEXT)
+	$(CP) flphoto$(EXEEXT) $(DESTDIR)$(bindir)
+	$(RM) $(DESTDIR)$(bindir)/fldcraw$(EXEEXT)
+	$(CP) fldcraw$(EXEEXT) $(DESTDIR)$(bindir)
+	echo Installing flPhoto manpages in $(DESTDIR)$(mandir)
+	-$(MKDIR) $(DESTDIR)$(mandir)/man1
+	$(RM) $(DESTDIR)$(mandir)/man1/flphoto.1
+	$(CP) $(srcdir)/doc/flphoto.man $(DESTDIR)$(mandir)/man1/flphoto.1
+	$(RM) $(DESTDIR)$(mandir)/man1/fldcraw.1
+	$(CP) $(srcdir)/doc/fldcraw.man $(DESTDIR)$(mandir)/man1/fldcraw.1
+	-$(MKDIR) $(DESTDIR)$(mandir)/man5
+	$(RM) $(DESTDIR)$(mandir)/man5/album.5
+	$(CP) $(srcdir)/doc/album.man $(DESTDIR)$(mandir)/man5/album.5
+	echo Installing flPhoto documentation in $(DESTDIR)$(docdir)
+	-$(MKDIR) $(DESTDIR)$(docdir)
+	$(RM) $(DESTDIR)$(docdir)/COPYING
+	$(CP) $(srcdir)/COPYING $(DESTDIR)$(docdir)
+	$(RM) $(DESTDIR)$(docdir)/README
+	$(CP) $(srcdir)/README $(DESTDIR)$(docdir)
+	$(RM) $(DESTDIR)$(docdir)/*.html
+	$(CP) $(srcdir)/doc/*.html $(DESTDIR)$(docdir)
+	$(RM) $(DESTDIR)$(docdir)/*.jpg
+	$(CP) $(srcdir)/doc/*.jpg $(DESTDIR)$(docdir)
+	$(RM) $(DESTDIR)$(docdir)/*.png
+	$(CP) $(srcdir)/doc/*.png $(DESTDIR)$(docdir)
+	echo Installing flphoto translations in $(DESTDIR)$(FLPHOTO_LOCALE)
+	-$(MKDIR) $(DESTDIR)$(FLPHOTO_LOCALE)
+	for file in $(TRANSLATIONS); do \
+		temp=`basename $$file`; \
+		$(MKDIR) $(DESTDIR)$(FLPHOTO_LOCALE)/$$temp; \
+		$(RM) $(DESTDIR)$(FLPHOTO_LOCALE)/$$temp/flphoto_$$temp; \
+		$(CP) $$file $(DESTDIR)$(FLPHOTO_LOCALE)/$$temp/flphoto_$$temp; \
+	done
+
+install-desktop:
+	echo Installing flPhoto desktop files...
+	-$(MKDIR) $(DESTDIR)/etc/X11/applnk/Graphics
+	$(RM) $(DESTDIR)/etc/X11/applnk/Graphics/flphoto.desktop
+	$(CP) flphoto.desktop $(DESTDIR)/etc/X11/applnk/Graphics
+	-$(MKDIR) $(DESTDIR)/usr/share/pixmaps
+	$(RM) $(DESTDIR)/usr/share/pixmaps/flphoto.png
+	$(CP) doc/flphoto.png $(DESTDIR)/usr/share/pixmaps
+	-$(MKDIR) $(DESTDIR)/usr/share/mimelnk/application
+	$(RM) $(DESTDIR)/usr/share/mimelnk/application/x-flphoto.desktop
+	$(CP) x-flphoto.desktop $(DESTDIR)/usr/share/mimelnk/application
+
+
+#
+# Uninstall flphoto...
+#
+
+uninstall: @UNINSTALLDESKTOP@
+	echo Uninstalling flPhoto program from $(DESTDIR)$(bindir)
+	$(RM) $(DESTDIR)$(bindir)/flphoto$(EXEEXT)
+	echo Uninstalling flPhoto manpages from $(DESTDIR)$(mandir)
+	$(RM) $(DESTDIR)$(mandir)/cat1/flphoto.$(CAT5EXT)
+	$(RM) $(DESTDIR)$(mandir)/man1/flphoto.1
+	$(RM) $(DESTDIR)$(mandir)/cat5/album.$(CAT5EXT)
+	$(RM) $(DESTDIR)$(mandir)/man5/album.5
+	echo Uninstalling flPhoto documentation from $(DESTDIR)$(docdir)
+	$(RM) -r $(DESTDIR)$(docdir)
+	echo Uninstalling flPhoto documentation from $(DESTDIR)$(FLPHOTO_LOCALE)
+	for file in $(TRANSLATIONS); do \
+		temp=`basename $$file`; \
+		$(RM) $(DESTDIR)$(FLPHOTO_LOCALE)/$$temp/flphoto_$$temp; \
+	done
+
+
+uninstall-desktop:
+	echo Removing flPhoto desktop files...
+	$(RM) $(DESTDIR)/etc/X11/applnk/Graphics/flphoto.desktop
+	$(RM) $(DESTDIR)/usr/share/pixmaps/flphoto.png
+	$(RM) $(DESTDIR)/usr/share/mimelnk/application/x-flphoto.desktop
+
+
+#
+# Make dependencies...
+#
+
+depend:
+	makedepend -Y -f Dependencies $(CFILES) $(CXXFILES)
+
+
+#
+# autoconf stuff...
+#
+
+Makefile: configure Makefile.in
+	if test -f config.status; then \
+		./config.status --recheck; \
+		./config.status; \
+	else \
+		./configure; \
+	fi
+	touch config.h
+
+config.h: configure config.h.in
+	if test -f config.status; then \
+		./config.status --recheck; \
+		./config.status; \
+	else \
+		./configure; \
+	fi
+	touch config.h
+
+
+#
+# Make flphoto distributions...
+#
+
+bindist: $(TARGETS)
+	epm -f rpm -nsm -v flphoto
+
+
+#
+# Make flphoto gettext template file...
+#
+
+pot:	po/flphoto.pot
+
+po/flphoto.pot:	$(CFILES) $(CXXFILES) espmsg$(EXEEXT)
+	echo Scanning for translation strings...
+	./espmsg po/flphoto.pot prune $(CFILES) $(CXXFILES)
+	for file in $(TRANSLATIONS); do \
+		./espmsg $$file.po prune $(CFILES) $(CXXFILES); \
+	done
+
+
+#
+# fldcraw
+#
+
+fldcraw$(EXEEXT):	fldcraw.c
+	echo Compiling and linking fldcraw$(EXEEXT)...
+	$(CC) $(LDFLAGS) -DNO_JPEG -DNO_LCMS -o fldcraw$(EXEEXT) fldcraw.c -lm
+
+
+#
+# flphoto
+#
+
+flphoto$(EXEEXT):	$(OBJS)
+	echo Linking flphoto$(EXEEXT)...
+	$(CXX) $(LDFLAGS) -o flphoto$(EXEEXT) $(OBJS) $(LIBS)
+
+
+#
+# espmsg
+#
+
+espmsg$(EXEEXT):		espmsg.o espmsglib.o
+	echo Linking espmsg$(EXEEXT)...
+	$(CC) $(LDFLAGS) -o espmsg$(EXEEXT) espmsg.o espmsglib.o $(LIBS)
+
+
+#
+# testexif
+#
+
+testexif$(EXEEXT):	testexif.o Fl_EXIF_Data.o
+	echo Linking testexif$(EXEEXT)...
+	$(CXX) $(LDFLAGS) -o testexif$(EXEEXT) testexif.o Fl_EXIF_Data.o $(LIBS)
+
+
+#
+# testslideshow
+#
+
+TSSOBJS	=	\
+		Compositor.o \
+		Fl_Slideshow.o \
+		testslideshow.o
+
+testslideshow$(EXEEXT):	$(TSSOBJS)
+	echo Linking $@...
+	$(CXX) $(LDFLAGS) -o $@ $(TSSOBJS) $(LIBS)
+
+$(TSSOBJS):	Compositor.h Fl_Slideshow.h
+
+
+#
+# Source dependencies...
+#
+
+include Dependencies
+
+
+#
+# End of "$Id: Makefile.in 441 2006-12-21 16:46:09Z mike $".
+#

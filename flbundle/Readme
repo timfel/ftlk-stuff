@@ -1,0 +1,66 @@
+flbundle
+--------
+
+Abstract
+--------
+A simple tool to build a Mac OSX application bundle out of an exectuable.
+
+Adds the minimum required in the way of plist and pkginfo files to get
+things working and adds a few user specified icons to the bundle.
+
+Heavily inspired by the Allegro version written by Angelo Mottola, but
+"enhanced" to use FLTK rather than Allegro for the icon manipulation.
+
+
+Building
+--------
+There's no configure - it's not exactly cross-platform after all!
+Just typing make should do the trick.
+
+This was developed on Mac OSX 10.1.5 with FLTK 1.1.4.
+There may be subtle differences with later versions of OSX, but the code
+is so simple I have to assume they'd be minor.
+Let me know what happens, anyway!
+
+Usage
+-----
+
+To make an application bundle called Bar out of an executable called foo:
+
+      ./flbundle -i foo -o Bar -s icon.png
+
+will do a basic job. The single image passed here will be scaled to fit
+all the app's icon sizes and stored in the bundle.
+
+If you want different icons to appear in each case (i.e. in the Finder
+and on the Dock) you could do:
+
+      ./flbundle -i foo -o Bar -l finder.png -t dock.gif
+
+The icon conversion stuff seems to be working OK with png, jpg, gif and
+bmp formats. It works with many XPM images, but I haven't handled multi-
+byte palette entries for these correctly...
+It works with XBM images IFF they are exactly the right size - if they
+have to be re-sized they get all messed up.
+
+There are also options to add version strings to the bundle, viz:
+
+-v 1.3    # Adds a version number to the bundle
+
+-V "Longer version" # Adds some version text - this is visible in the
+                    # Finder info.
+
+And an option [-d] to delete the original exe once it has been copied
+into the bundle.
+
+And lastly... a [-n] option to make it verbose (noisy) about what it is
+doing.
+
+Caveats
+-------
+As far as I know this works correctly and does nothing wrong or harmful.
+But, as ever, if bad things happen... it wasn't my fault!
+
+Cheers for now. Enjoy.
+
+Ian MacArthur: 15th May 2004

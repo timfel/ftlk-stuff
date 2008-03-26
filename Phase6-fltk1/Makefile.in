@@ -1,0 +1,50 @@
+# Makefile für flPhase6
+# Dateiname: Makefile
+
+CXX = @CXX@
+DATEIEN = src/Fl_Native_File_Chooser.o src/flPhase6.o src/libphase6.o
+FLTK_CXX = @FLTK_CXX@
+CXXFLAGS = @CXXFLAGS@
+DEFS = @DEFS@
+TARGET = flPhase6
+PREFIX = @prefix@
+INCLUDES = -Isrc/Fl_Native_File_Chooser/
+FLTK_LD = @FLTK_LD@
+
+
+all: build
+
+# Ziel: build
+build: $(DATEIEN)
+	$(CXX) $(DEFS) $(CXXFLAGS) $(DATEIEN) -o $(TARGET) $(FLTK_CXX) $(FLTK_LD)
+
+# Ziel: flPhase6.o
+src/flPhase6.o: src/flPhase6.cxx
+	$(CXX) $(DEFS) $(CXXFLAGS) $(INCLUDES) -c src/flPhase6.cxx $(FLTK_CXX) -o src/flPhase6.o
+
+# Ziel: libphase6.o
+src/libphase6.o: src/libphase6/libphase6.cpp
+	$(CXX) $(DEFS) $(CXXFLAGS) -c src/libphase6/libphase6.cpp -o src/libphase6.o
+	
+# Ziel: native chooser
+src/Fl_Native_File_Chooser.o: src/Fl_Native_File_Chooser/Fl_Native_File_Chooser.cxx
+	$(CXX) -DUSEUTF8=1 $(INCLUDES) $(FLTK_CXX) src/Fl_Native_File_Chooser/Fl_Native_File_Chooser.cxx -c -o src/Fl_Native_File_Chooser.o
+
+install: build
+	cp flPhase6 $(PREFIX)/bin/flPhase6
+	
+uninstall:
+	rm -f $(PREFIX)/bin/flPhase6
+
+clean:
+	rm -f src/*.o $(TARGET)
+	
+dist-clean:
+	rm -f src/*.o $(TARGET) $(TARGET).exe
+	rm -Rf autom4te.cache
+	rm configure config.log config.status
+	rm Makefile
+
+.PHONY: all clean install dist-clean uninstall
+
+# ENDE

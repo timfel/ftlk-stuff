@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+	<TITLE>Slideshows - flPhoto</TITLE>
+</HEAD>
+<BODY BGCOLOR="#F0F0FF" TEXT="#000000' LINK="#FF0000" ALINK="#FF00FF" VLINK="#0000FF">
+
+<TABLE WIDTH="100%">
+<TR>
+	<TD WIDTH="100%" BGCOLOR="#cccccc">
+	<IMG SRC="flphoto.png" WIDTH="59" HEIGHT="41" ALIGN="LEFT" HSPACE="10" VSPACE="5">
+	<A HREF="about.html">About</A> |
+	<A HREF="contents.html">Contents</A> |
+	<A HREF="download.html">Download</A> |
+	<A HREF="albums.html">Albums</A> |
+	<A HREF="images.html">Images</A> |
+	<A HREF="import.html">Importing</A> |
+	<A HREF="export.html">Exporting</A> |
+	<A HREF="options.html">Options</A> |
+	<A HREF="print.html">Printing</A> |
+	<A HREF="slideshow.html">Slideshows</A> |
+	<A HREF="license.html">License</A> |
+	<A HREF="relnotes.html">Release Notes</A>
+	</TD>
+</TR>
+<TR>
+	<TH>flPhoto Copyright 2002-2006 by Michael Sweet</TH>
+</TR>
+</TABLE>
+
+<H1>Slideshows</H1>
+
+<P>Choose <I>Slideshow...</I> from the <I>Album</I> menu to view
+the current photo album as a full-screen slideshow.
+
+<P>You can set the slideshow options by selecting <A
+HREF="options.html#slideshow"><I>Slideshow</I></A> from the
+<I>Options</I> menu.
+
+<P>Images are displayed once every N seconds and are displayed
+in the same order as the images in the album. When the slideshow
+reaches the last image in the album it will advance to the first
+image in the album if the <I>Repeat Slides</I> button is
+checked.
+
+<P>Click the left mouse button or press the <I>Spacebar</I> key
+to quickly advance to the next image in the photo album. Click
+the right mouse button or press the <I>Backspace</I> key to
+quickly rewind to the previous image in the photo album. Press
+the <I>Escape</I> key to stop the slideshow and return to the
+<I><B>flPhoto</B></I> window.
+
+</BODY>
+</HTML>

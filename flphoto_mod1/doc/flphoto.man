@@ -1,0 +1,59 @@
+.\"
+.\" "$Id: flphoto.man 322 2005-01-23 03:55:19Z easysw $"
+.\"
+.\"   Manual page for flphoto.
+.\"
+.\"   Copyright 2002-2005 by Michael Sweet
+.\"
+.\"   This program is free software; you can redistribute it and/or modify
+.\"   it under the terms of the GNU General Public License as published by
+.\"   the Free Software Foundation; either version 2, or (at your option)
+.\"   any later version.
+.\"
+.\"   This program is distributed in the hope that it will be useful,
+.\"   but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\"   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\"   GNU General Public License for more details.
+.\"
+.TH flphoto 1 "flphoto" "22 October 2003" "Michael Sweet"
+.SH NAME
+flphoto \- manage, view, and print images
+.SH SYNOPSIS
+.B flphoto
+[
+.I filename.album
+] [
+.I image-filename
+] [
+.I directory-path
+] [ --camera ]
+.SH DESCRIPTION
+\fBflphoto\fR is a basic image management and display program
+based on the FLTK <http://www.fltk.org> toolkit and is provided
+under the terms of the GNU General Public License.  It can read,
+display, print, and export many image file formats and supports
+EXIF information provided by digital cameras.
+.LP
+\fBflphoto\fR opens all files and directories specified on the
+command-line. Album files are displayed in separate windows,
+while image files and directories are loaded in a common
+window.
+.LP
+The \fI--camera\fR option opens the camera import window.
+.SH SEE ALSO
+album(5) - flphoto album file format
+.SH COPYRIGHT
+Copyright 2002-2005 by Michael Sweet
+.LP
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2, or (at your option)
+any later version.
+.LP
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+.\"
+.\" End of "$Id: flphoto.man 322 2005-01-23 03:55:19Z easysw $".
+.\"

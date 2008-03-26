@@ -1,0 +1,29 @@
+8
+
+dir
+6
+svn+ssh://tim.felgentreff@placebo.hpi.uni-potsdam.de/home/stud/2007/tim.felgentreff/svn-work/fltk/Phase6-fltk1/src/fltk118-utf8-2007-07-14/test/checkers.app/Contents/Resources
+svn+ssh://tim.felgentreff@placebo.hpi.uni-potsdam.de/home/stud/2007/tim.felgentreff/svn-work
+
+
+
+2007-10-25T18:45:33.336831Z
+1
+tim.felgentreff
+
+
+svn:special svn:externals svn:needs-lock
+
+checkers.icns
+file
+
+
+
+
+2007-06-16T08:48:25.000000Z
+39b4c034ec17e76217dbac6f2c44a4f0
+2007-10-25T18:45:33.336831Z
+1
+tim.felgentreff
+has-props
+

@@ -1,0 +1,43 @@
+# data file for the FLTK User Interface Designer (FLUID)
+version 2.1000 
+images_dir header_name 
+header_name {.h} 
+code_name {.cxx} 
+gridx 5 
+gridy 5 
+snap 3
+Function {} {open
+} {
+  {fltk::Window} {} {open selected
+    xywh {134 407 335 220} align 33 resizable visible
+  } {
+    {fltk::Button} {} {
+      xywh {195 152 48 48} box NO_BOX
+      image {/home/tim/Sources/Frontends/mac-attal/ico_attal-server.png}
+    }
+    {fltk::Button} {} {
+      xywh {115 47 96 96} box NO_BOX
+      image {/home/tim/Sources/Frontends/mac-attal/ico_attal-client.png}
+    }
+    {fltk::Button} {} {
+      xywh {250 112 48 48} box NO_BOX
+      image {/home/tim/Sources/Frontends/mac-attal/ico_attal-ai.png}
+    }
+    {fltk::Button} {} {
+      xywh {30 112 48 48} box NO_BOX
+      image {/home/tim/Sources/Frontends/mac-attal/ico_attal-scenario-editor.png}
+    }
+    {fltk::Button} {} {
+      xywh {85 152 48 48} box NO_BOX
+      image {/home/tim/Sources/Frontends/mac-attal/ico_attal-campaign-editor.png}
+    }
+    {fltk::Button} {} {
+      xywh {140 172 48 48} box NO_BOX
+      image {/home/tim/Sources/Frontends/mac-attal/ico_attal-theme-editor.png}
+    }
+    {fltk::InvisibleBox} {} {
+      label {Attal - Lords of Doom}
+      xywh {75 -10 185 65} align 32 labeltype ENGRAVED_LABEL labelsize 19
+    }
+  }
+} 

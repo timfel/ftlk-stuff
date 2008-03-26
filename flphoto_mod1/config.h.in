@@ -1,0 +1,65 @@
+/*
+ * "$Id: config.h.in 405 2006-11-12 17:09:30Z mike $"
+ *
+ * Configuration header for flphoto.
+ *
+ * Copyright 2002-2006 by Michael Sweet.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2, or (at your option)
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/*
+ * Version string...
+ */
+
+#define FLPHOTO_VERSION	""
+#define FLPHOTO_VERNUMBER 0
+
+
+/*
+ * Where to find files...
+ */
+
+#define FLPHOTO_DATADIR	""
+#define FLPHOTO_DOCDIR	""
+#define FLPHOTO_LOCALE ""
+
+/*
+ * Possibly missing sprintf-style functions:
+ */
+
+#undef HAVE_VSNPRINTF
+#undef HAVE_SNPRINTF
+
+
+/*
+ * String functions and headers...
+ */
+
+#undef HAVE_STRINGS_H
+#undef HAVE_STRCASECMP
+#undef HAVE_STRLCAT
+#undef HAVE_STRLCPY
+
+
+/*
+ * Libraries...
+ */
+
+#undef HAVE_LIBCUPS
+#undef HAVE_LIBGPHOTO2
+#undef HAVE_LIBJPEG
+#undef HAVE_LIBPNG
+
+
+/*
+ * End of "$Id: config.h.in 405 2006-11-12 17:09:30Z mike $".
+ */

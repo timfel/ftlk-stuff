@@ -1,0 +1,61 @@
+# DO NOT DELETE THIS LINE -- make depend depends on it.
+espmsglib.o: espmsglib.c espmsg.h
+i18n.o: i18n.c flstring.h config.h i18n.h espmsg.h
+pcd-file.o: pcd-file.c flstring.h config.h pcd.h
+pcd-huff.o: pcd-huff.c flstring.h config.h pcd.h
+pcd-inter.o: pcd-inter.c flstring.h config.h pcd.h
+pcd-yuv2rgb.o: pcd-yuv2rgb.c flstring.h config.h pcd.h
+transupp.o: transupp.c flstring.h config.h jpegint.h transupp.h
+Fl_CRW_Image.o: Fl_CRW_Image.cxx Fl_CRW_Image.H flstring.h config.h
+Fl_EXIF_Data.o: Fl_EXIF_Data.cxx Fl_EXIF_Data.H flstring.h config.h
+Fl_Image_Browser.o: Fl_Image_Browser.cxx Fl_Image_Browser.H flstring.h \
+  config.h
+Fl_Image_Display.o: Fl_Image_Display.cxx Fl_Image_Display.H
+Fl_PCD_Image.o: Fl_PCD_Image.cxx Fl_PCD_Image.H pcd.h flstring.h config.h
+Fl_Print_Dialog.o: Fl_Print_Dialog.cxx i18n.h config.h Fl_Print_Dialog.H \
+  Fl_Image_Browser.H flstring.h
+Fl_Print_Dialog2.o: Fl_Print_Dialog2.cxx flphoto.h Fl_Print_Dialog.H \
+  Fl_Image_Browser.H flstring.h config.h Fl_Image_Display.H \
+  SpringWindow.h MenuTabs.h SmartGroup.h
+MenuTabs.o: MenuTabs.cxx MenuTabs.h
+SmartGroup.o: SmartGroup.cxx SmartGroup.h debug.h
+SpringWindow.o: SpringWindow.cxx SpringWindow.h debug.h
+album.o: album.cxx flphoto.h Fl_Print_Dialog.H Fl_Image_Browser.H \
+  flstring.h config.h Fl_Image_Display.H SpringWindow.h MenuTabs.h \
+  SmartGroup.h Fl_EXIF_Data.H i18n.h
+camera.o: camera.cxx flphoto.h Fl_Print_Dialog.H Fl_Image_Browser.H \
+  flstring.h config.h Fl_Image_Display.H SpringWindow.h MenuTabs.h \
+  SmartGroup.h i18n.h Fl_EXIF_Data.H
+directory.o: directory.cxx flphoto.h Fl_Print_Dialog.H Fl_Image_Browser.H \
+  flstring.h config.h Fl_Image_Display.H SpringWindow.h MenuTabs.h \
+  SmartGroup.h i18n.h
+dvdvcd.o: dvdvcd.cxx flphoto.h Fl_Print_Dialog.H Fl_Image_Browser.H \
+  flstring.h config.h Fl_Image_Display.H SpringWindow.h MenuTabs.h \
+  SmartGroup.h i18n.h
+export.o: export.cxx flphoto.h Fl_Print_Dialog.H Fl_Image_Browser.H \
+  flstring.h config.h Fl_Image_Display.H SpringWindow.h MenuTabs.h \
+  SmartGroup.h i18n.h http.h md5.h transupp.h
+flphoto.o: flphoto.cxx i18n.h config.h flphoto.h Fl_Print_Dialog.H \
+  Fl_Image_Browser.H flstring.h Fl_Image_Display.H SpringWindow.h \
+  MenuTabs.h SmartGroup.h
+gamma.o: gamma.cxx flphoto.h Fl_Print_Dialog.H Fl_Image_Browser.H \
+  flstring.h config.h Fl_Image_Display.H SpringWindow.h MenuTabs.h \
+  SmartGroup.h
+help.o: help.cxx flphoto.h Fl_Print_Dialog.H Fl_Image_Browser.H \
+  flstring.h config.h Fl_Image_Display.H SpringWindow.h MenuTabs.h \
+  SmartGroup.h
+http.o: http.cxx http.h md5.h flstring.h config.h debug.h
+http-md5.o: http-md5.cxx http.h md5.h flstring.h config.h
+image.o: image.cxx flphoto.h Fl_Print_Dialog.H Fl_Image_Browser.H \
+  flstring.h config.h Fl_Image_Display.H SpringWindow.h MenuTabs.h \
+  SmartGroup.h i18n.h Fl_EXIF_Data.H transupp.h
+main.o: main.cxx flphoto.h Fl_Print_Dialog.H Fl_Image_Browser.H \
+  flstring.h config.h Fl_Image_Display.H SpringWindow.h MenuTabs.h \
+  SmartGroup.h i18n.h Fl_AVI_Image.H Fl_CRW_Image.H Fl_PCD_Image.H
+md5.o: md5.cxx md5.h flstring.h config.h
+print.o: print.cxx flphoto.h Fl_Print_Dialog.H Fl_Image_Browser.H \
+  flstring.h config.h Fl_Image_Display.H SpringWindow.h MenuTabs.h \
+  SmartGroup.h i18n.h
+slideshow.o: slideshow.cxx flphoto.h Fl_Print_Dialog.H Fl_Image_Browser.H \
+  flstring.h config.h Fl_Image_Display.H SpringWindow.h MenuTabs.h \
+  SmartGroup.h i18n.h

@@ -1,0 +1,21 @@
+flPhoto 1.2 is now available for download from:
+
+    http://www.easysw.com/~mike/flphoto/
+
+The 1.2 release adds new calendar, camera, crop, export, image
+editing, and red-eye removal features. The new release also
+fixes problems in PNG image support, keyboard shortcut
+duplication, and various crash bugs. 
+
+flPhoto is a basic image management and display program based on
+the FLTK <http://www.fltk.org> toolkit and is provided under the
+terms of the GNU General Public License.
+
+flPhoto organizes image files into albums which can be printed,
+viewed as a slideshow, and exported to web pages.  Images can be
+imported individually, by directory, or from digital cameras
+using the gPhoto <http://www.gphoto.org> library.  flPhoto can
+read, write, and display digital camera EXIF information and
+supports BMP, CRW, JPEG, PhotoCD, and PNG image files.  Image
+files can be cropped, rotated, scaled, and adjusted via a number
+of simple filters.

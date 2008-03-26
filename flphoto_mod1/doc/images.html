@@ -1,0 +1,214 @@
+<HTML>
+<HEAD>
+	<TITLE>Images - flPhoto</TITLE>
+</HEAD>
+<BODY BGCOLOR="#F0F0FF" TEXT="#000000' LINK="#FF0000" ALINK="#FF00FF" VLINK="#0000FF">
+
+<TABLE WIDTH="100%">
+<TR>
+	<TD WIDTH="100%" BGCOLOR="#cccccc">
+	<IMG SRC="flphoto.png" WIDTH="59" HEIGHT="41" ALIGN="LEFT" HSPACE="10" VSPACE="5">
+	<A HREF="about.html">About</A> |
+	<A HREF="contents.html">Contents</A> |
+	<A HREF="download.html">Download</A> |
+	<A HREF="albums.html">Albums</A> |
+	<A HREF="images.html">Images</A> |
+	<A HREF="import.html">Importing</A> |
+	<A HREF="export.html">Exporting</A> |
+	<A HREF="options.html">Options</A> |
+	<A HREF="print.html">Printing</A> |
+	<A HREF="slideshow.html">Slideshows</A> |
+	<A HREF="license.html">License</A> |
+	<A HREF="relnotes.html">Release Notes</A>
+	</TD>
+</TR>
+<TR>
+	<TH>flPhoto Copyright 2002-2006 by Michael Sweet</TH>
+</TR>
+</TABLE>
+
+<H1>Images</H1>
+
+<P>The <I>Image</I> menu provides access to all image-specific
+functions in <I><B>flPhoto</B></I>:
+
+<UL>
+
+	<LI><A HREF="#open">Open</A></LI>
+
+	<LI><A HREF="#edit">Edit</A></LI>
+
+	<LI><A HREF="#save">Save</A></LI>
+
+	<LI><A HREF="#saveas">Save As...</A></LI>
+
+	<LI><A HREF="print.html">Print...</A></LI>
+
+	<LI><A HREF="#selectall">Select All</A></LI>
+
+	<LI><A HREF="#selectnone">Select None</A></LI>
+
+	<LI><A HREF="#remove">Remove</A></LI>
+
+	<LI><A HREF="#revert">Revert</A></LI>
+
+	<LI><A HREF="#touchup">Touch-Up</A></LI>
+
+	<LI><A HREF="#transform">Transform</A></LI>
+
+</UL>
+
+<H2><A NAME="open">Open</A></H2>
+
+<P>Choose <I>Open</I> to open the currently selected image in
+the display area. If multiple images have been selected in the
+album, then the last image that was selected will be opened.
+
+<P>Images may also be opened by double-clicking on them in the
+album.
+
+<H2><A NAME="edit">Edit</A></H2>
+
+<P>Choose <I>Edit</I> to edit the currently selected image with
+the image editor of your choice; the default editor is "gimp".
+If multiple images have been selected in the album, then the
+last image that was selected will be edited.
+
+<H2><A NAME="save">Save</A></H2>
+
+<P>Choose <I>Save</I> to save the current image in the same
+format. Currently <I><B>flPhoto</B></I> supports saving images
+in the JPEG and PNG formats.
+
+<P>If you rotate a JPEG image, <I><B>flPhoto</B></I> can save
+the image without re-compressing it, so you won't lose quality.
+If you perform other transformations or touch-up operations,
+then the image will be re-compressed.
+
+<P>When saving JPEG files, the JPEG parameter dialog will be
+shown before the file is saved.
+
+<CENTER><IMG SRC="jpeg.jpg" WIDTH="346" HEIGHT="323" ALT="The
+JPEG Parameter Dialog"></CENTER>
+
+<H2><A NAME="saveas">Save As...</A></H2>
+
+<P>Choose <I>Save As...</I> to save the current image to a new
+file.
+
+<H2><A NAME="selectall">Select All</A></H2>
+
+<P>Choose <I>Select All</I> to select all images in the album.
+
+<H2><A NAME="selectnone">Select None</A></H2>
+
+<P>Choose <I>Select None</I> to unselect all images in the album.
+
+<H2><A NAME="remove">Remove</A></H2>
+
+<P>Choose <I>Remove</I> to remove all selected images from the
+album. Images are only removed from the album - the files
+themselves remain on disk.
+
+<H2><A NAME="revert">Revert</A></H2>
+
+<P>Choose <I>Revert</I> to return the current image to its
+original appearance.
+
+<H2><A NAME="touchup">Touch-Up</A></H2>
+
+<P>The <I>Touch-Up</I> menu provides several basic image
+enhancement functions:
+
+<UL>
+
+	<LI><A HREF="#autoadjust">Auto Adjust</A></LI>
+
+	<LI><A HREF="#levels">Brightness + Contrast</A></LI>
+
+	<LI><A HREF="#redeye">Remove Red-Eye</A></LI>
+
+	<LI><A HREF="#sharpen">Sharpen</A></LI>
+
+	<LI><A HREF="#blur">Blur</A></LI>
+
+</UL>
+
+<H3><A NAME="autoadjust">Auto Adjust</A></H3>
+
+<P>Choose <I>Auto Adjust</I> to sharpen the image and adjust the
+brightness and contrast.
+
+<H3><A NAME="levels">Brightness + Contrast</A></H3>
+
+<P>Choose <I>Brightness + Contrast</I> to automatically adjust
+the brightness and contrast of the image.
+
+<H3><A NAME="redeye">Remove Red-Eye</A></H3>
+
+<P>Choose <I>Remove Red-Eye</I> to automatically remove bright red
+spots in the image.
+
+<P>The current algorithm converts the spots to grayscale and
+darkens them somewhat. The spot size is not limited, so a bright
+red shirt or other object in an image will also get converted.
+Pointers to better algorithms and/or code to improve the
+algorithm are welcome!
+
+<H3><A NAME="sharpen">Sharpen</A></H3>
+
+<P>Choose <I>Sharpen</I> to sharpen the image using the
+so-called "unsharp mask" operation which first creates a blurred
+version of the image and then sharpens the image based on the
+difference.
+
+<H3><A NAME="blur">Blur</A></H3>
+
+<P>Choose <I>Blur</I> to blur the image.
+
+<H2><A NAME="transform">Transform</A></H2>
+
+<P>The <I>Transform</I> menu provides several basic image
+transformation functions:
+
+<UL>
+
+	<LI><A HREF="#crop">Crop...</A></LI>
+
+	<LI><A HREF="#rotate">Rotate Counter-Clockwise</A></LI>
+
+	<LI><A HREF="#rotate">Rotate Clockwise</A></LI>
+
+	<LI><A HREF="#scale">Scale...</A></LI>
+
+</UL>
+
+<CENTER><IMG SRC="crop.jpg" WIDTH="371" HEIGHT="494" ALT="The
+Image Crop Dialog"></CENTER>
+
+<H3><A NAME="crop">Crop...</A></H3>
+
+<P>Choose <I>Crop...</I> to display the image crop dialog. From
+there you can enter <I>Left</I>, <I>Right</I>, <I>Top</I>, and
+<I>Bottom</I> pixel margins or draw a rectangular area in the
+preview box and then click <I>OK</I> to crop the current image
+to the specified area. <I>All numbers are pixels.</I>
+
+<H3><A NAME="rotate">Rotate (Counter-)Clockwise</A></H3>
+
+<P>Choose <I>Rotate Counter-Clockwise</I> or <I>Rotate
+Clockwise</I> to rotate the current image 90 degrees in the
+specified direction.
+
+<CENTER><IMG SRC="scale.jpg" WIDTH="341" HEIGHT="218" ALT="The
+Image Scale Dialog"></CENTER>
+
+<H3><A NAME="scale">Scale...</A></H3>
+
+<P>Choose <I>Scale...</I> to diplay the image scale dialog. From
+there you can enter new <I>Width</I>, <I>Height</I>, and
+<I>Scale</I> values to control the size of the image. Click
+<I>OK</I> to resize the image.
+
+</BODY>
+</HTML>

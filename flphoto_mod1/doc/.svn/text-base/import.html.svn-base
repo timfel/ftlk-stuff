@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+	<TITLE>Importing - flPhoto</TITLE>
+</HEAD>
+<BODY BGCOLOR="#F0F0FF" TEXT="#000000' LINK="#FF0000" ALINK="#FF00FF" VLINK="#0000FF">
+
+<TABLE WIDTH="100%">
+<TR>
+	<TD WIDTH="100%" BGCOLOR="#cccccc">
+	<IMG SRC="flphoto.png" WIDTH="59" HEIGHT="41" ALIGN="LEFT" HSPACE="10" VSPACE="5">
+	<A HREF="about.html">About</A> |
+	<A HREF="contents.html">Contents</A> |
+	<A HREF="download.html">Download</A> |
+	<A HREF="albums.html">Albums</A> |
+	<A HREF="images.html">Images</A> |
+	<A HREF="import.html">Importing</A> |
+	<A HREF="export.html">Exporting</A> |
+	<A HREF="options.html">Options</A> |
+	<A HREF="print.html">Printing</A> |
+	<A HREF="slideshow.html">Slideshows</A> |
+	<A HREF="license.html">License</A> |
+	<A HREF="relnotes.html">Release Notes</A>
+	</TD>
+</TR>
+<TR>
+	<TH>flPhoto Copyright 2002-2006 by Michael Sweet</TH>
+</TR>
+</TABLE>
+
+<H1>Importing</H1>
+
+<P>The <I>Import</I> sub-menu provides access to all
+import-specific functions in <I><B>flPhoto</B></I>:
+
+<UL>
+
+	<LI><A HREF="#image">Image(s)...</A></LI>
+
+	<LI><A HREF="#directory">Directory...</A></LI>
+
+	<LI><A HREF="#camera">Camera...</A></LI>
+
+</UL>
+
+
+<H2><A NAME="image">Image(s)...</A></H2>
+
+<P>Choose <I>Image(s)...</I> to select one or more image files to
+add to the current photo album.
+
+<H2><A NAME="directory">Directory...</A></H2>
+
+<P>Choose <I>Directory...</I> to select a directory of image files to
+add to the current photo album.
+
+<H2><A NAME="camera">Camera...</A></H2>
+
+<P>Chooser <I>Camera...</I> to display the camera import window
+with the images that are available on the current camera. If no
+camera has been selected, select one from the chooser at the top
+of the window:
+
+<CENTER><IMG SRC="camera.jpg" WIDTH="696" HEIGHT="363" ALT="The
+Camera Import Dialog"></CENTER>
+
+<P>Select images in the browser and click on the <I>Download</I>
+or <I>Delete</I> buttons to download or delete an image from the
+camera as appropriate. You can also download a single image by
+double-clicking on a single image.
+
+</BODY>
+</HTML>

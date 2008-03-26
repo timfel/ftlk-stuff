@@ -1,0 +1,80 @@
+# data file for the FLTK User Interface Designer (FLUID)
+version 2.1000 
+header_name {.h} 
+code_name {.cxx} 
+gridx 5 
+gridy 5 
+snap 3
+Function {} {open
+} {
+  {fltk::Window} {} {open selected
+    xywh {182 225 425 355} visible
+  } {
+    {fltk::Input} hddimg {
+      label {HDD-Image}
+      xywh {25 25 230 25} align 5
+    }
+    {fltk::Input} cdimg {
+      label {CD-Image}
+      xywh {25 70 230 25} align 5
+    }
+    {fltk::CheckButton} fscreen {
+      label Fullscreen
+      xywh {25 160 90 25} align 40
+    }
+    {fltk::CheckButton} g4use {
+      label {Use experimental G4 processor}
+      xywh {25 190 215 25} align 40
+    }
+    {fltk::CheckButton} ramuse {
+      label {Use 256 MB RAM instead of 128 MB}
+      xywh {25 220 245 25} align 168
+    }
+    {fltk::CheckButton} netuse1 {
+      label {Use 3c90x network device}
+      xywh {25 250 190 25} align 40
+    }
+    {fltk::CheckButton} netuse2 {
+      label {Use rtl8139 network device}
+      xywh {25 280 195 25} align 40
+    }
+    {fltk::Button} {} {
+      label {Find...}
+      user_data hddimg
+      callback hdd_callback
+      xywh {255 25 50 25}
+    }
+    {fltk::Button} {} {
+      label {Find...}
+      user_data cdimg
+      callback cd_callback
+      xywh {255 70 50 25}
+    }
+    {fltk::Choice} res {
+      label Resolution open
+      xywh {25 115 230 25} align 5
+      extra_code {res->add("800x600x15");
+res->add("1024x768x15");
+res->add("1280x800x15");
+res->add("1280x960x15");}
+    } {}
+    {fltk::CheckButton} cd_dev_check {
+      xywh {5 70 20 25}
+    }
+    {fltk::Dial} {} {
+      xywh {305 205 75 75} box OSHADOW_BOX color 0xbbbbbb00 minimum 10 maximum 500 step 5 linesize 0 value 40
+    }
+    {fltk::InvisibleBox} {} {
+      label {Refresh Rate}
+      xywh {280 190 125 20} align 33
+    }
+    {fltk::ValueOutput} {} {
+      xywh {315 280 55 20} box THIN_DOWN_BOX minimum 10 maximum 500 step 1 linesize 0 value 40
+    }
+    {fltk::ReturnButton} {} {
+      label {Run PearPC}
+      callback run_callback
+      xywh {285 315 110 25}
+    }
+  }
+} 
