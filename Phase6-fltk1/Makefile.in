@@ -39,7 +39,7 @@ uninstall:
 clean:
 	rm -f src/*.o $(TARGET)
 	
-dist-clean:
+distclean:
 	rm -f src/*.o $(TARGET) $(TARGET).exe
 	rm -Rf autom4te.cache
 	rm configure config.log config.status
