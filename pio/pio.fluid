@@ -1,0 +1,27 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0107 
+header_name {.h} 
+code_name {.cxx}
+Function {make_window()} {open
+} {
+  Fl_Window {} {open
+    xywh {417 166 405 130} type Double visible
+  } {
+    Fl_Return_Button {} {
+      label Ok
+      xywh {325 100 72 20}
+    }
+    Fl_Button {} {
+      label Cancel
+      xywh {255 100 70 20}
+    }
+    Fl_Input {} {
+      label Server
+      xywh {100 30 275 25} hotspot
+    }
+    Fl_Input {} {
+      label Password selected
+      xywh {100 55 275 25}
+    }
+  }
+} 
