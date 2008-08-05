@@ -2,6 +2,7 @@
 // Fl_Native_File_Chooser_MAC.cxx -- FLTK native OS file chooser widget
 //
 // Copyright 2004 by Greg Ercolano.
+// FLTK2/MAC port by Greg Ercolano 2007.
 //
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Library General Public
@@ -28,9 +29,29 @@
 //	o When doing 'open file', only dir is preset, not filename.
 //        Possibly 'preset_file' could be used to select the filename.
 //
+#include "common.cxx"		// strnew/strfree/strapp/chrcat
+
+#ifdef FLTK1
+//
+// FLTK1
+//
 #include <FL/Fl.H>
 #include <FL/Fl_Native_File_Chooser.H>
-#include "common.cxx"		// strnew/strfree/strapp/chrcat
+#include <FL/filename.H>
+#define FNFC_CLASS Fl_Native_File_Chooser
+#define FNFC_CTOR  Fl_Native_File_Chooser
+#else
+//
+// FLTK2
+//
+#include <fltk/NativeFileChooser.h>
+#include <fltk/run.h>
+#include <fltk/filename.h>
+#define FNFC_CTOR  NativeFileChooser
+#define FNFC_CLASS fltk::FNFC_CTOR
+#define fl_filename_match filename_match		// fltk1 name -> fltk2 name
+#define fl_filename_isdir filename_isdir		// fltk1 name -> fltk2 name
+#endif
 
 // TRY TO CONVERT AN AEDesc TO AN FSSpec
 //     As per Apple Technical Q&A QA1274
@@ -81,19 +102,19 @@ static OSStatus PathToFSSpec(const char *path, FSSpec &spec) {
 }
 
 // NAVREPLY: CTOR
-Fl_Native_File_Chooser::NavReply::NavReply() {
+FNFC_CLASS::NavReply::NavReply() {
     _valid_reply = 0;
 }
 
 // NAVREPLY: DTOR
-Fl_Native_File_Chooser::NavReply::~NavReply() {
+FNFC_CLASS::NavReply::~NavReply() {
     if ( _valid_reply ) {
 	NavDisposeReply(&_reply);
     }
 }
 
 // GET REPLY FROM THE NAV* DIALOG
-int Fl_Native_File_Chooser::NavReply::get_reply(NavDialogRef& ref) {
+int FNFC_CLASS::NavReply::get_reply(NavDialogRef& ref) {
     if ( _valid_reply ) {
 	NavDisposeReply(&_reply);	// dispose of previous
 	_valid_reply = 0;
@@ -106,7 +127,7 @@ int Fl_Native_File_Chooser::NavReply::get_reply(NavDialogRef& ref) {
 }
 
 // RETURN THE BASENAME USER WANTS TO 'Save As'
-int Fl_Native_File_Chooser::NavReply::get_saveas_basename(char *s, int slen) {
+int FNFC_CLASS::NavReply::get_saveas_basename(char *s, int slen) {
     if (CFStringGetCString(_reply.saveFileName, s, slen-1,
     					kCFStringEncodingUTF8) == false) {
 	s[0] = '\0';
@@ -118,7 +139,7 @@ int Fl_Native_File_Chooser::NavReply::get_saveas_basename(char *s, int slen) {
 // RETURN THE DIRECTORY NAME
 //    Returns 0 on success, -1 on error.
 //
-int Fl_Native_File_Chooser::NavReply::get_dirname(char *s, int slen) {
+int FNFC_CLASS::NavReply::get_dirname(char *s, int slen) {
     FSSpec fsspec;
     if ( AEDescToFSSpec(&_reply.selection, &fsspec) != noErr ) {
         // Conversion failed? Return empty name
@@ -133,7 +154,7 @@ int Fl_Native_File_Chooser::NavReply::get_dirname(char *s, int slen) {
 //     Returns: 0 on success with pathnames[] containing pathnames selected,
 //             -1 on error
 //
-int Fl_Native_File_Chooser::NavReply::get_pathnames(char **&pathnames,
+int FNFC_CLASS::NavReply::get_pathnames(char **&pathnames,
 						    int& tpathnames) {
     // How many items selected?
     long count = 0;
@@ -168,7 +189,7 @@ int Fl_Native_File_Chooser::NavReply::get_pathnames(char **&pathnames,
 }
 
 // FREE PATHNAMES ARRAY, IF IT HAS ANY CONTENTS
-void Fl_Native_File_Chooser::clear_pathnames() {
+void FNFC_CLASS::clear_pathnames() {
     if ( _pathnames ) {
 	while ( --_tpathnames >= 0 ) {
 	    _pathnames[_tpathnames] = strfree(_pathnames[_tpathnames]);
@@ -180,7 +201,7 @@ void Fl_Native_File_Chooser::clear_pathnames() {
 }
 
 // SET A SINGLE PATHNAME
-void Fl_Native_File_Chooser::set_single_pathname(const char *s) {
+void FNFC_CLASS::set_single_pathname(const char *s) {
     clear_pathnames();
     _pathnames = new char*[1];
     _pathnames[0] = strnew(s);
@@ -191,7 +212,7 @@ void Fl_Native_File_Chooser::set_single_pathname(const char *s) {
 //    Returns -1 on error, errmsg() has reason, filename == "".
 //             0 if OK, filename() has filename chosen.
 //
-int Fl_Native_File_Chooser::get_saveas_basename(NavDialogRef& ref) {
+int FNFC_CLASS::get_saveas_basename(NavDialogRef& ref) {
     if ( ref == NULL ) {
         errmsg("get_saveas_basename: ref is NULL");
 	return(-1);
@@ -232,7 +253,7 @@ int Fl_Native_File_Chooser::get_saveas_basename(NavDialogRef& ref) {
 //         -1 -- error, errmsg() has reason, filename == ""
 //          0 -- OK, pathnames()/filename() has pathname(s) chosen
 //
-int Fl_Native_File_Chooser::get_pathnames(NavDialogRef& ref) {
+int FNFC_CLASS::get_pathnames(NavDialogRef& ref) {
     if ( ref == NULL ) {
         errmsg("get_saveas_basename: ref is NULL");
 	return(-1);
@@ -255,16 +276,18 @@ int Fl_Native_File_Chooser::get_pathnames(NavDialogRef& ref) {
 }
 
 // NAV CALLBACK EVENT HANDLER
-void Fl_Native_File_Chooser::event_handler(
+void FNFC_CLASS::event_handler(
 				    NavEventCallbackMessage callBackSelector, 
 				    NavCBRecPtr cbparm,
 				    void *data) {
     OSStatus err;
-    Fl_Native_File_Chooser *nfb = (Fl_Native_File_Chooser*)data;
+    FNFC_CLASS *nfb = (FNFC_CLASS*)data;
     switch (callBackSelector) {
 	case kNavCBStart:
 	    if ( nfb->directory() || nfb->preset_file() ) {
-	        const char *pathname = nfb->directory() ? nfb->directory() : nfb->preset_file();
+	        const char *pathname = nfb->directory() 
+					   ? nfb->directory()
+					   : nfb->preset_file();
 		FSSpec spec;
 		if ( ( err = PathToFSSpec(pathname, spec) ) != noErr ) {
 		    fprintf(stderr, "PathToFSSpec(%s) failed: err=%d\n",
@@ -272,13 +295,14 @@ void Fl_Native_File_Chooser::event_handler(
                     break;
 		}
 		AEDesc desc;
-		if ((err = AECreateDesc(typeFSS,
-					&spec, sizeof(FSSpec), &desc)) != noErr) {
+		if ((err = AECreateDesc(typeFSS, &spec, sizeof(FSSpec), 
+		                        &desc)) != noErr) {
 		    fprintf(stderr, "AECreateDesc() failed: err=%d\n",
 		        (int)err);
 		}
 		if ((err = NavCustomControl(cbparm->context,
-					    kNavCtlSetLocation, &desc)) != noErr) {
+					    kNavCtlSetLocation, 
+					    &desc)) != noErr) {
 		    fprintf(stderr, "NavCustomControl() failed: err=%d\n",
 		        (int)err);
 		}
@@ -292,8 +316,9 @@ void Fl_Native_File_Chooser::event_handler(
 		 NavDialogSetSaveFileName(cbparm->context, namestr);
 		 CFRelease(namestr);
 	    }
-	    NavCustomControl(cbparm->context, kNavCtlSetActionState,
-	                                                   &nfb->_keepstate );
+	    NavCustomControl(cbparm->context,
+	                     kNavCtlSetActionState,
+			     &nfb->_keepstate );
             
 	    // Select the right filter in pop-up menu
             if ( nfb->_filt_value == nfb->_filt_total ) {
@@ -367,7 +392,7 @@ void Fl_Native_File_Chooser::event_handler(
 }
 
 // CONSTRUCTOR
-Fl_Native_File_Chooser::Fl_Native_File_Chooser(int val) {
+FNFC_CLASS::FNFC_CTOR(int val) {
     _btype          = val;
     NavGetDefaultDialogCreationOptions(&_opts);
     _opts.optionFlags |= kNavDontConfirmReplacement;	// no confirms for "save as"
@@ -389,7 +414,7 @@ Fl_Native_File_Chooser::Fl_Native_File_Chooser(int val) {
 }
 
 // DESTRUCTOR
-Fl_Native_File_Chooser::~Fl_Native_File_Chooser() {
+FNFC_CLASS::~FNFC_CTOR() {
     // _opts			// nothing to manage
     if (_ref) { NavDialogDispose(_ref); _ref = NULL; }
     // _options			// nothing to manage
@@ -409,22 +434,22 @@ Fl_Native_File_Chooser::~Fl_Native_File_Chooser() {
 }
 
 // SET THE TYPE OF BROWSER
-void Fl_Native_File_Chooser::type(int val) {
+void FNFC_CLASS::type(int val) {
     _btype = val;
 }
 
 // GET TYPE OF BROWSER
-int Fl_Native_File_Chooser::type() const {
+int FNFC_CLASS::type() const {
     return(_btype);
 }
 
 // SET OPTIONS
-void Fl_Native_File_Chooser::options(int val) {
+void FNFC_CLASS::options(int val) {
     _options = val;
 }
 
 // GET OPTIONS
-int Fl_Native_File_Chooser::options() const {
+int FNFC_CLASS::options() const {
     return(_options);
 }
 
@@ -434,9 +459,14 @@ int Fl_Native_File_Chooser::options() const {
 //         1 - user cancelled
 //        -1 - failed; errmsg() has reason
 //
-int Fl_Native_File_Chooser::show() {
+int FNFC_CLASS::show() {
+
     // Make sure fltk interface updates before posting our dialog
+#ifdef FLTK1
     Fl::flush();
+#else
+    fltk::flush();
+#endif
 
     // BROWSER TITLE
     CFStringRef cfs_title;
@@ -502,7 +532,7 @@ int Fl_Native_File_Chooser::show() {
 //         1 - user cancelled
 //        -1 - failed; errmsg() has reason
 //     
-int Fl_Native_File_Chooser::post() {
+int FNFC_CLASS::post() {
 
     // INITIALIZE BROWSER
     OSStatus err;
@@ -597,37 +627,37 @@ int Fl_Native_File_Chooser::post() {
 // SET ERROR MESSAGE
 //     Internal use only.
 //
-void Fl_Native_File_Chooser::errmsg(const char *msg) {
+void FNFC_CLASS::errmsg(const char *msg) {
     _errmsg = strfree(_errmsg);
     _errmsg = strnew(msg);
 }
 
 // RETURN ERROR MESSAGE
-const char *Fl_Native_File_Chooser::errmsg() const {
+const char *FNFC_CLASS::errmsg() const {
     return(_errmsg ? _errmsg : "No error");
 }
 
 // GET FILENAME
-const char* Fl_Native_File_Chooser::filename() const {
+const char* FNFC_CLASS::filename() const {
     if ( _pathnames && _tpathnames > 0 ) return(_pathnames[0]);
     return("");
 }
 
 // GET FILENAME FROM LIST OF FILENAMES
-const char* Fl_Native_File_Chooser::filename(int i) const {
+const char* FNFC_CLASS::filename(int i) const {
     if ( _pathnames && i < _tpathnames ) return(_pathnames[i]);
     return("");
 }
 
 // GET TOTAL FILENAMES CHOSEN
-int Fl_Native_File_Chooser::count() const {
+int FNFC_CLASS::count() const {
     return(_tpathnames);
 }
 
 // PRESET PATHNAME
 //     Value can be NULL for none.
 //
-void Fl_Native_File_Chooser::directory(const char *val) {
+void FNFC_CLASS::directory(const char *val) {
     _directory = strfree(_directory);
     _directory = strnew(val);
 }
@@ -635,14 +665,14 @@ void Fl_Native_File_Chooser::directory(const char *val) {
 // GET PRESET PATHNAME
 //     Returned value can be NULL if none set.
 //
-const char* Fl_Native_File_Chooser::directory() const {
+const char* FNFC_CLASS::directory() const {
     return(_directory);
 }
 
 // SET TITLE
 //     Value can be NULL if no title desired.
 //
-void Fl_Native_File_Chooser::title(const char *val) {
+void FNFC_CLASS::title(const char *val) {
     _title = strfree(_title);
     _title = strnew(val);
 }
@@ -650,14 +680,14 @@ void Fl_Native_File_Chooser::title(const char *val) {
 // GET TITLE
 //     Returned value can be NULL if none set.
 //
-const char *Fl_Native_File_Chooser::title() const {
+const char *FNFC_CLASS::title() const {
     return(_title);
 }
 
 // SET FILTER
 //     Can be NULL if no filter needed
 //
-void Fl_Native_File_Chooser::filter(const char *val) {
+void FNFC_CLASS::filter(const char *val) {
     _filter = strfree(_filter);
     _filter = strnew(val);
 
@@ -674,14 +704,14 @@ void Fl_Native_File_Chooser::filter(const char *val) {
 // GET FILTER
 //     Returned value can be NULL if none set.
 //
-const char *Fl_Native_File_Chooser::filter() const {
+const char *FNFC_CLASS::filter() const {
     return(_filter);
 }
 
 // CLEAR ALL FILTERS
 //    Internal use only.
 //
-void Fl_Native_File_Chooser::clear_filters() {
+void FNFC_CLASS::clear_filters() {
     _filt_names = strfree(_filt_names);
     for (int i=0; i<_filt_total; i++) {
 	_filt_patt[i] = strfree(_filt_patt[i]);
@@ -709,7 +739,7 @@ void Fl_Native_File_Chooser::clear_filters() {
 //             \_____/  \_______/
 //              Name     Wildcard
 //
-void Fl_Native_File_Chooser::parse_filter(const char *in) {
+void FNFC_CLASS::parse_filter(const char *in) {
     clear_filters();
     if ( ! in ) return;
     int has_name = strchr(in, '\t') ? 1 : 0;
@@ -783,22 +813,22 @@ void Fl_Native_File_Chooser::parse_filter(const char *in) {
 }
 
 // STATIC: FILTER CALLBACK
-Boolean Fl_Native_File_Chooser::filter_proc_cb(AEDesc *theItem,
-					       void *info,
-					       void *callBackUD,
-					       NavFilterModes filterMode) {
-     return((Fl_Native_File_Chooser*)callBackUD)->filter_proc_cb2(
-					theItem, info, callBackUD, filterMode);
+Boolean FNFC_CLASS::filter_proc_cb(AEDesc *theItem,
+				   void *info,
+				   void *callBackUD,
+				   NavFilterModes filterMode) {
+     return((FNFC_CLASS*)callBackUD)->filter_proc_cb2(
+				    theItem, info, callBackUD, filterMode);
 }
 
 // FILTER CALLBACK
 //     Return true if match,
 //            false if no match.
 //
-Boolean Fl_Native_File_Chooser::filter_proc_cb2(AEDesc *theItem,
-						void *info,
-						void *callBackUD,
-						NavFilterModes filterMode) {
+Boolean FNFC_CLASS::filter_proc_cb2(AEDesc *theItem,
+				    void *info,
+				    void *callBackUD,
+				    NavFilterModes filterMode) {
     // All files chosen or no filters
     if ( _filt_value == _filt_total ) return(true);
     
@@ -819,7 +849,7 @@ Boolean Fl_Native_File_Chooser::filter_proc_cb2(AEDesc *theItem,
 // SET PRESET FILE
 //     Value can be NULL for none.
 //
-void Fl_Native_File_Chooser::preset_file(const char* val) {
+void FNFC_CLASS::preset_file(const char* val) {
     _preset_file = strfree(_preset_file);
     _preset_file = strnew(val);
 }
@@ -827,7 +857,7 @@ void Fl_Native_File_Chooser::preset_file(const char* val) {
 // PRESET FILE
 //     Returned value can be NULL if none set.
 //
-const char* Fl_Native_File_Chooser::preset_file() {
+const char* FNFC_CLASS::preset_file() {
     return(_preset_file);
 }
 

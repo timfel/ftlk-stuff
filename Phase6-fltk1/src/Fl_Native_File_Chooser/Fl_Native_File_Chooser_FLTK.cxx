@@ -1,10 +1,8 @@
 //
-// Fl_Native_File_Chooser_DEFAULT.cxx -- FLTK native OS file chooser widget
+// Fl_Native_File_Chooser_FLTK.cxx -- FLTK native OS file chooser widget
 //
 // Copyright 2004 by Greg Ercolano.
-//
-// March 2005 - wrapper around Fl_File_Chooser by natevw
-// Copyright 2005 by Nathan Vander Wilt. 
+// API changes + filter improvements by Nathan Vander Wilt 2005
 //
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Library General Public
@@ -28,34 +26,62 @@
 // 4567890123456789012345678901234567890123456789012345678901234567890123456789
 //
 
+#ifdef FLTK1
+//
+// FLTK1
+//
 #include <FL/Fl_Native_File_Chooser.H>
-#include <sys/stat.h>
-#include "common.cxx"
+#define FNFC_CLASS Fl_Native_File_Chooser
+#define FNFC_CTOR  Fl_Native_File_Chooser
+#define FLTK_CHOOSER_SINGLE    Fl_File_Chooser::SINGLE
+#define FLTK_CHOOSER_DIRECTORY Fl_File_Chooser::DIRECTORY
+#define FLTK_CHOOSER_MULTI     Fl_File_Chooser::MULTI
+#define FLTK_CHOOSER_CREATE    Fl_File_Chooser::CREATE
+#else
+//
+// FLTK2
+//
+#include <fltk/NativeFileChooser.h>
+#include <fltk/run.h>
+#define FNFC_CTOR  NativeFileChooser
+#define FNFC_CLASS fltk::FNFC_CTOR
+#define FLTK_CHOOSER_SINGLE    fltk::FileChooser::SINGLE
+#define FLTK_CHOOSER_DIRECTORY fltk::FileChooser::DIRECTORY
+#define FLTK_CHOOSER_MULTI     fltk::FileChooser::MULTI
+#define FLTK_CHOOSER_CREATE    fltk::FileChooser::CREATE
+#endif
 
-static int G_init = 0;				// 'first time' initialize flag
+#include "common.cxx"
+#include <sys/stat.h>
 
 // CTOR
-Fl_Native_File_Chooser::Fl_Native_File_Chooser(int val) {
-    if ( G_init == 0 ) {
+FNFC_CLASS::FNFC_CTOR(int val) {
+    static int init = 0;		// 'first time' initialize flag
+    if ( init == 0 ) {
         // Initialize when instanced for first time
-	//Fl_File_Icon::load_system_icons();	// OK to call more than once
-	G_init = 1;				// eg. if app already called from main()
+	load_system_icons();
+	init = 1;
     }
     _btype       = val;
     _options     = NO_OPTIONS;
     _filter      = NULL;
+    _filtvalue   = 0;
     _parsedfilt  = NULL;
     _preset_file = NULL;
     _prevvalue   = NULL;
     _directory   = NULL;
     _errmsg      = NULL;
+#ifdef FLTK1
     file_chooser = new Fl_File_Chooser(NULL, NULL, 0, NULL);
+#else
+    file_chooser = new fltk::FileChooser(NULL, NULL, 0, NULL);
+#endif
     type(val);		// do this after file_chooser created
     _nfilters    = 0;
 }
 
 // DTOR
-Fl_Native_File_Chooser::~Fl_Native_File_Chooser() {
+FNFC_CLASS::~FNFC_CTOR() {
     delete file_chooser;
     _filter      = strfree(_filter);
     _parsedfilt  = strfree(_parsedfilt);
@@ -66,47 +92,47 @@ Fl_Native_File_Chooser::~Fl_Native_File_Chooser() {
 }
 
 // PRIVATE: SET ERROR MESSAGE
-void Fl_Native_File_Chooser::errmsg(const char *msg) {
+void FNFC_CLASS::errmsg(const char *msg) {
     _errmsg = strfree(_errmsg);
     _errmsg = strnew(msg);
 }
 
 // PRIVATE: translate Native types to Fl_File_Chooser types
-int Fl_Native_File_Chooser::type_fl_file(int val) {
+int FNFC_CLASS::type_fl_file(int val) {
     switch (val) {
         case BROWSE_FILE:
-            return(Fl_File_Chooser::SINGLE);
+	    return(FLTK_CHOOSER_SINGLE);
         case BROWSE_DIRECTORY:
-            return(Fl_File_Chooser::SINGLE | Fl_File_Chooser::DIRECTORY);
+	    return(FLTK_CHOOSER_SINGLE | FLTK_CHOOSER_DIRECTORY);
         case BROWSE_MULTI_FILE:
-            return(Fl_File_Chooser::MULTI);
+	    return(FLTK_CHOOSER_MULTI);
         case BROWSE_MULTI_DIRECTORY:
-            return(Fl_File_Chooser::DIRECTORY | Fl_File_Chooser::MULTI);
+	    return(FLTK_CHOOSER_DIRECTORY | FLTK_CHOOSER_MULTI);
         case BROWSE_SAVE_FILE:
-            return(Fl_File_Chooser::SINGLE | Fl_File_Chooser::CREATE);
+	    return(FLTK_CHOOSER_SINGLE | FLTK_CHOOSER_CREATE);
         case BROWSE_SAVE_DIRECTORY:
-            return(Fl_File_Chooser::DIRECTORY | Fl_File_Chooser::SINGLE | Fl_File_Chooser::CREATE);
+	    return(FLTK_CHOOSER_DIRECTORY | FLTK_CHOOSER_MULTI | FLTK_CHOOSER_CREATE);
         default:
-            return(Fl_File_Chooser::SINGLE);
+	    return(FLTK_CHOOSER_SINGLE);
     }
 }
 
-void Fl_Native_File_Chooser::type(int val) {
+void FNFC_CLASS::type(int val) {
     _btype = val;
     file_chooser->type(type_fl_file(val));
 }
 
-int Fl_Native_File_Chooser::type() const {
+int FNFC_CLASS::type() const {
     return(_btype);
 }
 
 // SET OPTIONS
-void Fl_Native_File_Chooser::options(int val) {
+void FNFC_CLASS::options(int val) {
     _options = val;
 }
 
 // GET OPTIONS
-int Fl_Native_File_Chooser::options() const {
+int FNFC_CLASS::options() const {
     return(_options);
 }
 
@@ -116,7 +142,7 @@ int Fl_Native_File_Chooser::options() const {
 //    1 - user cancelled
 //   -1 - failed; errmsg() has reason
 //
-int Fl_Native_File_Chooser::show() {
+int FNFC_CLASS::show() {
     // FILTER
     if ( _parsedfilt ) {
         file_chooser->filter(_parsedfilt);
@@ -144,14 +170,23 @@ int Fl_Native_File_Chooser::show() {
 
     // OPTIONS: NEW FOLDER
     if ( options() & NEW_FOLDER )
-        file_chooser->type(file_chooser->type() | Fl_File_Chooser::CREATE);	// on
+        file_chooser->type(file_chooser->type() |
+	                   FLTK_CHOOSER_CREATE);		// on
 
     // SHOW
     file_chooser->show();
 
+#ifdef FLTK1
+    // FLTK1: BLOCK WHILE BROWSER SHOWN
     while ( file_chooser->shown() ) {
-        Fl::wait();             // block while shown
+        Fl::wait();
     }
+#else
+    // FLTK2: BLOCK WHILE BROWSER SHOWN
+    while ( file_chooser->visible() ) {
+        fltk::wait();
+    }
+#endif
 
     if ( file_chooser->value() && file_chooser->value()[0] ) {
         _prevvalue = strfree(_prevvalue);
@@ -162,8 +197,8 @@ int Fl_Native_File_Chooser::show() {
 	if ( options() & SAVEAS_CONFIRM && type() == BROWSE_SAVE_FILE ) {
 	    struct stat buf;
 	    if ( stat(file_chooser->value(), &buf) != -1 ) {
-		if ( buf.st_mode & S_IFREG ) {			// Regular file + exists?
-		     if ( fl_choice("File exists. Are you sure you want to overwrite?", "Cancel", "   OK   ", NULL) == 0 ) {
+		if ( buf.st_mode & S_IFREG ) {		// Regular file + exists?
+		     if ( exist_dialog() == 0 ) {
 		         return(1);
 		     }
 		}
@@ -176,69 +211,70 @@ int Fl_Native_File_Chooser::show() {
 }
 
 // RETURN ERROR MESSAGE
-const char *Fl_Native_File_Chooser::errmsg() const {
+const char *FNFC_CLASS::errmsg() const {
     return(_errmsg ? _errmsg : "No error");
 }
 
 // GET FILENAME
-const char* Fl_Native_File_Chooser::filename() const {
+const char* FNFC_CLASS::filename() const {
     if ( file_chooser->count() > 0 ) return(file_chooser->value());
     return("");
 }
 
 // GET FILENAME FROM LIST OF FILENAMES
-const char* Fl_Native_File_Chooser::filename(int i) const {
-    if ( i < file_chooser->count() ) return(file_chooser->value(i+1));	// convert fltk 1 based to our 0 based
+const char* FNFC_CLASS::filename(int i) const {
+    if ( i < file_chooser->count() )
+        return(file_chooser->value(i+1));	// convert fltk 1 based to our 0 based
     return("");
 }
 
 // SET TITLE
 //     Can be NULL if no title desired.
 //
-void Fl_Native_File_Chooser::title(const char *val) {
+void FNFC_CLASS::title(const char *val) {
     file_chooser->label(val);
 }
 
 // GET TITLE
 //    Can return NULL if none set.
 //
-const char *Fl_Native_File_Chooser::title() const {
+const char *FNFC_CLASS::title() const {
     return(file_chooser->label());
 }
 
 // SET FILTER
 //     Can be NULL if no filter needed
 //
-void Fl_Native_File_Chooser::filter(const char *val) {
+void FNFC_CLASS::filter(const char *val) {
     _filter = strfree(_filter);
     _filter = strnew(val);
     parse_filter();
 }
 
 // GET FILTER
-const char *Fl_Native_File_Chooser::filter() const {
+const char *FNFC_CLASS::filter() const {
     return(_filter);
 }
 
 // SET SELECTED FILTER
-void Fl_Native_File_Chooser::filter_value(int val) {
+void FNFC_CLASS::filter_value(int val) {
     _filtvalue = val;
 }
 
 // RETURN SELECTED FILTER
-int Fl_Native_File_Chooser::filter_value() const {
+int FNFC_CLASS::filter_value() const {
     return(_filtvalue);
 }
 
 // GET TOTAL FILENAMES CHOSEN
-int Fl_Native_File_Chooser::count() const {
+int FNFC_CLASS::count() const {
     return(file_chooser->count());
 }
 
 // PRESET PATHNAME
 //     Can be NULL if no preset is desired.
 //
-void Fl_Native_File_Chooser::directory(const char *val) {
+void FNFC_CLASS::directory(const char *val) {
     _directory = strfree(_directory);
     _directory = strnew(val);
 }
@@ -246,11 +282,11 @@ void Fl_Native_File_Chooser::directory(const char *val) {
 // GET PRESET PATHNAME
 //    Can return NULL if none set.
 //
-const char *Fl_Native_File_Chooser::directory() const {
+const char *FNFC_CLASS::directory() const {
     return(_directory);
 }
 
-// Convert our filter format to Fl_File_Chooser's format
+// Convert our filter format to fltk's chooser format
 //     FROM                                     TO (FLTK)
 //     -------------------------                --------------------------
 //     "*.cxx"                                  "*.cxx Files(*.cxx)"
@@ -260,7 +296,7 @@ const char *Fl_Native_File_Chooser::directory() const {
 //     Returns a modified version of the filter that the caller is responsible
 //     for freeing with strfree().
 //
-void Fl_Native_File_Chooser::parse_filter() {
+void FNFC_CLASS::parse_filter() {
     _parsedfilt = strfree(_parsedfilt);	// clear previous parsed filter (if any)
     _nfilters = 0;
     char *in = _filter;
@@ -300,7 +336,8 @@ void Fl_Native_File_Chooser::parse_filter() {
 		if ( wildcard[0] ) {
 		    // OUT: "name(wild)\tname(wild)"
 		    char comp[2048];
-		    sprintf(comp, "%s%.511s(%.511s)", ((_parsedfilt)?"\t":""), name, wildcard);
+		    sprintf(comp, "%s%.511s(%.511s)", ((_parsedfilt)?"\t":""),
+		    				      name, wildcard);
 		    _parsedfilt = strapp(_parsedfilt, comp);
 		    _nfilters++;
 		    //DEBUG printf("DEBUG: PARSED FILT NOW <%s>\n", _parsedfilt);
@@ -326,12 +363,12 @@ void Fl_Native_File_Chooser::parse_filter() {
 }
 
 // SET PRESET FILENAME
-void Fl_Native_File_Chooser::preset_file(const char* val) {
+void FNFC_CLASS::preset_file(const char* val) {
     _preset_file = strfree(_preset_file);
     _preset_file = strnew(val);
 }
 
 // GET PRESET FILENAME
-const char* Fl_Native_File_Chooser::preset_file() const {
+const char* FNFC_CLASS::preset_file() const {
     return(_preset_file);
 }

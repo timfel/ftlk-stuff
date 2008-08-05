@@ -1,1 +1,0 @@
--L/usr/local/lib -lfltk-utf8 -lfltk_xutf8 -lXft -lpthread -ldl -lm -lXext -lX11

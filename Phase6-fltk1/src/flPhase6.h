@@ -7,7 +7,7 @@
 #include <FL/Fl_Select_Browser.h>
 #include <FL/Fl_Button.h>
 #include <FL/Fl_Check_Button.h>
-#include <FL/fl_file_chooser.h>
+#include <FL/Fl_File_Chooser.h>
 #include <FL/Fl_Native_File_Chooser.H>
 #include <FL/Fl_Input.h>
 #include <FL/Fl_Box.h>
@@ -25,7 +25,7 @@
 #include <FL/Fl_GIF_Image.H>
 #include <FL/Fl_Image.H>
 #include <FL/Fl_Shared_Image.H>
-#include <Fl/fl_draw.H>
+#include <FL/fl_draw.H>
 
 
 extern Fl_Check_Button* umkehrstellen;

@@ -27,8 +27,10 @@ src/libphase6.o: src/libphase6/libphase6.cpp
 	$(CXX) $(DEFS) $(CXXFLAGS) -c src/libphase6/libphase6.cpp -o src/libphase6.o
 	
 # Ziel: native chooser
-src/Fl_Native_File_Chooser.o: src/Fl_Native_File_Chooser/Fl_Native_File_Chooser.cxx
-	$(CXX) -DUSEUTF8=1 $(INCLUDES) $(FLTK_CXX) src/Fl_Native_File_Chooser/Fl_Native_File_Chooser.cxx -c -o src/Fl_Native_File_Chooser.o
+src/Fl_Native_File_Chooser.o:
+	echo "=== making Fl_Native_File_Chooser ===";
+	(cd src/Fl_Native_File_Chooser; $(MAKE) $(MFLAGS)) || exit 1;
+	cp src/Fl_Native_File_Chooser/Fl_Native_File_Chooser.o src/Fl_Native_File_Chooser.o
 
 install: build
 	cp flPhase6 $(PREFIX)/bin/flPhase6
@@ -40,10 +42,11 @@ clean:
 	rm -f src/*.o $(TARGET)
 	
 distclean:
-	rm -f src/*.o $(TARGET) $(TARGET).exe
-	rm -Rf autom4te.cache
-	rm configure config.log config.status
-	rm Makefile
+	rm -f src/*.o $(TARGET) $(TARGET).exe; \
+	rm -Rf autom4te.cache; \
+	rm configure config.log config.status; \
+	rm Makefile; \
+	rm src/Fl_Native_File_Chooser/*.o
 
 .PHONY: all clean install dist-clean uninstall
 

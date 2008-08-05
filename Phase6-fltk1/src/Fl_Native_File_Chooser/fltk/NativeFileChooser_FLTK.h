@@ -1,8 +1,8 @@
 //
-// Fl_Native_File_Chooser_DEFAULT.H -- FLTK native OS file chooser widget
+// NativeFileChooser_FLTK.h -- FLTK native OS file chooser widget
 //
-// Copyright 2005 by Nathan Vander Wilt.
-// March 2005 - wrapper around Fl_File_Chooser
+// Copyright 2004 by Nathan Vander Wilt
+// Port to FLTK2 by Frederic Hoerni and Greg Ercolano 2007
 //
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Library General Public
@@ -20,10 +20,12 @@
 // USA.
 //
 
-#include <FL/Fl_File_Chooser.H>
+#include <fltk/FileChooser.h>
 #include <string.h>
 
-class Fl_Native_File_Chooser {
+namespace fltk {
+
+class NativeFileChooser {
 public:
     enum Type {
 	BROWSE_FILE = 0,
@@ -51,16 +53,15 @@ private:
     char *_prevvalue;			// Returned filename
     char *_directory;
     char *_errmsg;			// error message
-    Fl_File_Chooser *file_chooser;
 
+    fltk::FileChooser *file_chooser;
     int exist_dialog() {
-	return(fl_choice("File exists. Are you sure you want to overwrite?", 
-			 "Cancel", "   OK   ", NULL));
+	return(fltk::choice("File exists. Are you sure you want to overwrite?",
+			    "Cancel", "   OK   ", NULL));
     }
     void load_system_icons() {
-	Fl_File_Icon::load_system_icons();
+	fltk::FileIcon::load_system_icons();
     }
-
     int _nfilters;
 
     // Private methods
@@ -70,8 +71,8 @@ private:
     void keeplocation();
 
 public:
-    Fl_Native_File_Chooser(int val=BROWSE_FILE);
-    ~Fl_Native_File_Chooser();
+    NativeFileChooser(int val=BROWSE_FILE);
+    ~NativeFileChooser();
 
     // Public methods
     void type(int);
@@ -95,3 +96,5 @@ public:
     const char *errmsg() const;
     int show();
 };
+
+}   // namespace fltk

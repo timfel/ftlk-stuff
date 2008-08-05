@@ -1,8 +1,9 @@
 //
-// Fl_Native_File_Chooser_WINDOWS.H -- FLTK native OS file chooser widget
+// NativeFileChooser_WINDOWS.h -- FLTK native OS file chooser widget
 //
 // Copyright 2004 by Greg Ercolano.
-// April 2005 - API changes, improved filter processing by Nathan Vander Wilt
+// API changes + filter improvements by Nathan Vander Wilt 2005
+// FLTK2 port by Greg Ercolano 2007
 //
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Library General Public
@@ -27,7 +28,9 @@
 #include <commdlg.h>		// OPENFILENAME, GetOpenFileName()
 #include <shlobj.h>		// BROWSEINFO, SHBrowseForFolder()
 
-class Fl_Native_File_Chooser {
+namespace fltk {
+
+class NativeFileChooser {
 public:
     enum Type {
 	BROWSE_FILE = 0,
@@ -81,8 +84,8 @@ private:
     void add_filter(const char *, const char *);
 
 public:
-    Fl_Native_File_Chooser(int val = BROWSE_FILE);
-    ~Fl_Native_File_Chooser();
+    NativeFileChooser(int val = BROWSE_FILE);
+    ~NativeFileChooser();
 
     // Public methods
     void type(int val);
@@ -106,3 +109,5 @@ public:
     const char *errmsg() const;
     int show();
 };
+
+}		// namespace fltk

@@ -4,7 +4,7 @@ AC_INIT([[flPhase6]], [[0.1]], [[timfelgentreff@gmail.com]])
 # die in die Dateien des Projektes eingetragen werden sollen. 
 
 AC_PROG_CXX
-AC_PATH_PROG([FLTK_CONFIG],[fltk-utf8-config])
+AC_PATH_PROG([FLTK_CONFIG],[fltk-config])
 AC_SUBST(FLTK_CXX)
 AC_SUBST(FLTK_LD)
 FLTK_CXX=`"$FLTK_CONFIG" --use-images --cxxflags`

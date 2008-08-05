@@ -49,7 +49,7 @@ Fl_Menu_Item menu[] = {
  {"Schließen", 0x40071,	(Fl_Callback*)cb_exit, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
  {0,0,0,0,0,0,0,0,0},
  {"Bearbeiten", 0,	0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
- {"Hinzufügen", 0x40061,	(Fl_Callback*)cb_add, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+ {"Hinzuf\303\274gen", 0x40061,	(Fl_Callback*)cb_add, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
  {"Bild hinzufügen", 0x40070,	(Fl_Callback*)cb_add_pic, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
  {"Editieren", 0x40065,	(Fl_Callback*)cb_liste, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
  {"Suchen", 0x40066,	(Fl_Callback*)cb_suche, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
