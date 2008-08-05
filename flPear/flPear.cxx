@@ -174,7 +174,7 @@ void hddmake_callback(Fl_Button*, void*) {
 int main (int argc, char **argv) {
 #ifdef WIN32
   location = argv[0];
-  location.erase((location.length()-11), 11);
+  //location.erase((location.length()-11), 11);
   cout << "flPear - the PearPC Frontend. Built for Windows" << endl;
 #endif
 #ifndef WIN32
