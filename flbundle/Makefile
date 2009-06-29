@@ -1,5 +1,5 @@
 all: fldesktop
 fldesktop:
-	fltk-config --use-images --compile fldesktop.cxx
+	fltk-config --use-images --compile flbundle.cxx
 clean: 
-	rm fldesktop
+	rm flbundle
